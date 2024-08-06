@@ -1,6 +1,6 @@
 import json
 import logging
-from prompt_manager import Prompt
+from prompting.prompt_manager import Prompt
 from parsing.API_Wrapper import LLM_Model
 
 logger = logging.getLogger(__name__)

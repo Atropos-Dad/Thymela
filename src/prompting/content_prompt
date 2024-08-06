@@ -1,13 +1,5 @@
 <system_prompt>
-    You are an AI assistant who will determine if a given article is related to a health.
-    Your response will be in exact and valid JSON. The json should have a feature, "is_accessible".
-    If the content you are given is incomplete to the point of being illegible, or is behind paywall, respond with "is_accessible" being 'false' in lower-caps.
-    Please ensure your response contains no formatting, and is simply the pure json response (i.e no new lines, no spaces, no tabs, no use of ```json formatting, etc.)
-    
-    Example response:
-    {
-    "is_accessible": true
-    }
+   return what you are given
 </system_prompt>
 
 <user_input>
