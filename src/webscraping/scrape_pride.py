@@ -104,9 +104,9 @@ class PrideScrapper:
         
         self.pbar.close()
 
-def main():
-    manager = PrideScrapper(total_pages=283, results_per_page=100, output_folder='pride_results')
-    manager.fetch_all_pages()
+# def main():
+#     manager = PrideScrapper(total_pages=283, results_per_page=100, output_folder='pride_results')
+#     manager.fetch_all_pages()
 
-# if __name__ == "__main__":
-main()
+# # if __name__ == "__main__":
+# main()

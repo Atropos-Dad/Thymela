@@ -5,22 +5,32 @@ Unit tests for the scrape_pride file
 import src.webscraping.scrape_pride
 import json
 
-def test_make_search(mocker):
+mocked_total_pages = 283
+
+def test_verify_results():
+    # Mock the file data
     with open('tests/mock_data/pride_search_page1.json') as f:
-        mock_data = json.load(f)
+        search_results = json.load(f)
 
-    mock_response = mocker.MagicMock()
-    mock_response.json.return_value = mock_data    
+    # Call the function under test
+    scraper = src.webscraping.scrape_pride.PrideScrapper(total_pages=mocked_total_pages)
+    result = scraper.verify_results(search_results)
 
-    mocker.patch("requests.get", return_value=mock_response)
+    # Assert the result
+    total_pages = search_results['page']['totalPages']
+    current_page = search_results['page']['number']
+    page_size = search_results['page']['size']
+    total_elements = search_results['page']['totalElements']
+    compact_projects = search_results['_embedded']['compactprojects']
 
-    result = src.webscraping.scrape_pride.make_search(1)
+    if total_pages == current_page:
+        expected_num_results = total_elements % page_size
+        if expected_num_results == 0:
+            expected_num_results = page_size
+    else:
+        expected_num_results = page_size
 
-    assert type(result) == dict
-    assert result == mock_data
-    
-    
-
+    assert result == (len(compact_projects) == expected_num_results)
 
 def test_parse_search_results():
         # Mock the file data
@@ -29,7 +39,8 @@ def test_parse_search_results():
 
 
         # Call the function under test
-        result = src.webscraping.scrape_pride.parse_search_results(search_results)
+        scraper = src.webscraping.scrape_pride.PrideScrapper(total_pages=mocked_total_pages)
+        result = scraper.parse_search_results(search_results)
 
         # Assert the result
         assert len(result) == len(search_results['_embedded']['compactprojects'])
