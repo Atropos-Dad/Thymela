@@ -1,9 +1,9 @@
 import importlib
-from prompt_manager import Prompt 
+from prompting.prompt_manager import Prompt 
 import logging
 from dotenv import load_dotenv
 import os
-from config import config
+from parsing.config import config
 logger = logging.getLogger(__name__)
 
 
