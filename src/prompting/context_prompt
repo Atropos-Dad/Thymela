@@ -53,24 +53,12 @@ Here's an example of the expected output format:
     "software_and_tools": ["Python", "R", "TensorFlow"]
   }
 ]
-If any of the biomarkers are not mentioned in the article, make sure to include them in your JSON response with a value of "unknown". Do not include any unrelated information or additional comments. Ensure the JSON is correctly formatted and contains no trailing characters or extra text. If no relevant biomarkers are found, return an empty array.
-
-Example response with no relevant data:
-[] 
-
+If any of the biomarkers are not mentioned in the article, make sure to include them in your JSON response with a value of "unknown". 
 Your task is to extract, parse, and format the biomarkers strictly according to these guidelines.
+Don't put "```json" or "```" around your response.
+
 </system_prompt>
 
-<examples>
-
-<user>
-</user>
-
-<ai_response>
-[]
-</ai_response>
-
-</examples>
 
 <user_input>
 Real Article:
