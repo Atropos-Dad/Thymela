@@ -1,11 +1,104 @@
 <system_prompt>
 For the purpose of finding the most compatible studies possible you must extract as much crucial metadata as possible from the text files of the studies.
-Include a title and a short description on what the study is aboout in your json response. You must not care about Study contacts, Sample names, file names. You do care about anything in relation to "Age", "Sex", "Ethnicity", "Health Status", "Dietary Information", "Lifestyle Factors", "Geographic Location" "Drugs/Therapeutics", "Diseases" and so on if the study is about humans, if these dont exist about the human make up tags relevant to the article including key points/features mentioned in the article that a biochemist would want. If the study is not about humans make your own relevant tags up.
+Include a title on what the study is aboout in your json response. You must not care about Study contacts, Sample names, file names. You do care about anything in relation to "Age", "Sex", "Ethnicity", "Health Status", "Dietary Information", "Lifestyle Factors", "Geographic Location" "Drugs/Therapeutics", "Diseases" and so on if the study is about humans, if these dont exist about the human make up tags relevant to the article including key points/features mentioned in the article that a biochemist would want. If the study is not about humans make your own relevant tags up. If any tag is empty, it must be removed from the response.
 We also care about technical metadata such as signaling cascades, types of morphogen treatments or information that would benefit a biochemist in any form or way. Create tags and return a json reponse.
 Don't put "```json" or "```" around your response.
 
 </system_prompt>
 
+<examples>
+<user>
+    Title
+    Proteomic analysis and functional validation reveal distinct therapeutic capabilities related to priming of mesenchymal stromal/stem cells with IFN-γ and hypoxia: potential implications for their clinical use
+
+    Description
+    Mesenchymal stromal/stem cells (MSCs) are a heterogeneous population of multipotent cells that can be obtained from various tissues, such as dental pulp, adipose tissue, bone marrow and placenta. MSCs have gained importance in the field of regenerative medicine because of their promising role in cell therapy and their regulatory abilities in tissue repair and regeneration. However, a better characterization of these cells and their products is necessary to further potentiate their clinical application. In this study, we used unbiased high-resolution mass spectrometry-based proteomic analysis to investigate the impact of distinct priming strategies, such as hypoxia and IFN-γ treatment, on the composition and therapeutic functionality of the secretome produced by MSCs derived from the amniotic membrane of the human placenta (hAMSCs). Our investigation revealed that both types of priming improved the therapeutic efficacy of hAMSCs, and these improvements were related to the secretion of functional factors present in the conditioned medium (CM) and exosomes (EXOs), which play crucial roles in mediating the paracrine effects of MSCs. In particular, hypoxia was able to induce a pro-angiogenic, innate immune response- activating, and tissue-regenerative hAMSC phenotype, as highlighted by the elevated production of regulatory factors such as VEGFA, PDGFRB, ANGPTL4, ENG, GRO-γ, IL8, and GRO-α. IFN-γ priming, instead, led to an immunosuppressive profile in hAMSCs, as indicated by increased levels of TGFB1, ANXA1, THBS1, HOMER2, GRN, TOLLIP and MCP-1. Functional assays validated the increased angiogenic properties of hypoxic hAMSCs and the enhanced immunosuppressive activity of IFN-γ-treated hAMSCs. This study extends beyond the direct priming effects on hAMSCs, demonstrating that hypoxia and IFN-γ can influence the functional characteristics of hAMSC-derived secretomes, which, in turn, orchestrate the production of functional factors by peripheral blood cells. This research provides valuable insights into the optimization of MSC-based therapies by systematically assessing and comparing the priming type-specific functional features of hAMSCs. These findings highlight new strategies for enhancing the therapeutic efficacy of MSCs, particularly in the context of multifactorial diseases, paving the way for the use of hAMSC-derived products in clinical practice.
+
+    Sample Processing Protocol
+    2 mL of conditioned medium or 10 μg of isolated exosomes from 344 differentially stimulated MSCs underwent filter aided sample preparation (FASP) with 10 kDa Vivacon 500 spin filters (Wisniewski et al., 2009). Briefly, proteins were reduced with 20 mM dithiothreitol for 30 min at 37°C and free cysteine residues were alkylated with 50 mM iodoacetamide for 5 min at 37°C in the dark in UA (100 mM Tris/HCl 8 M urea pH 8.5) (Sigma Aldrich). After six washing steps with UB (100 mM Tris/HCl 8 M urea pH 8), proteins were digested with 0.3 μg LysC (Promega) in UC (25 mM Tris/HCl 2 M urea pH 8) for 16 h at 37°C followed by a second digestion step with 0.15 μg trypsin in 50 mM ammonium bicarbonate (Promega) for 4 h at 37°C as previously described (Saveliev et al., 2013). The peptides were eluted into collection tubes and acidified with formic acid (Sigma Aldrich) at a final concentration of 0.1%. Afterward, proteolytic peptides were desalted by stop-and-go extraction (STAGE) with self-packed C18 tips (Empore) (Rappsilber et al., 2003). Peptides were eluted using 60% acetonitrile (Sigma Aldrich) and 0.1% formic acid. After vacuum centrifugation, peptides were concentrated and dissolved in 20 μL 0.1% formic acid. At this point, peptide concentrations were analyzed by a Nanodrop 2000 (Thermo Scientific). A total amount of 1.2 μg was loaded per sample onto a Dionex UltiMate 3000 RSLCnano LC system (Thermo Scientific) which was coupled online via a Nanospray Flex Ion Source (Thermo Scientific) to a Q Exactive mass spectrometer (Thermo Scientific). Peptides were separated on an Acclaim PepMap C18 column (50 cm × 75 μm ID, Thermo Scientific) with 250 Nl/min flow using a binary gradient of water (A) and acetonitrile (B) supplemented with 0.1% formic acid (2% B 0min,5%B5min,25%B185min,35%B230min,60%B250min, 95%B255min,95%B265min,2%B265min,2%B350min).Data-dependent acquisition (DDA) was used for label-free quantification (LFQ). Full MS scans were acquired at a resolution of 70,000 (m/z range: 300–1400; automatic gain control (AGC) target: 1E+6; max injection time 50 ms). The DDA was used on the 10 most intense peptide ions per full MS scan for peptide fragmentation (resolution: 17,500; isolation width: 2 m/z; AGC target: 1E+5; normalized collision energy (NCE): 25%, max injection time: 120ms). A dynamic exclusion of 120 s was used for peptide fragmentation.
+
+    Data Processing Protocol
+    The raw data were analyzed with the software MaxQuant, version 2.0.1.0 (maxquant.org, Max Planck Institute, Munich). The MS data were searched against a reviewed canonical FASTA database of Homo sapiens including isoforms from UniProt (download: November the 5th 2020). Trypsin/P was defined as a protease. Two missed cleavages were allowed for the database search. The option in the first search was used to recalibrate the peptide masses within a window of 20 ppm. For the main search peptide and peptide fragment mass tolerances were set to 4.5 and 20 ppm, respectively. Carbamidomethylation of cysteine was defined as static modification. Protein N-terminal acetylation as well as oxidation of methionine were set as variable modifications. The false discovery rate for both peptides and proteins was adjusted to less than 1%. The “match between runs” option was enabled. LFQ of proteins required at least one ratio count of unique peptides. Unique and razor peptides were used for quantification. Data normalization was enabled. The protein LFQ reports from MaxQuant were further processed in Perseus (Tyanova et al., 2016).
+
+    Contact
+    Dr Matteo Calligaris, Fondazione Ri.MED
+
+    Dr Simone Dario Scilabra, Ri.MED Foundation (lab head)
+
+    Submission Date
+    21/05/2024
+
+    Publication Date
+    22/05/2024
+</user>
+
+<ai_response>
+[{
+    "title": "Proteomic analysis and functional validation reveal distinct therapeutic capabilities related to priming of mesenchymal stromal/stem cells with IFN-γ and hypoxia: potential implications for their clinical use",
+    "organisms": "Homo sapiens (human)",
+    "organismParts": ["Placenta", "Embryonic stem cell"],
+    "sampleCollection": "2 mL of conditioned medium or 10 μg of isolated exosomes from 344 differentially stimulated MSCs",
+    "drugs": "None",
+    "pathways": ["pro-angiogenic", "immune response", "tissue-regenerative", "immunosuppressive"],
+    "focalPoints": ["hAMSCs", "hypoxia", "IFN-γ"],
+    "processing": "filter aided sample preparation (FASP) with 10 kDa Vivacon 500 spin filters",
+    "keywords": ["Placenta-derived mesenchymal stromal/stem cells", "Msc paracrine effects", "Msc priming", "Ifn-γ priming", "Proteomic analysis", "Msc therapeutic properties", "Hypoxia priming"],
+    "instruments": ["Q exactive hf"],
+    "proteinsFound": ["VEGFA", "PDGFRB", "ANGPTL4", "ENG", "GRO-γ", "IL8", "GRO-α", "TGFB1", "ANXA1", "THBS1", "HOMER2", "GRN", "TOLLIP", "MCP-1"],
+    "cutoffPoints": ["FDR < 1%", "Peptide ion score > 20"],
+    "signalingPathways": ["VEGF signaling", "TGF-β signaling"],
+    "cascades": ["Paracrine effects mediated by exosomes"]
+}]
+
+</ai_response>
+
+<user>
+    Title
+    Developmental signals control chromosome segregation fidelity during pluripotency and neurogenesis by modulating replicative stress
+
+    Description
+    Human development relies on the correct replication, maintenance and segregation of our genetic blueprints. How these processes are monitored across embryonic lineages, and why genomic mosaicism varies during development remain unknown. Using pluripotent stem cells, we identify that several patterning signals –including WNT, BMP and FGF– converge into the modulation of DNA replication stress and damage during S-phase, which in turn controls chromosome segregation fidelity in mitosis. We show that the WNT and BMP signals protect from excessive origin firing, DNA damage and chromosome missegregation derived from stalled forks in pluripotency. Cell signalling control of chromosome segregation declines during lineage specification into the three germ layers, but re-emerges in neural progenitors. In particular, we find that the neurogenic factor FGF2 induces DNA replication stress-mediated chromosome missegregation during the onset of neurogenesis, which could provide a rationale for the elevated chromosomal mosaicism of the developing brain. Our results highlight roles for morphogens and cellular identity in genome maintenance that contribute to somatic mosaicism during mammalian development.
+
+    Sample Processing Protocol
+    This experiment had the objective to detect differential enrichment of phospho-peptides caused by modulation of different signaling cascades (WNT, FGF, BMP) using short term morphogen treatments (3 hours). Given our initial findings of morphogens controlling chromosome segregation fidelity and replicative dynamics, we were intrigued on whether these cascades directly impact by phosphorylation critical regulators (proteins) of the DNA replication, DNA damage, and DNA repair cascades. hiPSCs were seeded in 10 cm dishes in Essential 8 media and treated with control (untreated), DKK1 conditional medium (1:3), Noggin (200ng/ml) or FGF2 (40ng/mL) (See Supplementary Data 1 on the article) for 3 hours before harvesting. Tgfb1 (5ng/ml) and GSK3 inhibition (CHIR99021 3uM) treatment conditions were not taken in account in this study. Four independent experiments (n= 4 biological replicates/condition) were processed for phospho-proteome analysis was performed similarly as described previously (Potel C.M., et al., Mol Cell Proteomics 2018). In brief, proteins were extracted by full lysis of cells, digested in-solution with Lyc-C and Trypsin in an 8 M Urea buffer and subsequently desalted using Sep-Pak cartridges. Digested samples have further been applied to immobilized metal affinity chromatography (Fe-IMAC) to enrich phospho-peptides. The desalted IMAC eluate containing the phospho-peptides, have further been analysed by LC-MS/MS measurement. Resulting peptides have been loaded on a cartridge trap column, packed with Acclaim PepMap300 C18, 5µm, 300Å wide pore (Thermo Scientific) and separated via a gradient from 3% to 40% ACN on a nanoEase MZ Peptide analytical column (300Å, 1.7µm, 75µm x 200 mm, Waters) using a 150 min MS-method. Eluting peptides have been analyzed by an online coupled Orbitrap Exploris 480 mass spectrometer.
+
+    Data Processing Protocol
+    Data analysis was carried out by MaxQuant (version 1.6.14.0). In total 113165 peptides and 8104 proteins could have been identified by MS/MS based on an FDR cutoff of 0.01 on peptide level and 0.01 on protein level. Identified in all samples were 40292 peptides and 6620 proteins. Match between runs option was enabled to transfer peptide identifications across Raw files based on accurate retention time and m/z. Quantification was done using a label free quantification approach based on the MaxLFQ algorithm (Cox, J. et al., Mol Cell Proteomics 2014). A minimum number of quantified peptides was required for protein quantification. In total 7394 proteins could have been quantified, 4140 were quantified in all samples. For the downstream analysis, only peptides with fold changes > 2 and p-values < 0.1 for the 4 experiments were considered differentially regulated and are shown in Supplementary Fig. 5 in the publication. Each of the factors were manually analysed in STRING, PhosphoSitePlus, and other databases for i) their role in DNA replication or/and damage, ii) known kinases modulating the identified phospho-sites.
+
+    Contact
+    Dr Anchel de Jaime Soguero, Center for Organismal Studies (COS) Heidelberg, University of Heidelberg
+
+    Dr Prof. Sergio P. Acebron, Center for Organismal Studies (COS) Heidelberg, University of Heidelberg (Germany) (lab head)
+
+    Submission Date
+    30/07/2024
+
+    Publication Date
+    31/07/2024
+</user>
+
+<ai_response>
+[{
+    "title": "Human Induced Pluripotent Stem Cells (hiPSCs)",
+    "organisms": "Homo sapiens (human)",
+    "organismParts": ["hiPSCs"],
+    "sampleCollection": "DKK1 conditional medium (1:3), Noggin (200ng/ml) or FGF2 (40ng/mL)",
+    "drugs": ["DKK1", "Noggin", "FGF2"],
+    "pathways": ["WNT", "FGF", "BMP"],
+    "focalPoints": ["hiPSCs", "WNT signaling", "FGF signaling", "BMP signaling"],
+    "processing": "peptides loaded on a cartridge trap column, packed with Acclaim PepMap300 C18, 5µm, 300Å wide pore (Thermo Scientific) and separated via a gradient from 3% to 40% ACN on a nanoEase MZ Peptide analytical column (300Å, 1.7µm, 75µm x 200 mm, Waters) using a 150 min MS-method",
+    "keywords": ["hiPSCs", "Proteomics", "WNT signaling", "FGF signaling", "BMP signaling"],
+    "instruments": ["Orbitrap Exploris 480"],
+    "proteinsFound": "8104",
+    "peptidesFound": "113165",
+    "cutoffPoints": ["0.01 on peptide level", "0.01 on protein level"],
+    "signalingPathways": ["WNT signaling", "FGF signaling", "BMP signaling"],
+    "cascades": ["WNT pathway activation", "FGF pathway activation", "BMP pathway activation"]
+}]
+
+</ai_response>
+
+</examples>
 
 <user_input>
 Real Article:
