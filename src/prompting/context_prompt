@@ -102,5 +102,33 @@ Don't put "```json" or "```" around your response.
 
 <user_input>
 Real Article:
-{content}
+Project PXD054577
+Summary
+
+Title
+Intragenic DNA inversions expand bacterial coding capacity
+
+Description
+Bacteria can generate heterogeneity through phase variation, including enzyme-mediated inversion of specific intergenic regions of genomic DNA. We developed a computation tool that identifies invertible elements using long-read datasets, PhaVa. We identified over 300 ‘intragenic invertons,’ a new class of invertible elements entirely within genes, in both bacteria and archaea. In the gut commensal Bacteroides thetaiotaomicron, we experimentally characterized an intragenic inverton in the thiamine biosynthesis protein thiC. We used mass spectrometry in data-independent acquisition mode to identify and quantify B. theta proteins, including thiC inverton expression at the protein level.
+
+Read less
+Sample Processing Protocol
+Bacteria were cultured, pelleted, and lysed in 5% SDS, 50 mM triethylammonium bicarbonate (TEAB), pH 8.5., and 1x HALT Protease and Phosphatase Inhibitor (Thermo Fisher Scientific). Samples were sonicated and cell debris was removed upon pelleting. Ten micrograms of protein per sample were reduced and alkylated with the incorporation of tris(2-carboxyethyl)phosphine (TCEP) and 2-chloroacetamide at final concentrations of 25 mM and 50 mM, respectively, followed by incubation at 70 degrees Celsius for 20 min. Aqueous phosphoric acid was added to samples at a final concentration of 2.5% and loaded onto S-Trap micro spin columns (Protifi) with binding buffer (100 mM TEAB, pH 7.55, and 90% methanol). S-Trap columns were used for desalting, digestion, and peptide extraction, following the manufacturer’s protocol. Trypsin digestion was performed at a 1:25 enzyme:protein ratio (w/w) with incubation at 37 degrees Celsius overnight. Peptides were eluted, dried down in a SpeedVac, and resuspended in 0.1% formic acid, 4% acetonitrile, and 0.015% n-dodecyl β-D-maltoside at a final concentration of 0.15 µg/µL using UHPLC-MS water. A total of 0.15 µg (1 µL) was loaded on column for LC-MS/MS analysis. Peptides were analyzed by LC-MS/MS using a nanoElute 2 coupled to a timsTOF Ultra mass spectrometer (Bruker Daltonics). Peptides were separated using a one column method with a PepSep ULTRA C18 HPLC column (25 cm x 75 µm x 1.5 µm; Bruker) heated at 50 degrees Celsius, and a 10 µm emitter (Bruker) attached to a CaptiveSpray Ultra source. A linear gradient was run consisting of 3 to 34% buffer B over 30 min at a flow rate of 200 nL/min. The mobile phases were 0.1% formic acid in UHPLC-MS water (buffer A) and 0.1% formic acid/99.9% acetonitrile (buffer B). First, to optimize the data-independent acquisition (DIA) parallel accumulation serial fragmentation (PASEF) method, a data-dependent acquisition (DDA)-PASEF method was used on a testmix solution consisting of each sample at an equivalent ratio. For analysis in dia-PASEF mode, the MS scan range was set to 100 to 1700 m/z with positive ion polarity. TIMS settings included an ion mobility 1/K0 range from 0.65 to 1.46 V·s/cm2, ramp time of 50 ms, and 100% duty cycle. The py_diAID tool was applied to optimize the dia-PASEF method using a spectral library generated from the testmix sample. Sixteen dia-PASEF scans separated into three ion mobility windows per scan.
+
+
+Data Processing Protocol
+DIA data was analyzed in DIA-NN using an in silico spectral library generated with a custom B. theta FASTA. A Uniprot Reference proteome that included B. theta VPI-5482 (FASTA downloaded February 2024) was customized by appending the three predicted ThiC intragenic inverted ORFs. Precursor ion generation included prediction of deep learning-based spectra, retention times, and ion mobilities, in silico digestion with trypsin, a maximum of one missed cleavage, N-terminal methionine excision, fixed cysteine carbamidomethylation, precursor charge states of 1 to 4, and a fragment ion m/z range of 200 to 1800. From the DIA runs, a spectral library was generated and the resulting DIA identifications at the peptide and protein levels were normalized by MS1 intensity. Identified ThiC peptides were validated for quantitative comparisons based on reliable detection in at least one sample, as assessed in Skyline, and MS/MS spectra and extracted ion chromatograms from resulting peptides were visualized.
+
+Read less
+Contact
+Dr Krystal Lum, Princeton University
+
+Dr Ileana M. Cristea, Princeton University (lab head)
+
+Submission Date
+05/08/2024
+
+Publication Date
+06/08/2024
 </user_input>
+</examples>

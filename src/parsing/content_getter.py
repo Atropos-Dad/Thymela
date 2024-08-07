@@ -3,7 +3,6 @@ import logging
 from prompting.prompt_manager import Prompt
 from parsing.API_Wrapper import LLM_Model
 
-# Set up logger
 logger = logging.getLogger(__name__)
 
 def remove_newlines(text):
@@ -15,6 +14,21 @@ def remove_newlines(text):
     except Exception as e:
         logger.error(f"Error removing newlines: {e}")
         return text
+
+def clean_up_html(text):
+    """
+    Cleans up HTML text by removing new lines, blank lines, extra spaces, and non-Latin characters.
+
+    Parameters:
+    text (str): The input HTML text.
+
+    Returns:
+    str: The cleaned text.
+    """
+    cleaned_text = ' '.join(text.split())  # Remove extra spaces
+    cleaned_text = ''.join(c for c in cleaned_text if c.isalnum() or c.isspace())  # Keep only alphanumeric and space
+    cleaned_text = cleaned_text.encode('ascii', 'ignore').decode('ascii')  # Remove non-ASCII characters
+    return cleaned_text
 
 def make_json_safe(text):
     """
@@ -60,10 +74,11 @@ def get_article_text_ai(content, url=None):
             logger.info(f"Submitting content for analysis.")
 
         # Create a prompt with the content for the AI model
-        prompt = Prompt(file_path="content_prompt", variables={"html": safe_content})
+        prompt = Prompt(file_path="src/prompting/content_prompt", variables={"html": safe_content})
         
         # Get AI response using LLM_Model
         response = LLM_Model.prompt(prompt)
+        print(response)
 
         response = remove_newlines(response)
         logger.debug(f"AI article output (content cleaning): {response[:500]}...")  # Log first 500 characters
