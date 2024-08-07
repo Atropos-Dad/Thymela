@@ -6,8 +6,8 @@ from parsing.article_asseser import assess_article
 
 def main():
     # Example usage:
-    article_url = "https://www.ebi.ac.uk/pride/archive/projects/PXD054577"
-    print(assess_article(article_url, "tests/mock_data/test_file.txt"))
+    article_url = ""
+    print(assess_article(article_url, "tests/mock_data/Testing_File.txt"))
 
     
 
