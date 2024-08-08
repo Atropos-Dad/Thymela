@@ -143,7 +143,7 @@ def add_to_MBW_studies_batch(inputs):
             if type(input_dict["metadataLink"]) != str:
                 raise Exception(f"Expected metadataLink to be a string, but got {type(input_dict['metadataLink']).__name__} instead")
         except Exception as e:
-            print(f"Error with input: {input_dict["studyId"]}")
+            print(f"Error with input: {input_dict['studyId']}")
             # input(f"{input_dict}")
             print(e)
             input_dict["valid"] = False
