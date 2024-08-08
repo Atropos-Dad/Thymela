@@ -22,9 +22,9 @@ LLM_Model = LLM_Wrapper(config["model"], 2)
 # Set up logging configuration
 import logging
 
-def prompt_ai_with_article(url=None, file_path=None):
+def prompt_ai_with_article(study=None, file_path=None):
   
-    if url is None and file_path is None:
+    if study is None and file_path is None:
         logger.error("No URL or file path provided!")
         return None
 
@@ -34,13 +34,10 @@ def prompt_ai_with_article(url=None, file_path=None):
             content = file.read()
     else:
         # Placeholder for fetching article content from URL (implement if needed)
-        content = "Fetched article content from URL"
+        content = study
 
     if content is None:
-        logger.error(f"The article at URL - {url} - content was not able to be analyzed by AI Model.")
         return None
-
-    logger.info(f"Prompting AI with article from url {url}")
     
     main_prompt_obj = Prompt(file_path="src/prompting/context_prompt.txt", variables={"content": content})
 
@@ -61,7 +58,7 @@ def assess_article(url, file_path_to_article=None):
     if json_response is None:
         return None
 
-    logger.info(f"URL: {url}")
+    #logger.info(f"URL: {url}")
     #return json.dumps(json_response, indent=4)
     return json_response
 
