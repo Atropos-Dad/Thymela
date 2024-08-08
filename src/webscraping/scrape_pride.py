@@ -72,7 +72,6 @@ class PrideScrapper:
     def fetch_search(self, page_number):
         url = f"https://www.ebi.ac.uk/pride/ws/archive/v2/search/projects?sortDirection=DESC&page={page_number}&pageSize={self.results_per_page}&dateGap=+1YEAR&keyword=*:*"
         response = requests.get(url)
-        
         if response.status_code == 200:
             data = response.json()
             results_count = len(data['_embedded']['compactprojects'])
