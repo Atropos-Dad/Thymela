@@ -1,0 +1,25 @@
+Title
+Oligodendroglial fatty acid metabolism as a central nervous system energy reserve
+
+Description
+Brain function requires a constant supply of glucose. However, the brain has no known energy stores, except for glycogen granules in astrocytes. Here, we addressed the question whether oligodendroglial lipid metabolism can provide an energy reserve in white matter tracts. Among other approaches including microscopy and electrophysiology applied to acutely isolated optic nerves from young adult mice used as a model system, we also employed quantitative proteome analysis to study alterations of the whole optic nerve proteome upon glucose deprivation. We compared optic nerve fractions from two different low-glucose incubation conditions (16 h in 0 mM glucose/10 mM sucrose or 24 h in 1 mM glucose/9 mM sucrose) with those from the respective control conditions in regular medium (10 mM glucose/0 mM sucrose). Optic nerve fractions from five animals per condition were processed with replicate digestion, resulting in two technical replicates per biological replicate and thus in a total of 20 LC-MS runs to be compared per individual experiment. We utilized a data-independent acquisition (DIA) workflow with alternating low and elevated energy (MSE) and an ion mobility-enhanced version thereof (referred to as UDMSE) to achieve both, a correct quantification of exceptionally abundant myelin proteins and a comprehensive coverage of the optic nerve proteome. Label-free protein quantification revealed a non-significant trend toward higher myelin protein abundance, a reduced abundance of some glycolytic enzymes, an increased abundance of fatty acid binding proteins and enzymes of fatty acid metabolism, as well as a higher steady-state level of some autophagy-related proteins. Taken together, our study indicates that ongoing oligodendroglial lipid degradation feeds rapidly into white matter energy metabolism, and that the imbalance of myelin synthesis and degradation can underlie unexplained myelin thinning in aging and disease.
+
+Read less
+Sample Processing Protocol
+Homogenization of whole optic nerves in RIPA buffer with Teflon beads in a tissue homogenizer. Solubilization of myelin proteins in ASB-14 detergent followed by automated in-solution protein digestion according to the filter-aided sample preparation (FASP) protocol and analysis by LC-MS. 1D LC separation of peptides using a Waters nanoAcquity nanoUPLC system. Mass spectrometric analysis performed by data-independent acquisition (DIA) on a Waters Synapt G2-S quadrupole time-of-flight (QTOF) mass spectrometer equipped with ion mobility option.
+
+Read less
+Data Processing Protocol
+Peptide and protein identification with Waters ProteinLynx Global SERVER (PLGS). Retention time alignment, exact mass and retention time (EMRT) and ion mobility clustering, data normalization, isoform/homology filtering and calculation of absolute in-sample amounts for each detected protein according to the TOP3 quantification approach with ISOQuant. Statistical analysis of data in R with the Bioconductor packages ‘limma’ and ‘q-value’.
+
+Read less
+Contact
+Professor Olaf Jahn, Neuroproteomics Group Department of Molecular Neurobiology Max Planck Institute for Multidisciplinary Sciences Hermann-Rein-Str. 3 37075 Goettingen, Germany
+
+Dr Prof. Dr. Olaf Jahn, Neuroproteomics Group Department of Molecular Neurobiology Max Planck Institute for Multidisciplinary Sciences Hermann-Rein-Str. 3 37075 Goettingen Germany (lab head)
+
+Submission Date
+15/07/2024
+
+Publication Date
+16/07/2024

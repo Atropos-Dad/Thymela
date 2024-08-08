@@ -2,11 +2,12 @@ import os
 import json
 import logging
 import re
-
 from dotenv import load_dotenv
 from prompting.prompt_manager import Prompt
 from parsing.config import config
 from parsing.API_Wrapper import LLM_Wrapper, LLM_Model
+from parsing.content_getter import remove_newlines
+from parsing.content_getter import make_json_safe
 
 # Set up logging configuration
 logging.basicConfig(level=logging.INFO)
@@ -41,14 +42,15 @@ def prompt_ai_with_article(url=None, file_path=None):
 
     logger.info(f"Prompting AI with article from url {url}")
     
-    main_prompt_obj = Prompt(file_path="src/prompting/contex_prompt", variables={"content": content})
+    main_prompt_obj = Prompt(file_path="src/prompting/context_prompt.txt", variables={"content": content})
 
     # Get AI response using LLM_Model
     response = LLM_Model.prompt(main_prompt_obj)
-    print(f"reponse {response}")
+    
 
     logger.debug(f"Raw Response from AI: {response}")
-
+    #print(f"Raw Response from AI: {response}")
+    
     if response is None:
         logger.warning(f"Empty response from AI!")
 
@@ -60,7 +62,8 @@ def assess_article(url, file_path_to_article=None):
         return None
 
     logger.info(f"URL: {url}")
-    return json.dumps(json_response, indent=4)
+    #return json.dumps(json_response, indent=4)
+    return json_response
 
 
 

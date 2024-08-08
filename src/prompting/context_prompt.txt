@@ -1,0 +1,465 @@
+<system_prompt>
+For the purpose of finding the most compatible studies possible, you must extract as much crucial metadata as possible from the descriptive text of the studies.
+Include a title describing what the study is about in your JSON response. You do not need to include information about study contacts, sample names, or file names.
+However, you should include any information related to the following for human studies:
+
+Age, Sex, Amount of people that took part in the study (example: (7 men, 5 women)),Ethnicity, Health Status, Dietary Information, Lifestyle Factors, Geographic Location, Drugs/Therapeutics, Diseases, Other Relevant Tags.
+If the age, sex, or any other metadata related to large/multicellular spieces is available, prioritize extracting and including that information in your response.
+
+Create relevant tags based on the key points and features mentioned in the article that would be of interest to a biochemist.
+If any tag is empty, it must be removed from the response - this is crucial.
+In addition to the human-related metadata, also include any technical metadata such as:
+
+Signaling cascades, Types of morphogen treatments, Other information that would benefit a biochemist
+
+Create the tags and return a JSON response - It must be valid json. Do not put "json" or "" around your response. Make sure to format your response similar to the examples provided.
+</system_prompt>
+
+<examples>
+<user>
+    Title
+    The Aryl hydrocarbon receptor and FOS mediated cytotoxicity induced by Acenatobacter baumannii
+
+    Description
+    Acinetobacter baumannii is a highly pathogenic and multidrug-resistant Gram-negative bacterium that causes severe nosocomial infections. To better understand the mechanism of pathogenesis, we compare the proteomes of uninfected and infected human cells, revealing that transcription factor FOS is the host protein most strongly induced by A. baumannii infection. Pharmacological inhibition of FOS reduces the cytotoxicity of A. baumannii in cell-based models, and similar results are also observed in a mouse infection model. A. baumannii outer membrane vesicles (OMVs) are shown to activate the aryl hydrocarbon receptor (AHR) of host cells by inducing the host enzyme tryptophan-2,3-dioxygenase (TDO), producing the ligand kynurenine, which binds AHR. Following ligand binding, AHR is a direct transcriptional activator of the FOS gene. Our results suggest that bacterial infection interacts with host tryptophan metabolism and the transcription factor FOS.
+
+    Sample Processing Protocol
+    A549 cell pellets were heated at 95 °C for 10 min in lysis buffer containing 2% SDS, 50 mM Tris-HCl (pH 8), 1 mM tris(2-carboxyethyl)phosphine (TCEP) and 4 mM chloroacetamide. The protein content was precipitated with chloroform/methanol. The protein pellets were then solubilized in 8 M urea and digested with Lys-C and trypsin at 37 °C overnight. The resulting peptides were desalted using Sep-Pak cartridges or C-18 stage tips and labelled with TMT reagents for MS analysis in an Orbitrap Fusion Lumos mass spectrometer.
+
+    Data Processing Protocol
+    MS data were analyzed with Proteome Discoverer v2.4 (Thermo Fisher Scientific) and subsequently with Perseus. GO enrichment analysis was carried out using ShinyGO 0.76.2 according to the authors’ instructions (http://bioinformatics.sdstate.edu/go/). GraphPad Prism v8 was used for statistical analysis. Pairs of variables were compared using unpaired and two-tailed Student’s t tests. Data are represented as means ± standard deviations.
+
+    Contact
+    Dr Anshu Bhattacharya, Denali Therapeutics
+
+    Dr Ivan Dikic, Professor at Goethe University Frankfurt, Director of Institute of Biochemistry 2 and a fellow of Max Planck Society. (lab head)
+
+    Submission Date
+    08/07/2024
+
+    Publication Date
+    05/08/2024
+<user>
+
+<ai_reponse>
+[
+    {
+        "title": "Aryl Hydrocarbon Receptor (AHR) and FOS-Mediated Cytotoxicity Induced by Acinetobacter baumannii",
+        "organisms": "Acinetobacter baumannii",
+        "hosts": "Human",
+        "sampleCollection": "A549 cell pellets",
+        "pathways": [
+            "AHR Pathway"
+        ],
+        "focalPoints": [
+            "A. baumannii",
+            "AHR",
+            "FOS",
+            "Cytotoxicity",
+            "OMVs",
+            "Kynurenine",
+            "Tryptophan Metabolism"
+        ],
+        "processing": {
+            "step1": {
+                "description": "Cell Lysis",
+                "details": {
+                    "conditions": "Heated at 95 °C for 10 min",
+                    "lysisBuffer": {
+                        "components": [
+                            "2% SDS",
+                            "50 mM Tris-HCl (pH 8)",
+                            "1 mM tris(2-carboxyethyl)phosphine (TCEP)",
+                            "4 mM chloroacetamide"
+                        ]
+                    }
+                }
+            },
+            "step2": {
+                "description": "Protein Precipitation",
+                "details": {
+                    "method": "Precipitated with chloroform/methanol"
+                }
+            },
+            "step3": {
+                "description": "Protein Solubilization",
+                "details": {
+                    "conditions": "Solubilized in 8 M urea"
+                }
+            },
+            "step4": {
+                "description": "Protein Digestion",
+                "details": {
+                    "enzymes": [
+                        "Lys-C",
+                        "trypsin"
+                    ],
+                    "conditions": "Digested at 37 °C overnight"
+                }
+            },
+            "step5": {
+                "description": "Peptide Desalting",
+                "details": {
+                    "methods": [
+                        "Sep-Pak cartridges",
+                        "C-18 stage tips"
+                    ]
+                }
+            },
+            "step6": {
+                "description": "Peptide Labeling",
+                "details": {
+                    "reagents": "TMT reagents"
+                }
+            },
+            "step7": {
+                "description": "Mass Spectrometry Analysis",
+                "details": {
+                    "instrument": "Orbitrap Fusion Lumos mass spectrometer"
+                }
+            }
+        },
+        "keywords": [
+            "A. baumannii infection",
+            "AHR",
+            "FOS",
+            "Cytotoxicity",
+            "OMVs",
+            "Kynurenine",
+            "TDO"
+        ],
+        "instruments": [
+            "Orbitrap Fusion Lumos"
+        ],
+        "cutoffPoints": [
+            "Student's t-test p-value < 0.05"
+        ],
+        "signalingPathways": [
+            "AHR Pathway"
+        ],
+        "cascades": [
+            "OMVs activate AHR by inducing TDO, producing kynurenine, which binds to AHR, leading to FOS gene transcription"
+        ]
+    }
+]
+</ai_response>
+<user>
+    Title
+    Proteomic analysis and functional validation reveal distinct therapeutic capabilities related to priming of mesenchymal stromal/stem cells with IFN-γ and hypoxia: potential implications for their clinical use
+
+    Description
+    Mesenchymal stromal/stem cells (MSCs) are a heterogeneous population of multipotent cells that can be obtained from various tissues, such as dental pulp, adipose tissue, bone marrow and placenta. MSCs have gained importance in the field of regenerative medicine because of their promising role in cell therapy and their regulatory abilities in tissue repair and regeneration. However, a better characterization of these cells and their products is necessary to further potentiate their clinical application. In this study, we used unbiased high-resolution mass spectrometry-based proteomic analysis to investigate the impact of distinct priming strategies, such as hypoxia and IFN-γ treatment, on the composition and therapeutic functionality of the secretome produced by MSCs derived from the amniotic membrane of the human placenta (hAMSCs). Our investigation revealed that both types of priming improved the therapeutic efficacy of hAMSCs, and these improvements were related to the secretion of functional factors present in the conditioned medium (CM) and exosomes (EXOs), which play crucial roles in mediating the paracrine effects of MSCs. In particular, hypoxia was able to induce a pro-angiogenic, innate immune response- activating, and tissue-regenerative hAMSC phenotype, as highlighted by the elevated production of regulatory factors such as VEGFA, PDGFRB, ANGPTL4, ENG, GRO-γ, IL8, and GRO-α. IFN-γ priming, instead, led to an immunosuppressive profile in hAMSCs, as indicated by increased levels of TGFB1, ANXA1, THBS1, HOMER2, GRN, TOLLIP and MCP-1. Functional assays validated the increased angiogenic properties of hypoxic hAMSCs and the enhanced immunosuppressive activity of IFN-γ-treated hAMSCs. This study extends beyond the direct priming effects on hAMSCs, demonstrating that hypoxia and IFN-γ can influence the functional characteristics of hAMSC-derived secretomes, which, in turn, orchestrate the production of functional factors by peripheral blood cells. This research provides valuable insights into the optimization of MSC-based therapies by systematically assessing and comparing the priming type-specific functional features of hAMSCs. These findings highlight new strategies for enhancing the therapeutic efficacy of MSCs, particularly in the context of multifactorial diseases, paving the way for the use of hAMSC-derived products in clinical practice.
+
+    Sample Processing Protocol
+    2 mL of conditioned medium or 10 μg of isolated exosomes from 344 differentially stimulated MSCs underwent filter aided sample preparation (FASP) with 10 kDa Vivacon 500 spin filters (Wisniewski et al., 2009). Briefly, proteins were reduced with 20 mM dithiothreitol for 30 min at 37°C and free cysteine residues were alkylated with 50 mM iodoacetamide for 5 min at 37°C in the dark in UA (100 mM Tris/HCl 8 M urea pH 8.5) (Sigma Aldrich). After six washing steps with UB (100 mM Tris/HCl 8 M urea pH 8), proteins were digested with 0.3 μg LysC (Promega) in UC (25 mM Tris/HCl 2 M urea pH 8) for 16 h at 37°C followed by a second digestion step with 0.15 μg trypsin in 50 mM ammonium bicarbonate (Promega) for 4 h at 37°C as previously described (Saveliev et al., 2013). The peptides were eluted into collection tubes and acidified with formic acid (Sigma Aldrich) at a final concentration of 0.1%. Afterward, proteolytic peptides were desalted by stop-and-go extraction (STAGE) with self-packed C18 tips (Empore) (Rappsilber et al., 2003). Peptides were eluted using 60% acetonitrile (Sigma Aldrich) and 0.1% formic acid. After vacuum centrifugation, peptides were concentrated and dissolved in 20 μL 0.1% formic acid. At this point, peptide concentrations were analyzed by a Nanodrop 2000 (Thermo Scientific). A total amount of 1.2 μg was loaded per sample onto a Dionex UltiMate 3000 RSLCnano LC system (Thermo Scientific) which was coupled online via a Nanospray Flex Ion Source (Thermo Scientific) to a Q Exactive mass spectrometer (Thermo Scientific). Peptides were separated on an Acclaim PepMap C18 column (50 cm × 75 μm ID, Thermo Scientific) with 250 Nl/min flow using a binary gradient of water (A) and acetonitrile (B) supplemented with 0.1% formic acid (2% B 0min,5%B5min,25%B185min,35%B230min,60%B250min, 95%B255min,95%B265min,2%B265min,2%B350min).Data-dependent acquisition (DDA) was used for label-free quantification (LFQ). Full MS scans were acquired at a resolution of 70,000 (m/z range: 300–1400; automatic gain control (AGC) target: 1E+6; max injection time 50 ms). The DDA was used on the 10 most intense peptide ions per full MS scan for peptide fragmentation (resolution: 17,500; isolation width: 2 m/z; AGC target: 1E+5; normalized collision energy (NCE): 25%, max injection time: 120ms). A dynamic exclusion of 120 s was used for peptide fragmentation.
+
+    Data Processing Protocol
+    The raw data were analyzed with the software MaxQuant, version 2.0.1.0 (maxquant.org, Max Planck Institute, Munich). The MS data were searched against a reviewed canonical FASTA database of Homo sapiens including isoforms from UniProt (download: November the 5th 2020). Trypsin/P was defined as a protease. Two missed cleavages were allowed for the database search. The option in the first search was used to recalibrate the peptide masses within a window of 20 ppm. For the main search peptide and peptide fragment mass tolerances were set to 4.5 and 20 ppm, respectively. Carbamidomethylation of cysteine was defined as static modification. Protein N-terminal acetylation as well as oxidation of methionine were set as variable modifications. The false discovery rate for both peptides and proteins was adjusted to less than 1%. The “match between runs” option was enabled. LFQ of proteins required at least one ratio count of unique peptides. Unique and razor peptides were used for quantification. Data normalization was enabled. The protein LFQ reports from MaxQuant were further processed in Perseus (Tyanova et al., 2016).
+
+    Contact
+    Dr Matteo Calligaris, Fondazione Ri.MED
+
+    Dr Simone Dario Scilabra, Ri.MED Foundation (lab head)
+
+    Submission Date
+    21/05/2024
+
+    Publication Date
+    22/05/2024
+</user>
+
+    <ai_response>
+    [
+        {
+            "title": "Proteomic analysis and functional validation reveal distinct therapeutic capabilities related to priming of mesenchymal stromal/stem cells with IFN-γ and hypoxia: potential implications for their clinical use",
+            "organisms": "Homo sapiens (human)",
+            "organismParts": [
+                "Placenta",
+                "Embryonic stem cell"
+            ],
+            "sampleCollection": "2 mL of conditioned medium or 10 μg of isolated exosomes from 344 differentially stimulated MSCs",
+            "pathways": [
+                "pro-angiogenic",
+                "immune response",
+                "tissue-regenerative",
+                "immunosuppressive"
+            ],
+            "focalPoints": [
+                "hAMSCs",
+                "hypoxia",
+                "IFN-γ"
+            ],
+            "processing": {
+                "step1": {
+                    "description": "Sample Preparation",
+                    "details": {
+                        "method": "Filter aided sample preparation (FASP) with 10 kDa Vivacon 500 spin filters",
+                        "sampleVolume": "2 mL of conditioned medium or 10 μg of isolated exosomes"
+                    }
+                },
+                "step2": {
+                    "description": "Protein Reduction and Alkylation",
+                    "details": {
+                        "reagents": [
+                            "20 mM dithiothreitol",
+                            "50 mM iodoacetamide"
+                        ],
+                        "conditions": [
+                            "Reduction: 30 min at 37°C",
+                            "Alkylation: 5 min at 37°C in the dark"
+                        ],
+                        "buffers": [
+                            "UA (100 mM Tris/HCl 8 M urea pH 8)"
+                        ]
+                    }
+                },
+                "step3": {
+                    "description": "Protein Digestion",
+                    "details": {
+                        "enzymes": [
+                            "0.3 μg LysC",
+                            "0.15 μg trypsin"
+                        ],
+                        "conditions": [
+                            "First digestion: 16 h at 37°C in UC (25 mM Tris/HCl 2 M urea pH 8)",
+                            "Second digestion: 4 h at 37°C in 50 mM ammonium bicarbonate"
+                        ]
+                    }
+                },
+                "step4": {
+                    "description": "Peptide Elution and Acidification",
+                    "details": {
+                        "method": "Peptides eluted into collection tubes and acidified with formic acid",
+                        "concentration": "0.1%"
+                    }
+                },
+                "step5": {
+                    "description": "Peptide Desalting",
+                    "details": {
+                        "method": "Stop-and-go extraction (STAGE) with self-packed C18 tips",
+                        "elution": [
+                            "60% acetonitrile",
+                            "0.1% formic acid"
+                        ]
+                    }
+                },
+                "step6": {
+                    "description": "Peptide Concentration and Preparation",
+                    "details": {
+                        "method": "Vacuum centrifugation",
+                        "final volume": "20 μL 0.1% formic acid",
+                        "instrument": "Nanodrop 2000 (Thermo Scientific)"
+                    }
+                },
+                "step7": {
+                    "description": "LC-MS/MS Analysis",
+                    "details": {
+                        "instrument": "Dionex UltiMate 3000 RSLCnano LC system coupled to a Q Exactive mass spectrometer",
+                        "column": "Acclaim PepMap C18 (50 cm × 75 μm ID)",
+                        "flowRate": "250 nL/min",
+                        "gradient": "water (A) and acetonitrile (B) with 0.1% formic acid",
+                        "DDA Conditions": {
+                            "full MS scans": "Resolution 70,000, m/z range: 300–1400, AGC target: 1E+6, max injection time: 50 ms",
+                            "fragmentation": "Top 10 most intense peptide ions per full MS scan, Resolution 17,500, isolation width: 2 m/z, AGC target: 1E+5, NCE: 25%, max injection time: 120 ms",
+                            "dynamic exclusion": "120 s"
+                        }
+                    }
+                }
+            },
+            "keywords": [
+                "Placenta-derived mesenchymal stromal/stem cells",
+                "MSC paracrine effects",
+                "MSC priming",
+                "IFN-γ priming",
+                "Proteomic analysis",
+                "MSC therapeutic properties",
+                "Hypoxia priming"
+            ],
+            "instruments": [
+                "Q Exactive HF"
+            ],
+            "proteinsFound": [
+                "VEGFA",
+                "PDGFRB",
+                "ANGPTL4",
+                "ENG",
+                "GRO-γ",
+                "IL8",
+                "GRO-α",
+                "TGFB1",
+                "ANXA1",
+                "THBS1",
+                "HOMER2",
+                "GRN",
+                "TOLLIP",
+                "MCP-1"
+            ],
+            "cutoffPoints": [
+                "FDR < 1%",
+                "Peptide ion score > 20"
+            ],
+            "signalingPathways": [
+                "VEGF signaling",
+                "TGF-β signaling"
+            ],
+            "cascades": [
+                "Paracrine effects mediated by exosomes"
+            ]
+        }
+    ]
+
+</ai_response>
+
+<user>
+
+Title
+METABOLIC DISRUPTION IMPAIRS RIBOSOMAL PROTEIN LEVELS, RESULTING IN ENHANCED AMINOGLYCOSIDE TOLERANCE
+
+Description
+Aminoglycoside antibiotics display broad-spectrum activity against Gram-negative and Gram-positive bacteria by targeting their ribosomes. Herein, we have demonstrated that energy metabolism plays a crucial role in aminoglycoside tolerance, as knockout strains associated with the tricarboxylic acid cycle (TCA) and the electron transport chain (ETC) exhibited increased tolerance to aminoglycosides in the mid-exponential growth phase of Escherichia coli cells. 
+Given that aminoglycoside uptake relies on the energy-driven electrochemical potential across the cytoplasmic membrane, our initial expectation was that these genetic perturbations would decrease the proton motive force (PMF), subsequently affecting the uptake of aminoglycosides.
+However, our results did not corroborate this assumption. We found no consistent metabolic changes, ATP levels, cytoplasmic pH variations, or membrane potential differences in the mutant strains compared to the wild type. Additionally, intracellular concentrations of fluorophore-labeled gentamicin remained similar across all strains. To uncover the mechanism responsible for the observed tolerance in mutant strains, we employed untargeted mass spectrometry to quantify the proteins within these mutants and subsequently compared them to their wild-type counterparts. Our comprehensive analysis, which encompassed protein-protein association networks and functional enrichment, unveiled a noteworthy upregulation of proteins linked to the TCA cycle in the mutant strains during the mid-exponential growth phase, suggesting that these strains compensate for the perturbation in their energy metabolism by increasing TCA cycle activity to maintain their membrane potential and ATP levels. Furthermore, our pathway enrichment analysis shed light on local network clusters displaying downregulation across all mutant strains, which were associated with both large and small ribosomal binding proteins, ribosome biogenesis, translation factor activity, and the biosynthesis of ribonucleoside monophosphates. These findings offer a plausible explanation for the observed tolerance of aminoglycosides in the mutant strains. Altogether, this research has the potential to uncover mechanisms behind aminoglycoside tolerance, paving the way for novel strategies to combat such cells.
+
+Sample Processing Protocol
+Cells from both wild-type and mutant strains at the mid-exponential phase (t=3.5 h) were collected after which protein extraction and digestion were carried out for Liquid Chromatography–Mass Spectrometry (LC-MS) analysis by following the Sample Preparation by Easy Extraction and Digestion (SPEED) procedure. Briefly, cell pellets were added 20 μg trifluoroacetic acid (TFA) and incubated at room temperature for 5 min followed by addition of 200 μl of 2M trisbase. After adding Tris(2-carboxyethyl) phosphine (10 mM) and 2-Chloroacetamide (40 mM), the reaction mixture was heated at 95 ºC for 5 min. Digestion was performed by adding trypsin (1/40, w/w) and incubation at 37 ºC overnight. The digested peptides were cleaned up using a C18 Ziptip and vacuum dried using a CentriVap (Labconco, Kansas City, MO). Each dried sample was resuspended in 2% acetonitrile (ACN) with 0.1% formic acid (FA) for LC-MS analysis. Specifically, a NanoElute LC system connected to a timsTOF Pro (Bruker Daltonics, Germany) through a CaptiveSpray source was utilized. Samples were loaded onto an in-house packed column (75 μm x 20 cm, 1.9 μm ReproSil-Pur C18 particle from Dr. Maisch GmbH, Germany) with a column temperature of 40 °C. Mobile phases included buffer A (0.1% FA in water) and buffer B (0.1% FA in ACN). The short gradient was 0-17.8 minutes, from 2% B to 30% B, followed by 18.3 minutes to 95% B, and 20.7 minutes to 95% B. The parallel accumulation-serial fragmentation (PASEF) mode with 4 PASEF scans per cycle was employed. The electrospray voltage was set at 1.4 kV, and the ion transfer tube temperature was maintained at 180 °C. Full MS scans were conducted across the mass-to-charge (m/z) range of 150–1700. The target intensity value was 2.0 × 105 with a threshold of 2500. A fixed cycle time of 0.53 s was established, and a dynamic exclusion duration of 0.4 minutes with a ± 0.015 amu tolerance was applied. Only peaks with a charge state of ≥ 2 were chosen for fragmentation.
+
+Data Processing Protocol
+The default settings of MSFragger, a database search tool designed for peptide identification in MS-based proteomics, were applied to analyze data obtained from the mentioned instrument. The UniProt-SwissProt E. coli K12 database (Taxon ID 83333, downloaded on 6/19/2023, 4518 entries) served as the reference. Fixed modification involved cysteine carbamidomethylation, while variable modifications included methionine oxidation and acetylation. Peptide length was restricted to 7-50, allowing for 2 missed cleavages. Both precursor and product ion masses were set as monoisotopic. The false discovery rate (FDR) was controlled at <1% at the peptide spectrum match, peptide, and protein levels. The processing of proteomics data and the calculations of fold change were essentially carried out following the methods described in the paper by Aguilan et al (Aguilan JT, Kulej K, Sidoli S. 2020. Guide for protein fold change and: P-value calculation for non-experts in proteomics. Mol Omics 16:573–582. doi:10.1039/d0mo00087f). In summary, we utilized Excel spreadsheets for key stages of data transformation, normalization, fold change, and P-value calculation. Initially, proteins lacking quantitative values were excluded, and a logarithm transformation was applied to achieve a normal distribution of data. Normalization, using both average and slope methods, was then employed to minimize intragroup variation in technical replicates and log fold change calculations compared to the transformed unnormalized data. Subsequently, missing values were imputed by replacing them with approximated values using the Probabilistic Minimum Imputation method. Following imputation, we determined the relative ratio of each protein in mutant and wild-type strains, along with P-value calculation using the parametric t-test. The selection of the t-test type involved an F-test to evaluate whether the replicates for each protein exhibited homoscedastic (equal variances) or heteroscedastic (unequal variances) characteristics. For the identification of significant networks among input proteins, we utilized the STRING tool V 12.0. This entailed inputting proteins that were significantly upregulated and downregulated based on specified thresholds, as detailed elsewhere (Szklarczyk D, Kirsch R, Koutrouli M, Nastou K, Mehryary F, Hachilif R, Gable AL, Fang T, Doncheva NT, Pyysalo S, Bork P, Jensen LJ, Von Mering C. 2023. The STRING database in 2023: protein-protein association networks and functional enrichment analyses for any sequenced genome of interest. Nucleic Acids Res 51:D638–D646. doi:10.1093/nar/gkac1000).
+
+Contact
+Mr Rauf Shiraliyev, University of Houston
+
+Dr Mehmet A. Orman, William A. Brookshire Department of Chemical and Biomolecular Engineering, University of Houston, Houston, TX, US (lab head)
+
+Submission Date
+13/06/2024
+
+Publication Date
+21/06/2024
+
+<user>
+
+<ai_response>
+[
+    {
+        "title": "Metabolic Disruption Impairs Ribosomal Protein Levels, Resulting in Enhanced Aminoglycoside Tolerance",
+        "organism": [
+            {
+                "type": "Escherichia coli K12",
+                "strain": "Wild-type"
+            },
+            {
+                "type": "Escherichia coli K12",
+                "strain": "Mutant"
+            }
+        ],
+        "growthPhase": "Mid-exponential growth phase",
+        "drugs": [
+            "Aminoglycosides",
+            "Gentamicin"
+        ],
+        "pathways": [
+            "Tricarboxylic acid (TCA) cycle",
+            "Electron transport chain (ETC)"
+        ],
+        "focalPoints": [
+            "Aminoglycoside tolerance",
+            "Energy metabolism",
+            "Ribosomal proteins",
+            "Proton motive force (PMF)"
+        ],
+        "processing": {
+            "step1": {
+                "description": "Cell Harvesting",
+                "details": {
+                    "growthPhase": "Mid-exponential phase (t=3.5 h)"
+                }
+            },
+            "step2": {
+                "description": "Protein Extraction and Digestion (SPEED Protocol)",
+                "details": {
+                    "reagents": [
+                        "Trifluoroacetic acid (TFA)",
+                        "Trisbase",
+                        "Tris(2-carboxyethyl) phosphine (TCEP)",
+                        "2-Chloroacetamide",
+                        "Trypsin"
+                    ],
+                    "conditions": [
+                        "TFA incubation: Room temperature for 5 min",
+                        "Heat treatment: 95 °C for 5 min",
+                        "Trypsin digestion: 37 °C overnight"
+                    ]
+                }
+            },
+            "step3": {
+                "description": "Peptide Cleanup",
+                "details": {
+                    "method": "C18 Ziptip"
+                }
+            },
+            "step4": {
+                "description": "Peptide Drying",
+                "details": {
+                    "instrument": "CentriVap (Labconco)"
+                }
+            },
+            "step5": {
+                "description": "Peptide Resuspension",
+                "details": {
+                    "solvent": "2% acetonitrile (ACN) with 0.1% formic acid (FA)"
+                }
+            },
+            "step6": {
+                "description": "LC-MS/MS Analysis",
+                "details": {
+                    "instrument": "NanoElute LC system connected to a timsTOF Pro (Bruker Daltonics)",
+                    "source": "CaptiveSpray source",
+                    "column": "In-house packed column (75 μm x 20 cm, 1.9 μm ReproSil-Pur C18)",
+                    "temperature": "40 °C",
+                    "mobilePhases": [
+                        "Buffer A (0.1% FA in water)",
+                        "Buffer B (0.1% FA in ACN)"
+                    ],
+                    "gradient": "Short gradient: 0-17.8 min, 2% B to 30% B; 18.3 min to 95% B; 20.7 min to 95% B",
+                    "mode": "Parallel accumulation-serial fragmentation (PASEF)",
+                    "scans": "4 PASEF scans per cycle",
+                    "voltage": "Electrospray voltage: 1.4 kV",
+                    "ionTransferTubeTemperature": "180 °C",
+                    "massRange": "m/z 150–1700",
+                    "targetIntensity": "2.0 × 10^5",
+                    "threshold": "2500",
+                    "cycleTime": "0.53 s",
+                    "dynamicExclusion": "0.4 min with ± 0.015 amu tolerance"
+                }
+            }
+        },
+        "keywords": [
+            "Aminoglycoside Resistance",
+            "Metabolic Perturbation",
+            "Mass Spectrometry",
+            "Proteomics",
+            "TCA Cycle",
+            "Electron Transport Chain",
+            "Ribosome Biogenesis"
+        ],
+        "instruments": [
+            "timsTOF Pro"
+        ],
+        "cutoffPoints": [
+            "FDR < 1%",
+            "Charge state ≥ 2"
+        ],
+        "cascades": [
+            "Disruption of TCA cycle and ETC leads to upregulation of TCA cycle proteins and downregulation of ribosomal proteins, resulting in aminoglycoside tolerance."
+        ]
+    }
+]
+</ai_response>
+</examples>
+
+<user_input>
+Real Article:
+{content}
+</user_input>
+
