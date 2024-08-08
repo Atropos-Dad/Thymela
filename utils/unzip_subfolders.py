@@ -55,5 +55,5 @@ def unzip_subfolders(main_folder):
                 except Exception as e:
                     print(f"Error processing {zip_path}: {str(e)}")
 
-main_folder = ''  # Add the path to the main folder containing the Metabolights subfolders
+main_folder = ''  # Add the path to the main folder containing the Metabolights subfolders - make sure the main folder is unzipped
 unzip_subfolders(main_folder)
