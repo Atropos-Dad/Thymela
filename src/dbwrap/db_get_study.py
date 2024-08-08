@@ -1,21 +1,9 @@
 from dbwrap.conn_single import PostgresSingleton
+from dbwrap.db_idvalid import classify_study_id
 
 
 def get_study(id):
-    # check which type the id is:
-    # PXD053960 - pride
-    # or
-    # ST000001 - mwb
-    # or 
-    # MTBLS10401 - metabolights
-    if id.startswith("PXD"):
-        type = "PRIDE"
-    elif id.startswith("ST"):
-        type = "MBW"
-    elif id.startswith("MTBLS"):
-        type = "Metabolights"
-    else:
-        raise ValueError("Invalid study id")
+    type = classify_study_id(id)
     
     table_name = f"{type}_Studies"
     sql = f'SELECT * FROM public."{table_name}" WHERE "StudyId" = %s'
@@ -27,7 +15,6 @@ def get_study(id):
     cur.close()
 
     return study
-
 
 def get_n_studies(number, study_type="PRIDE"):
     # get n studies of a from a given table name
