@@ -162,3 +162,9 @@ cython_debug/
 #.idea/
 
 src/webscraping/pride_results
+
+
+src/webscraping/mwb_html/
+
+src/webscraping/mwb_results/
+src/webscraping/mwb_csvs/
