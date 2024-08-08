@@ -1,0 +1,4643 @@
+[
+  {
+    "studyId": "PXD053960",
+    "response": [
+      {
+        "title": "Oligodendroglial fatty acid metabolism as a central nervous system energy reserve",
+        "organisms": "Mus musculus (mouse)",
+        "age": "Young adult",
+        "organismParts": [
+          "Optic nerve",
+          "Oligodendrocyte"
+        ],
+        "sampleCollection": "Whole optic nerve",
+        "focalPoints": [
+          "Myelin",
+          "Lipid metabolism",
+          "Glucose deprivation"
+        ],
+        "processing": {
+          "step1": {
+            "description": "Tissue Homogenization",
+            "details": {
+              "method": "Homogenization in RIPA buffer with Teflon beads using a tissue homogenizer"
+            }
+          },
+          "step2": {
+            "description": "Myelin Protein Solubilization",
+            "details": {
+              "reagent": "ASB-14 detergent"
+            }
+          },
+          "step3": {
+            "description": "Protein Digestion",
+            "details": {
+              "method": "Automated in-solution protein digestion using filter-aided sample preparation (FASP) protocol"
+            }
+          },
+          "step4": {
+            "description": "Peptide Separation",
+            "details": {
+              "method": "1D LC separation",
+              "instrument": "Waters nanoAcquity nanoUPLC system"
+            }
+          },
+          "step5": {
+            "description": "Mass Spectrometry Analysis",
+            "details": {
+              "method": "Data-independent acquisition (DIA)",
+              "instrument": "Waters Synapt G2-S quadrupole time-of-flight (QTOF) mass spectrometer with ion mobility option"
+            }
+          }
+        },
+        "keywords": [
+          "Label-free protein quantification",
+          "Whole optic nerve proteome",
+          "Optic nerve",
+          "Myelin",
+          "Oligodendrocytes",
+          "Lipid metabolism",
+          "Mass spectrometry"
+        ],
+        "instruments": [
+          "Synapt G2-S QTOF"
+        ],
+        "cutoffPoints": [
+          "q-value < 0.05"
+        ]
+      }
+    ],
+    "created": "2024-08-08 13:42:39.289876",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD000094",
+    "response": {
+      "title": "Proteogenomics of Tistlia consotensis",
+      "organisms": "Tistlia consotensis",
+      "growthConditions": [
+        "optimal (0.5% NaCl)",
+        "without salt (0.0% NaCl)",
+        "high salt (4.0% NaCl)"
+      ],
+      "focalPoints": [
+        "Halotolerance",
+        "Proteomics",
+        "Genome Sequencing"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Data Import",
+          "details": {
+            "software": "MASCOT DAEMON (version 2.3.2)",
+            "parameters": {
+              "minimum mass": "400",
+              "maximum mass": "5000",
+              "grouping tolerance": "0",
+              "intermediate scans": "0",
+              "threshold": "1000"
+            }
+          }
+        },
+        "step2": {
+          "description": "MS/MS Spectra Search",
+          "details": {
+            "database": "Custom ORF database",
+            "parameters": {
+              "enzyme": "trypsin",
+              "maxMissedCleavages": "2",
+              "parent ion tolerance": "5 ppm",
+              "MS/MS tolerance": "0.5 Da",
+              "fixed modification": "carbamidomethylated Cys (+57.0215)",
+              "variable modification": "oxidized Met (+15.9949)"
+            }
+          }
+        },
+        "step3": {
+          "description": "Peptide Filtering and Validation",
+          "details": {
+            "software": "IRMa 1.28.0",
+            "criteria": {
+              "peptide score": "> query threshold (p < 0.05)",
+              "rank": "1"
+            }
+          }
+        },
+        "step4": {
+          "description": "False Positive Rate Estimation",
+          "details": {
+            "method": "Decoy database",
+            "peptide FDR": "< 0.5%",
+            "protein FDR": "< 0.1%"
+          }
+        },
+        "step5": {
+          "description": "Protein Quantification and Analysis",
+          "details": {
+            "software": "PatternLab 2.0",
+            "method": "Spectral counting",
+            "normalization": "T-Fold option",
+            "parameters": {
+              "minimum fold change": "1.5",
+              "minimum p-value": "0.05",
+              "BH-FDR Alfa": "0.15"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "Halotolerant Rhodospirillaceae",
+        "Saline Spring",
+        "Colombian Andes",
+        "Quantitative Proteome",
+        "Salt Concentration"
+      ],
+      "instruments": [
+        "Ltq orbitrap"
+      ],
+      "cutoffPoints": [
+        "Peptide score: p < 0.05",
+        "Protein validation: at least 2 peptides per protein",
+        "Fold change: > 1.5",
+        "p-value: < 0.05",
+        "BH-FDR: < 0.15"
+      ]
+    },
+    "created": "2024-08-08 13:43:05.751079",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD027102",
+    "response": {
+      "title": "Insight into fermented and non-fermented Spirulina water and ethanol extract antioxidant activity at a proteome level on a yeast cell model",
+      "organisms": "Saccharomyces cerevisiae",
+      "sampleCollection": "Yeast cell lysates",
+      "focalPoints": [
+        "Spirulina",
+        "Antioxidant activity",
+        "Fermentation",
+        "Proteomics",
+        "Stress response"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Yeast Cell Lysis",
+          "details": {
+            "method": "Freeze-thaw cycles, homogenization with zirconia/silica beads",
+            "buffer": "ABC/urea buffer"
+          }
+        },
+        "step2": {
+          "description": "Protein Reduction and Alkylation",
+          "details": {
+            "reagents": [
+              "20 mM Dithiothreitol",
+              "40 mM Iodoacetamide"
+            ],
+            "conditions": "45 min each step"
+          }
+        },
+        "step3": {
+          "description": "Protein Digestion",
+          "details": {
+            "enzymes": [
+              "Trypsin",
+              "Lys-C"
+            ],
+            "conditions": "2 h at 37°C, 750 rpm, followed by overnight digestion at 37°C, 750 rpm",
+            "buffer": "ABC buffer (50 mM)"
+          }
+        },
+        "step4": {
+          "description": "Peptide Separation",
+          "details": {
+            "instrument": "Ultimate 3000 Rapid Separation UHPLC system",
+            "column": "PepSep C18 (1.9 μm, 120 Å, ID 75 μm * 150 mm)",
+            "gradient": "Linear gradient from 5% to 35% ACN with 0.1% FA in 90 minutes",
+            "flowRate": "300 nL/min"
+          }
+        },
+        "step5": {
+          "description": "Mass Spectrometry",
+          "details": {
+            "instrument": "Q-Exactive HF Orbitrap mass spectrometer",
+            "acquisitionMode": "Data-dependent acquisition (DDA)",
+            "parameters": {
+              "fullMS": "m/z 250-1250, resolution 120,000",
+              "ms2": "Top 15 most intense ions, resolution 15,000"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "Spirulina extracts",
+        "Antioxidant activity",
+        "Fermented Spirulina",
+        "Non-fermented Spirulina",
+        "Proteomic analysis",
+        "Yeast model",
+        "Saccharomyces cerevisiae"
+      ],
+      "instruments": [
+        "Q Exactive HF"
+      ],
+      "cutoffPoints": [
+        "FDR < 5%"
+      ]
+    },
+    "created": "2024-08-08 13:43:20.062912",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD027515",
+    "response": [
+      {
+        "title": "Quantitative changes in the Emiliania huxleyi proteome during recalcification",
+        "organisms": "Emiliania huxleyi",
+        "organismParts": [
+          "Cell"
+        ],
+        "focalPoints": [
+          "Biomineralization",
+          "Coccolith"
+        ],
+        "keywords": [
+          "Haptophyte",
+          "Emiliania huxleyi",
+          "Biomineralization",
+          "Coccolith",
+          "Coccolithophore"
+        ],
+        "instruments": [
+          "Q Exactive HF"
+        ]
+      }
+    ],
+    "created": "2024-08-08 13:43:23.772183",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053768",
+    "response": [
+      {
+        "title": "The Aryl hydrocarbon receptor and FOS mediated cytotoxicity induced by Acenatobacter baumannii",
+        "organisms": "Acinetobacter baumannii",
+        "hosts": "Homo sapiens (human)",
+        "tissues": [
+          "Epithelial cell"
+        ],
+        "sampleCollection": "A549 cell pellets",
+        "pathways": [
+          "AHR Pathway"
+        ],
+        "focalPoints": [
+          "A. baumannii",
+          "AHR",
+          "FOS",
+          "Cytotoxicity",
+          "OMVs",
+          "Kynurenine",
+          "Tryptophan Metabolism"
+        ],
+        "processing": {
+          "step1": {
+            "description": "Cell Lysis",
+            "details": {
+              "conditions": "Heated at 95 °C for 10 min",
+              "lysisBuffer": {
+                "components": [
+                  "2% SDS",
+                  "50 mM Tris-HCl (pH 8)",
+                  "1 mM tris(2-carboxyethyl)phosphine (TCEP)",
+                  "4 mM chloroacetamide"
+                ]
+              }
+            }
+          },
+          "step2": {
+            "description": "Protein Precipitation",
+            "details": {
+              "method": "Precipitated with chloroform/methanol"
+            }
+          },
+          "step3": {
+            "description": "Protein Solubilization",
+            "details": {
+              "conditions": "Solubilized in 8 M urea"
+            }
+          },
+          "step4": {
+            "description": "Protein Digestion",
+            "details": {
+              "enzymes": [
+                "Lys-C",
+                "trypsin"
+              ],
+              "conditions": "Digested at 37 °C overnight"
+            }
+          },
+          "step5": {
+            "description": "Peptide Desalting",
+            "details": {
+              "methods": [
+                "Sep-Pak cartridges",
+                "C-18 stage tips"
+              ]
+            }
+          },
+          "step6": {
+            "description": "Peptide Labeling",
+            "details": {
+              "reagents": "TMT reagents"
+            }
+          },
+          "step7": {
+            "description": "Mass Spectrometry Analysis",
+            "details": {
+              "instrument": "Orbitrap Fusion Lumos mass spectrometer"
+            }
+          }
+        },
+        "keywords": [
+          "A. baumannii infection",
+          "AHR",
+          "FOS",
+          "Cytotoxicity",
+          "OMVs",
+          "Kynurenine",
+          "TDO"
+        ],
+        "instruments": [
+          "Orbitrap fusion lumos"
+        ],
+        "cutoffPoints": [
+          "Student's t-test p-value < 0.05"
+        ],
+        "signalingPathways": [
+          "AHR Pathway"
+        ],
+        "cascades": [
+          "OMVs activate AHR by inducing TDO, producing kynurenine, which binds to AHR, leading to FOS gene transcription"
+        ]
+      }
+    ],
+    "created": "2024-08-08 13:54:55.836908",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD027480",
+    "response": [
+      {
+        "title": "The OTUD6B-LIN28B-MYC axis determines cell cycle progression in multiple myeloma",
+        "organisms": "Homo sapiens (human)",
+        "tissues": [
+          "Kidney"
+        ],
+        "diseases": [
+          "Multiple myeloma"
+        ],
+        "sampleCollection": "HEK293T cells",
+        "pathways": [
+          "Ubiquitination",
+          "Cell cycle"
+        ],
+        "focalPoints": [
+          "OTUD6B",
+          "LIN28B",
+          "MYC",
+          "Deubiquitination",
+          "G1/S transition"
+        ],
+        "processing": {
+          "step1": {
+            "description": "Cell Culture and Transfection",
+            "details": {
+              "cellLine": "HEK293T",
+              "transfection": [
+                "FLAG-EV",
+                "FLAG-OTUD6B",
+                "myc-BioID2-EV",
+                "myc-BioID2-OTUD6B-IF1",
+                "myc-BioID2-OTUD6B-IF2"
+              ]
+            }
+          },
+          "step2": {
+            "description": "Cell Lysis and Protein Extraction",
+            "details": {
+              "lysisBuffer": "Modified RIPA lysis buffer",
+              "method": "Passed through syringe needles"
+            }
+          },
+          "step3": {
+            "description": "Immunoprecipitation",
+            "details": {
+              "method1": {
+                "target": "FLAG-OTUD6B",
+                "resin": "Anti-FLAG resin (FLAG-M2 agarose)"
+              },
+              "method2": {
+                "target": "Biotinylated proteins",
+                "resin": "Strep-tactin superflow resin"
+              }
+            }
+          },
+          "step4": {
+            "description": "Protein Reduction, Alkylation, and Digestion",
+            "details": {
+              "reducingAgent": "DTT",
+              "alkylatingAgent": "Chloroacetamide",
+              "enzyme": "Trypsin"
+            }
+          },
+          "step5": {
+            "description": "Peptide Analysis by LC-MS/MS",
+            "details": {
+              "system": "Eksigent NanoLC-Ultra 1D+ system coupled to a Q Exactive HF mass spectrometer",
+              "gradient": "Linear gradient from 4% to 32% LC solvent B",
+              "MS parameters": {
+                "MS1": {
+                  "massRange": "360 to 1300 m/z",
+                  "resolution": "60K",
+                  "AGC target": "3e6 charges",
+                  "maxIT": "10 ms (FLAG-IP) or 50 ms (BioID)"
+                },
+                "MS2": {
+                  "fragmentation": "HCD",
+                  "resolution": "30K (FLAG-IP) or 15K (BioID)",
+                  "isolationWindow": "1.7 m/z",
+                  "AGC target": "2e5 (FLAG-IP) or 1e5 (BioID)",
+                  "maxIT": "50 ms",
+                  "dynamicExclusion": "35 s (FLAG-IP) or 20 s (BioID)"
+                }
+              }
+            }
+          },
+          "step6": {
+            "description": "Data Analysis",
+            "details": {
+              "software": "MaxQuant",
+              "database": "SwissProt (FLAG-IP) or Human reference proteome (BioID)",
+              "algorithms": [
+                "Match-between-runs",
+                "Label-free quantification"
+              ]
+            }
+          }
+        },
+        "keywords": [
+          "Deubiquitylases",
+          "Oncoproteins",
+          "Ubiquitin-proteasome system",
+          "miRNA biogenesis",
+          "let7 microRNAs"
+        ],
+        "instruments": [
+          "Q Exactive HF"
+        ],
+        "cutoffPoints": [
+          "Student's t-test p-value < 0.05"
+        ],
+        "signalingPathways": [
+          "MYC signaling"
+        ],
+        "cascades": [
+          "OTUD6B deubiquitylates and stabilizes LIN28B, which inhibits let7 miRNAs, leading to MYC expression and G1/S transition"
+        ]
+      }
+    ],
+    "created": "2024-08-08 13:43:44.983785",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD054577",
+    "response": {
+      "title": "Intragenic DNA inversions expand bacterial coding capacity",
+      "organisms": "Bacteroides thetaiotaomicron",
+      "focalPoints": [
+        "Intragenic inverton",
+        "Thiamine biosynthesis",
+        "ThiC protein",
+        "Phase variation"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Cell Lysis",
+          "details": {
+            "lysisBuffer": "5% SDS, 50 mM TEAB (pH 8.5), 1x HALT Protease and Phosphatase Inhibitor"
+          }
+        },
+        "step2": {
+          "description": "Protein Reduction and Alkylation",
+          "details": {
+            "reagents": [
+              "Tris(2-carboxyethyl)phosphine (TCEP)",
+              "2-chloroacetamide"
+            ],
+            "concentrations": [
+              "25 mM TCEP",
+              "50 mM 2-chloroacetamide"
+            ],
+            "conditions": "Incubation at 70°C for 20 min"
+          }
+        },
+        "step3": {
+          "description": "Sample Preparation and Digestion",
+          "details": {
+            "method": "S-Trap micro spin columns (Protifi)",
+            "buffers": [
+              "Binding buffer (100 mM TEAB, pH 7.55, 90% methanol)"
+            ],
+            "enzyme": "Trypsin",
+            "ratio": "1:25 enzyme:protein (w/w)",
+            "conditions": "Incubation at 37°C overnight"
+          }
+        },
+        "step4": {
+          "description": "Peptide Elution and Preparation",
+          "details": {
+            "methods": [
+              "Elution",
+              "SpeedVac drying",
+              "Resuspension"
+            ],
+            "resuspensionSolution": "0.1% formic acid, 4% acetonitrile, 0.015% n-dodecyl β-D-maltoside",
+            "finalConcentration": "0.15 µg/µL"
+          }
+        },
+        "step5": {
+          "description": "LC-MS/MS Analysis",
+          "details": {
+            "instrument": "nanoElute 2 coupled to a timsTOF Ultra mass spectrometer (Bruker Daltonics)",
+            "column": "PepSep ULTRA C18 HPLC column (25 cm x 75 µm x 1.5 µm; Bruker)",
+            "temperature": "50°C",
+            "gradient": "Linear gradient of 3% to 34% buffer B over 30 min",
+            "flowRate": "200 nL/min",
+            "mobilePhases": [
+              "0.1% formic acid in UHPLC-MS water (buffer A)",
+              "0.1% formic acid/99.9% acetonitrile (buffer B)"
+            ]
+          }
+        },
+        "step6": {
+          "description": "DIA-PASEF Method Optimization",
+          "details": {
+            "method": "DDA-PASEF",
+            "sample": "Testmix solution"
+          }
+        },
+        "step7": {
+          "description": "DIA-PASEF Analysis",
+          "details": {
+            "massRange": "100 to 1700 m/z",
+            "polarity": "Positive",
+            "timsSettings": {
+              "mobilityRange": "0.65 to 1.46 V·s/cm2",
+              "rampTime": "50 ms",
+              "dutyCycle": "100%"
+            },
+            "software": "py_diAID"
+          }
+        }
+      },
+      "keywords": [
+        "Bacteroides thetaiotaomicron",
+        "Intragenic DNA inversion",
+        "Coding capacity",
+        "ThiC",
+        "Mass spectrometry",
+        "DIA-PASEF"
+      ],
+      "instruments": [
+        "timsTOF Ultra"
+      ]
+    },
+    "created": "2024-08-08 13:44:04.186388",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD054550",
+    "response": {
+      "title": "PIGEON-FEATHER datasets, extracting site-resolved energetic information from HX/MS experiments",
+      "organisms": [
+        "Escherichia coli",
+        "Homo sapiens"
+      ],
+      "focalPoints": [
+        "DHFR",
+        "LacI",
+        "HX/MS"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Sample Preparation",
+          "details": {
+            "method": "75 µL of exchange buffer was added to 7.5 µL of sample",
+            "reagents": [
+              "3 M guanidine hydrochloride",
+              "3% acetonitrile",
+              "1% formic acid"
+            ]
+          }
+        },
+        "step2": {
+          "description": "Injection and Digestion",
+          "details": {
+            "method": "140 µL of the chilled, quenched mixture was injected into the protease column",
+            "temperature": "7 °C",
+            "flowRate": "150 µL/min",
+            "buffers": [
+              "Solvent A (3% acetonitrile, and 0.15% formic acid)"
+            ],
+            "column": "protease column"
+          }
+        },
+        "step3": {
+          "description": "Peptide Trapping and Desalting",
+          "details": {
+            "method": "Peptides eluted from the protease column were trapped on a 1x10 mm C18 column",
+            "column": "1x10 mm C18 column (Hypersil GOLD, 3 µM pore size)",
+            "flowRate": "150 µL/min",
+            "time": "200 s"
+          }
+        },
+        "step4": {
+          "description": "Peptide Elution",
+          "details": {
+            "method": "The binary pump used a gradient of Solvent A and Solvent B to elute peptides",
+            "gradient": "linear gradient to 40% B from 1 to 15 min, a linear gradient to 95% B from 15 to 19 min, isocratic flow at 100% B from 19 to 24 min, a linear gradient to 10% B from 24 to 30 min, and then isocratic flow at 10% B from 30 to 45 min",
+            "flowRate": "0.04 mL/min",
+            "column": "50 x 1 mm C18 analytical column (Hypersil GOLD, 1.9 µM pore size)"
+          }
+        },
+        "step5": {
+          "description": "Mass Spectrometry",
+          "details": {
+            "instrument": "Bruker Maxis II ETD",
+            "mode": "positive ion mode",
+            "massRange": "100-2250 m/z",
+            "scanRate": "1.0 Hz",
+            "voltage": {
+              "endPlateOffset": "500 V",
+              "capillary": "4200 V"
+            },
+            "gasFlow": {
+              "nebulizer": "1.7 bar",
+              "dryGas": "8 L/min"
+            },
+            "temperature": "180° C"
+          }
+        },
+        "step6": {
+          "description": "Tandem Mass Spectrometry (MS/MS)",
+          "details": {
+            "scanRate": "1.20 Hz",
+            "temperature": "200° C"
+          }
+        }
+      },
+      "keywords": [
+        "hydrogen exchange",
+        "mass spectrometry",
+        "protein conformation",
+        "free energy",
+        "enzyme kinetics"
+      ],
+      "instruments": [
+        "LEAP system",
+        "Chronos",
+        "UltiMate 3000",
+        "MX-Class",
+        "Infinity II",
+        "Bruker Maxis II ETD",
+        "Compass DataAnalysis 5.1",
+        "Biotools 3.2",
+        "PIGEON"
+      ]
+    },
+    "created": "2024-08-08 13:44:23.784729",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD054472",
+    "response": {
+      "title": "Proteomics of pNHP plants results in the identification of NAC90 as a putative regulator of NHP biosynthesis",
+      "organisms": "Arabidopsis thaliana (mouse-ear cress)",
+      "organismParts": [
+        "Leaf",
+        "Plant cell"
+      ],
+      "sampleCollection": "Leaves from 28 day old plants",
+      "focalPoints": [
+        "NAC90",
+        "NHP biosynthesis"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Sample Preparation",
+          "details": {
+            "method": "Leaves were milled into fine powder in liquid nitrogen"
+          }
+        },
+        "step2": {
+          "description": "Cell Lysis",
+          "details": {
+            "conditions": "Boiled at 95 ℃ 5 min",
+            "lysisBuffer": {
+              "components": [
+                "4% (w/v) sodium dodecyl sulfate",
+                "100 mm Tris/HCl pH 7.6",
+                "0.1 M dithiothreitol"
+              ]
+            }
+          }
+        },
+        "step3": {
+          "description": "Protein Quantification",
+          "details": {
+            "method": "Thermo Scientific Pierce 660 nm protein assay kit"
+          }
+        },
+        "step4": {
+          "description": "Protein Reduction, Alkylation, and Digestion",
+          "details": {
+            "method": "Filter-aided sample preparation (FASP) protocol using a centrifugal filter unit (10 kDa MWCO)"
+          }
+        },
+        "step5": {
+          "description": "Peptide Acidification and Desalting",
+          "details": {
+            "acid": "Trifluoroacetic acid",
+            "desaltingMethod": "SPE plates"
+          }
+        },
+        "step6": {
+          "description": "Peptide Drying",
+          "details": {
+            "method": "Speed vacuum"
+          }
+        },
+        "step7": {
+          "description": "Peptide Resuspension",
+          "details": {
+            "solvent": "97:3 H2O: acetonitrile + 0.1 % formic acid"
+          }
+        },
+        "step8": {
+          "description": "Peptide Separation",
+          "details": {
+            "column": "HSS T3 nano-column (75 μm internal diameter, 250 mm length, 1.8 μm particle size; Waters)",
+            "flowRate": "0.35 μL min−1",
+            "gradient": "4-35% B in 105 min; 35-90% B in 5 min; maintained at 90% for 5 min; and then back to initial conditions"
+          }
+        },
+        "step9": {
+          "description": "Mass Spectrometry Analysis",
+          "details": {
+            "instrument": "Nano-UPLC system equipped with a quadrupole orbitrap mass spectrometer (Q Exactive Plus, Thermo Scientific)",
+            "acquisitionMode": "Data-dependent acquisition (DDA) using the Top20 method",
+            "ms1Settings": {
+              "massRange": "300-1750 m/z",
+              "resolution": "60,000 (at 400 m/z)",
+              "agcTarget": "1e6",
+              "maxInjectionTime": "120 msec"
+            },
+            "ms2Settings": {
+              "resolution": "17,500",
+              "isolationWindow": "2 m/z",
+              "underfillRatio": "1.3%",
+              "agcTarget": "5e5",
+              "maxInjectionTime": "100 msec"
+            },
+            "dynamicExclusion": "120 msec"
+          }
+        }
+      },
+      "keywords": [
+        "pNHP",
+        "NAC90",
+        "NHP biosynthesis",
+        "Proteomics",
+        "Arabidopsis thaliana"
+      ],
+      "instruments": [
+        "Q Exactive HF"
+      ],
+      "cutoffPoints": [
+        "FDR < 1%",
+        "Twofold cut-off for protein significance"
+      ]
+    },
+    "created": "2024-08-08 13:44:43.727648",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD054388",
+    "response": {
+      "title": "Developmental signals control chromosome segregation fidelity during pluripotency and neurogenesis by modulating replicative stress",
+      "organisms": "Homo sapiens (human)",
+      "sampleCollection": "hiPSCs",
+      "pathways": [
+        "WNT",
+        "FGF",
+        "BMP"
+      ],
+      "focalPoints": [
+        "chromosome segregation fidelity",
+        "replicative dynamics",
+        "DNA replication",
+        "DNA damage",
+        "DNA repair"
+      ],
+      "treatments": [
+        {
+          "treatment": "Control (untreated)",
+          "duration": "3 hours"
+        },
+        {
+          "treatment": "DKK1 conditional medium (1:3)",
+          "duration": "3 hours"
+        },
+        {
+          "treatment": "Noggin (200ng/ml)",
+          "duration": "3 hours"
+        },
+        {
+          "treatment": "FGF2 (40ng/mL)",
+          "duration": "3 hours"
+        }
+      ],
+      "processing": {
+        "step1": {
+          "description": "Cell lysis",
+          "details": "Full lysis of cells"
+        },
+        "step2": {
+          "description": "Protein Digestion",
+          "details": {
+            "enzymes": [
+              "Lyc-C",
+              "Trypsin"
+            ],
+            "conditions": "In-solution digestion in 8 M Urea buffer"
+          }
+        },
+        "step3": {
+          "description": "Peptide Desalting",
+          "details": "Using Sep-Pak cartridges"
+        },
+        "step4": {
+          "description": "Phospho-peptide Enrichment",
+          "details": "Immobilized metal affinity chromatography (Fe-IMAC)"
+        },
+        "step5": {
+          "description": "LC-MS/MS Analysis",
+          "details": {
+            "instrument": "Orbitrap Exploris 480 mass spectrometer",
+            "trapColumn": "Acclaim PepMap300 C18, 5µm, 300Å wide pore (Thermo Scientific)",
+            "analyticalColumn": "nanoEase MZ Peptide analytical column (300Å, 1.7µm, 75µm x 200 mm, Waters)",
+            "gradient": "3% to 40% ACN",
+            "MS method": "150 min"
+          }
+        }
+      },
+      "keywords": [
+        "Cellular signaling",
+        "chromosomal mosaicism",
+        "genome stability",
+        "embryonic development",
+        "pluripotent stem cells",
+        "DNA replication stress",
+        "lineage specifications"
+      ],
+      "instruments": [
+        "Orbitrap Exploris 480"
+      ],
+      "cutoffPoints": [
+        "Fold change > 2",
+        "p-value < 0.1"
+      ],
+      "signalingPathways": [
+        "WNT signaling pathway",
+        "FGF signaling pathway",
+        "BMP signaling pathway"
+      ],
+      "typesOfMorphogenTreatments": [
+        "WNT",
+        "FGF",
+        "BMP"
+      ]
+    },
+    "created": "2024-08-08 13:44:59.140744",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD054314",
+    "response": {
+      "title": "The proto-oncogene tyrosine kinase c-SRC facilitates glioblastoma progression by remodeling fatty acid synthesis",
+      "organisms": "Homo sapiens (human)",
+      "diseases": [
+        "Glioblastoma"
+      ],
+      "sampleCollection": "ACSS2 and ACLY proteins from U87 cells",
+      "pathways": [
+        "Fatty acid synthesis"
+      ],
+      "focalPoints": [
+        "c-SRC",
+        "ACSS2",
+        "ACLY",
+        "Fatty acid synthesis",
+        "Acetate metabolism",
+        "Citrate metabolism"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Cell Culture and Transfection",
+          "details": "Co-transfection of ACSS2 and ACLY with c-SRC in U87 cells"
+        },
+        "step2": {
+          "description": "Immunoprecipitation",
+          "details": "Immunoprecipitation using anti-Flag M2 beads"
+        },
+        "step3": {
+          "description": "SDS-PAGE and In-Gel Digestion",
+          "details": "SDS-PAGE separation followed by in-gel trypsin digestion"
+        },
+        "step4": {
+          "description": "Peptide Extraction",
+          "details": "Peptide extraction using 0.15% formic acid and 67% acetonitrile"
+        },
+        "step5": {
+          "description": "Mass Spectrometry Analysis",
+          "details": "Analysis using AB SCIEX Triple TOF 5600 system"
+        }
+      },
+      "keywords": [
+        "c-SRC",
+        "ACSS2",
+        "ACLY",
+        "Fatty acid synthesis",
+        "Glioblastoma",
+        "Phosphorylation",
+        "Acetate",
+        "Citrate"
+      ],
+      "instruments": [
+        "TripleTOF 5600"
+      ],
+      "proteinsFound": [
+        "ACSS2",
+        "ACLY"
+      ],
+      "cutoffPoints": [],
+      "signalingPathways": [],
+      "cascades": [
+        "c-SRC phosphorylates ACSS2, enhancing acetate conversion to acetyl-CoA",
+        "c-SRC phosphorylates ACLY, inhibiting citrate-derived acetyl-CoA synthesis and promoting NADPH production via IDH1"
+      ]
+    },
+    "created": "2024-08-08 13:45:10.583327",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD054199",
+    "response": {
+      "title": "Candidate Proteins Interacting with Cytoskeleton in Cells from the Basal Airway Epithelium in vitro",
+      "organisms": [
+        "Rattus norvegicus (rat)",
+        "Escherichia coli"
+      ],
+      "tissues": [
+        "Basal Airway Epithelium"
+      ],
+      "sampleCollection": "Cell cultures",
+      "pathways": [
+        "Cytoskeleton Organization",
+        "Protein-Protein Interaction"
+      ],
+      "focalPoints": [
+        "Keratin 17",
+        "Cytoskeleton",
+        "Intermediate Filaments",
+        "Microtubules",
+        "Actin Filaments",
+        "Septins",
+        "Protein-Protein Interactions",
+        "Immunoprecipitation",
+        "Mass Spectrometry"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Cytoskeleton Preparation",
+          "details": {
+            "reagents": [
+              "Cytoskeletal buffer (140 mM NaCl, 5 mM MgCl2, 20 mM Tris-HCl pH 7.6)",
+              "RIPA buffer (1% Triton X-100, 0.1% Sodium deoxycholate, 0.1% SDS, 20 mM Tris-HCl pH 8.0, 1 mM EDTA, 1 mM ethylene glycol tetraacetate, 140 mM NaCl, 1 mM PMSF)"
+            ],
+            "conditions": [
+              "Rinse cells thrice with cytoskeletal buffer",
+              "Add RIPA buffer heated to 90°C",
+              "Remove cells with a rubber policeman",
+              "Flash-freeze and store at -196°C"
+            ]
+          }
+        },
+        "step2": {
+          "description": "Protein Quantification",
+          "details": {
+            "method": "Folin-Lowry method"
+          }
+        },
+        "step3": {
+          "description": "Immunoprecipitation (IP)",
+          "details": {
+            "antibody": "Anti-keratin antibody",
+            "incubation": "4°C with rotation for 1 hour",
+            "wash": "Twice with IP buffer",
+            "elution": "Phosphate-buffered saline"
+          }
+        },
+        "step4": {
+          "description": "In-Solution Digestion",
+          "details": {
+            "enzyme": "Trypsin/Lys-C protease mix",
+            "reduction": "Dithiothreitol at 56°C for 45 min",
+            "alkylation": "Iodoacetamide for 30 min at room temperature in the dark",
+            "precipitation": "80% acetone",
+            "digestionConditions": "37°C for 16 h"
+          }
+        },
+        "step5": {
+          "description": "Peptide Desalting and Concentration",
+          "details": {
+            "method": "C18 Zip-tip"
+          }
+        },
+        "step6": {
+          "description": "Liquid Chromatography-Mass Spectrometry (LC-MS/MS)",
+          "details": {
+            "column": "Reversed-phase Easy-Spray Column PepMap RSLC, C18, 2 μM, 100A, 75 μm × 250 mm",
+            "gradient": "Acetonitrile (3-36%) in 0.1% formic acid",
+            "ionization": "Nano Easy-Spray Ion Source",
+            "instrument": "Q Exactive"
+          }
+        },
+        "step7": {
+          "description": "Data Analysis",
+          "details": {
+            "software": [
+              "Proteome Discoverer 2.4",
+              "Python Anaconda environment"
+            ],
+            "database": "Rat sequence database (UniProtKB, Human Protein Atlas)",
+            "analysis": [
+              "Protein identification and quantification",
+              "Statistical analysis (Mann-Whitney U test, Pearson correlation)",
+              "Data visualization"
+            ]
+          }
+        }
+      },
+      "keywords": [
+        "Cytoskeleton",
+        "Basal Airway Epithelial Cells",
+        "Keratin 17 Interactome",
+        "Mass Spectrometry",
+        "Immunoprecipitation",
+        "Protein-Protein Interactions",
+        "Intermediate Filaments",
+        "Microtubules",
+        "Actin Filaments",
+        "Septins",
+        "alpha-spectrin",
+        "Baiap2l",
+        "Dync1h1"
+      ],
+      "instruments": [
+        "Q Exactive"
+      ],
+      "cutoffPoints": [
+        "PEP < 0.01",
+        "q-value < 0.01",
+        "Unique peptides ≥ 2",
+        "Fold change ≥ 2"
+      ],
+      "cascades": [
+        "alpha-spectrin-Baiap2l network linking actin filaments to keratin precursor particles",
+        "Antagonistic relationship between Dync1h1 and septins on microtubules"
+      ]
+    },
+    "created": "2024-08-08 13:49:54.238542",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD054192",
+    "response": {
+      "title": "MARK2/MARK3 kinases are catalytic co-dependencies of YAP/TAZ in human cancer (part2)",
+      "organisms": "Homo sapiens (human)",
+      "sampleCollection": "Recombinant putative substrate proteins of MARK2 kinase",
+      "pathways": [
+        "Hippo tumor suppressor pathway"
+      ],
+      "focalPoints": [
+        "MARK2/3 kinases",
+        "YAP/TAZ transcriptional coactivators",
+        "Cancer",
+        "Tumor cell proliferation",
+        "Catalytic inhibition"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Protein Purification and Dephosphorylation",
+          "details": {
+            "method": "Recombinant proteins were purified and dephosphorylated"
+          }
+        },
+        "step2": {
+          "description": "In Vitro Kinase Assay",
+          "details": {
+            "enzyme": "MARK2",
+            "treatment": "Treated with MARK2 in vitro"
+          }
+        },
+        "step3": {
+          "description": "Gel Electrophoresis and Protein Visualization",
+          "details": {
+            "method": "SDS-PAGE",
+            "stain": "Coomassie blue"
+          }
+        },
+        "step4": {
+          "description": "In-Gel Digestion",
+          "details": {
+            "enzyme": "Trypsin",
+            "conditions": "Overnight (1:50 protease:sample) at 37°C",
+            "modifications": "Cysteine residues alkylated using CEMTS"
+          }
+        },
+        "step5": {
+          "description": "Peptide Separation",
+          "details": {
+            "method": "Liquid chromatography",
+            "column": "25 cm x 75 μm ID packed with Reprosil 1.9 C18 silica particles",
+            "gradient": "90 minutes 5-35% acetonitrile gradient in water (0.1% formate)",
+            "flowRate": "200 nl/min"
+          }
+        },
+        "step6": {
+          "description": "Mass Spectrometry",
+          "details": {
+            "instrument": "Thermo Exploris mass spectrometer",
+            "ionization": "Electrospray (2200V)",
+            "precursorScan": "120,000 resolution, m/z 380-2000 Th",
+            "fragmentation": "HCD fragmentation at stepped 28,33,38% normalized energy",
+            "fragmentScan": "Orbitrap at 15,000 resolution, first mass locked to 100 Th"
+          }
+        }
+      },
+      "keywords": [
+        "MARK2/3",
+        "YAP/TAZ",
+        "Hippo pathway",
+        "Cancer",
+        "Phosphorylation",
+        "CagA",
+        "Tumor suppression"
+      ],
+      "instruments": [
+        "Thermo Exploris"
+      ],
+      "cutoffPoints": [
+        "FDR < 1%",
+        "Mascot ion score > 20"
+      ],
+      "signalingPathways": [
+        "Hippo pathway"
+      ],
+      "cascades": [
+        "MARK2/3 phosphorylate and inhibit NF2, MST1/2, and MAP4Ks, leading to indirect upstream control of LATS1/2 activity",
+        "MARK2/3 directly phosphorylate YAP/TAZ, shielding them from LATS1/2-mediated inhibition"
+      ]
+    },
+    "created": "2024-08-08 13:50:34.443038",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD054126",
+    "response": [
+      {
+        "title": "FDA-approved Disulfiram Inhibits the NLRP3 Inflammasome",
+        "organisms": [
+          "Mus musculus (mouse)"
+        ],
+        "sampleCollection": "Nlrp3-/- iBMDMs reconstituted with a vector expressing a TurboID-fused NLRP3",
+        "focalPoints": [
+          "NLRP3 inflammasome",
+          "Disulfiram",
+          "Caspase-1 activation",
+          "ASC speck formation",
+          "Pyroptosis",
+          "Palmitoylation"
+        ],
+        "processing": {
+          "step1": {
+            "description": "Proximity Labeling",
+            "details": {
+              "method": "TurboID proximity labeling"
+            }
+          },
+          "step2": {
+            "description": "Protein Enrichment",
+            "details": {
+              "target": "Biotinylated proteins",
+              "method": "Streptavidin beads enrichment"
+            }
+          },
+          "step3": {
+            "description": "On-Bead Digestion"
+          },
+          "step4": {
+            "description": "Liquid Chromatography Mass Spectrometry (LC-MS/MS) Analysis"
+          }
+        },
+        "keywords": [
+          "NLRP3 inflammasome",
+          "Disulfiram",
+          "Inflammation",
+          "Palmitoylation",
+          "NLRP3",
+          "NLRC4",
+          "AIM2"
+        ],
+        "instruments": [
+          "Orbitrap Fusion"
+        ],
+        "signalingPathways": [
+          "NLRP3 inflammasome pathway"
+        ],
+        "cascades": [
+          "Disulfiram inhibits NLRP3 palmitoylation at cysteine 126, disrupting its localization and inflammasome activation"
+        ]
+      }
+    ],
+    "created": "2024-08-08 13:50:43.636826",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053954",
+    "response": {
+      "title": "Huntingtin contains a ubiquitin-binding domain and regulates lysosomal targeting of mitochondrial and RNA-binding proteins",
+      "organisms": "Homo sapiens (human)",
+      "sampleCollection": "Protein extracts",
+      "pathways": [
+        "Autophagy",
+        "Mitophagy"
+      ],
+      "focalPoints": [
+        "Huntingtin",
+        "Ubiquitin",
+        "Lysosomal Targeting",
+        "Mitochondrial Proteins",
+        "RNA-binding Proteins"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Reductive Alkylation",
+          "details": {
+            "reagents": [
+              "5 mM DTT",
+              "15 mM iodoacetamide",
+              "50 mM ammonium bicarbonate"
+            ],
+            "conditions": "55°C for 30 min, shaking at 900 rpm, followed by room temperature incubation in the dark for 30 min, shaking at 900 rpm"
+          }
+        },
+        "step2": {
+          "description": "Quenching and Precipitation",
+          "details": {
+            "reagents": [
+              "10 mM DTT",
+              "TCA (25% final concentration)"
+            ],
+            "conditions": "Room temperature incubation in the dark for 15 min, followed by overnight incubation on ice"
+          }
+        },
+        "step3": {
+          "description": "Centrifugation and Washing",
+          "details": {
+            "conditions": "Centrifuged at maximum speed at 4°C for 30 min, washed three times with ice-cold methanol"
+          }
+        },
+        "step4": {
+          "description": "Digestion",
+          "details": {
+            "reagents": [
+              "200 mM EPPS pH 8.0",
+              "LysC protease (0.005 U/μL)",
+              "Trypsin (500 ng/μL)"
+            ],
+            "conditions": "Overnight shaking at room temperature with LysC, followed by 6 h incubation at 37°C with trypsin"
+          }
+        },
+        "step5": {
+          "description": "TMT Labeling",
+          "details": {
+            "reagents": [
+              "Acetonitrile",
+              "TMT solutions in anhydrous acetonitrile",
+              "Hydroxylamine (0.5% final concentration)"
+            ],
+            "conditions": "Incubation with acetonitrile for 10 min at room temperature, followed by 1 h incubation with TMT at room temperature, quenched with hydroxylamine for 15 min at room temperature"
+          }
+        },
+        "step6": {
+          "description": "Fractionation and Desalting",
+          "details": {
+            "methods": [
+              "High pH reversed-phase peptide fractionation (Thermo Fisher Scientific)",
+              "StageTip desalting"
+            ]
+          }
+        },
+        "step7": {
+          "description": "LC-MS/MS Analysis",
+          "details": {
+            "instrument": "Orbitrap Fusion Lumos mass spectrometer (Thermo Fisher Scientific) coupled to a Proxeon EASY-nLC1200 liquid chromatography (LC) pump (Thermo Fisher Scientific)"
+          }
+        }
+      },
+      "keywords": [
+        "Huntingtin",
+        "Ubiquitin-binding domain",
+        "Huntington's disease",
+        "Selective autophagy",
+        "Mitophagy",
+        "RNA-binding proteins"
+      ],
+      "instruments": [
+        "Orbitrap Fusion Lumos"
+      ],
+      "cutoffPoints": [
+        "FDR < 1%",
+        "TMT reporter summed signal-to-noise ratio > 150",
+        "MS3 spectra isolation specificity > 0.7"
+      ],
+      "cascades": [
+        "HTT interacts with ubiquitin, influencing lysosomal targeting of mitochondrial proteins and RNA-binding proteins"
+      ]
+    },
+    "created": "2024-08-08 13:51:02.321004",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD054069",
+    "response": {
+      "title": "Phosphorylated Protein Changes in Mouse Brain Tissue After LPS Treatment and Angong Niuhuang Wan Administration",
+      "organisms": "Mus musculus (mouse)",
+      "organismParts": [
+        "Brain"
+      ],
+      "treatments": [
+        "LPS",
+        "Angong Niuhuang Wan"
+      ],
+      "sampleCollection": "Mouse brain tissues",
+      "focalPoints": [
+        "Brain edema",
+        "Cerebrovascular edema",
+        "Phosphorylation"
+      ],
+      "processing": {
+        "step1": {
+          "description": "IMAC Material Preparation",
+          "details": {
+            "materials": [
+              "Titanium sulfate",
+              "IMAC material"
+            ],
+            "conditions": [
+              "Sonication at 40 kHz",
+              "Vortex mixing at room temperature for 12 hours",
+              "Centrifugation at 15000 g for 5 minutes"
+            ],
+            "reagents": [
+              "Ultrapure water",
+              "0.1% trifluoroacetic acid (TFA)",
+              "Sodium chloride/0.1% TFA aqueous solution"
+            ]
+          }
+        },
+        "step2": {
+          "description": "Tissue Homogenization and Protein Extraction",
+          "details": {
+            "buffer": "LB extraction buffer with protease and phosphatase inhibitors",
+            "volume": "500 μl per 50 mg of brain tissue",
+            "method": "Homogenization on ice using a sonicator (AMP 50%)"
+          }
+        },
+        "step3": {
+          "description": "Protein Quantification and Reduction",
+          "details": {
+            "quantificationMethod": "Bradford method",
+            "reagent": "Dithiothreitol (final concentration 10 mmol/L)",
+            "conditions": "Incubation at 37°C for 1 hour"
+          }
+        },
+        "step4": {
+          "description": "Protein Alkylation",
+          "details": {
+            "reagent": "Iodoacetamide (final concentration 50 mmol/L)",
+            "conditions": "Incubation in the dark at 37°C for 1 hour",
+            "postTreatment": "Centrifugation at 20000 g for 15 minutes"
+          }
+        },
+        "step5": {
+          "description": "Ultrafiltration",
+          "details": {
+            "equipment": "4 ml, 10 kDa ultrafiltration tube",
+            "buffer": "50 mmol/L ammonium bicarbonate",
+            "conditions": "Centrifugation at 4°C (3500 g, 20 minutes)"
+          }
+        },
+        "step6": {
+          "description": "Protein Digestion",
+          "details": {
+            "enzyme": "Trypsin",
+            "buffer": "50 mmol/L ammonium bicarbonate",
+            "conditions": "Incubation at 37°C for 12 hours"
+          }
+        },
+        "step7": {
+          "description": "Peptide Enrichment with Ti4+-IMAC",
+          "details": {
+            "reagents": [
+              "80% acetonitrile (ACN)/6% TFA",
+              "Ti4+-IMAC material",
+              "50% ACN/6% TFA/200 mmol/L sodium chloride aqueous solution",
+              "30% ACN/0.1% TFA aqueous solution",
+              "10% ammonia solution"
+            ],
+            "conditions": [
+              "Shaking at room temperature for 30 minutes",
+              "Centrifugation at 15000 g for 5 minutes",
+              "Sonication on ice for 5 minutes",
+              "Shaking for 15 minutes",
+              "Centrifugation at 20000 g for 5 minutes"
+            ]
+          }
+        },
+        "step8": {
+          "description": "Peptide Sample Preparation for LC-MS",
+          "details": {
+            "methods": [
+              "Evaporation using a rotary evaporator",
+              "Redissolving in 0.1% formic acid"
+            ]
+          }
+        },
+        "step9": {
+          "description": "LC-MS/MS Analysis",
+          "details": {
+            "system": "EASY-nLC 1000 (Thermo Fisher Scientific) coupled with Q-Exactive mass spectrometer (Thermo Fisher Scientific)",
+            "column": "Trap column: 2 cm long, 100 μm ID fused silica trap column containing 5.0 μm Aqua C18 beads\nAnalytical column: 15 cm long, 75 μm ID fused silica column filled with 3.0 μm Aqua C18 beads",
+            "flowRate": [
+              "Loading: 5 μL/min",
+              "Elution: 350 nL/min"
+            ],
+            "gradient": "100% buffer A (0.1% formic acid) to 8% buffer B (0.1% formic acid, 80% acetonitrile) for 10 min, 8% to 20% buffer B for 80 min, 20 to 30% buffer B for 20 min, 30% to 90% buffer B for 5 min, then 90% buffer B for 10 min"
+          }
+        }
+      },
+      "keywords": [
+        "Lipopolysaccharides",
+        "Angong Niuhuang Wan",
+        "Phosphoproteomics",
+        "Mass spectrometry",
+        "Brain edema"
+      ],
+      "instruments": [
+        "Q Exactive"
+      ],
+      "cutoffPoints": [
+        "FDR < 1%"
+      ],
+      "postTranslationalModifications": [
+        "Phosphorylation"
+      ]
+    },
+    "created": "2024-08-08 13:51:29.035655",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD054061",
+    "response": {
+      "title": "Co-immunoprecipitation (Co-IP) in Nicotiana benthamiana followed by liquid chromatography-mass spectrometry/mass spectrometry (LC-MS/MS)",
+      "organisms": "Nicotiana benthamiana",
+      "tissues": [
+        "Leaf"
+      ],
+      "healthStatus": "Disease free",
+      "growthConditions": "unknown",
+      "focalPoints": [
+        "Ralstonia solanacearum",
+        "Tomato cultivar Hawaii 7996",
+        "RipV2 effector",
+        "E3 ubiquitin ligase",
+        "SlNRG1"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Sample Preparation",
+          "details": {
+            "method": "Leaf tissues were collected and lysed with Co-IP buffer"
+          }
+        },
+        "step2": {
+          "description": "Immunoprecipitation",
+          "details": {
+            "method": "Supernatant incubated with Anti-Flag Affinity Gel",
+            "conditions": "3 hours at 4°C",
+            "postTreatment": "Centrifugation at 12,000 rpm for 15 minutes"
+          }
+        },
+        "step3": {
+          "description": "Gel Electrophoresis",
+          "details": {
+            "method": "Protein extracts separated by 10% SDS-PAGE"
+          }
+        },
+        "step4": {
+          "description": "Protein Denaturation, Reduction, and Alkylation",
+          "details": {
+            "conditions": "Incubation at 60°C for 1 hour in reaction buffer"
+          }
+        },
+        "step5": {
+          "description": "Protein Digestion",
+          "details": {
+            "enzyme": "Trypsin",
+            "conditions": "Incubation at 37°C with shaking"
+          }
+        },
+        "step6": {
+          "description": "Digestion Termination and Peptide Collection",
+          "details": {
+            "reagent": "TFA",
+            "method": "Centrifugation at 16,000 g"
+          }
+        },
+        "step7": {
+          "description": "Peptide Desalting",
+          "details": {
+            "method": "SDB desalting column"
+          }
+        },
+        "step8": {
+          "description": "LC-MS/MS Analysis",
+          "details": {
+            "instrument": "Q Exactive HF mass spectrometer",
+            "column": "75 μm * 25 cm, C18, 1.9 μm, 120A",
+            "mobilePhase": {
+              "A": "0.1% formic acid, 3% DMSO",
+              "B": "0.1% formic acid, 3% DMSO, 80% ACN"
+            },
+            "flowRate": "300 nL/min",
+            "mode": "DDA",
+            "scanParameters": {
+              "fullMS": {
+                "resolution": "60,000",
+                "AGC": "3e6",
+                "maxIT": "25 ms",
+                "scanRange": "350-1500 m/z"
+              },
+              "MS/MS": {
+                "resolution": "15,000",
+                "AGC": "1e5",
+                "maxIT": "50 ms"
+              }
+            },
+            "collisionEnergy": "27 HCD",
+            "isolationWindow": "1.4 Da",
+            "dynamicExclusion": "24 seconds"
+          }
+        }
+      },
+      "keywords": [
+        "Co-immunoprecipitation",
+        "Mass Spectrometry",
+        "Plant Immunity",
+        "Effector Biology",
+        "Ubiquitination"
+      ],
+      "instruments": [
+        "Q Exactive HF"
+      ],
+      "cutoffPoints": [
+        "FDR < 1%",
+        "Peptide ion score > 20"
+      ],
+      "signalingPathways": [
+        "Plant Immune Signaling"
+      ],
+      "cascades": [
+        "RipV2 effector targets SlNRG1, EDS1, and SAG101b, disrupting plant immunity"
+      ]
+    },
+    "created": "2024-08-08 13:51:49.091522",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053980",
+    "response": {
+      "title": "Huntingtin contains an ubiquitin-binding domain and regulates lysosomal targeting of mitochondrial and RNA-binding proteins",
+      "organisms": "Homo sapiens (human)",
+      "sampleCollection": "St14A cells co-transfected with 17Q-HTT 502 aa-HIS-HA-HA-HIS (H4 tag) or vector pcDNA3.1 control, together with FLAG-ubiquitin encoding plasmid",
+      "focalPoints": [
+        "Huntingtin",
+        "Ubiquitin-binding domain",
+        "Lysosomal targeting",
+        "Mitochondrial proteins",
+        "RNA-binding proteins"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Cell Culture and Transfection",
+          "details": "St14A cells were transiently co-transfected with 17Q-HTT 502 aa-HIS-HA-HA-HIS (H4 tag) or vector pcDNA3.1 control, together with FLAG-ubiquitin encoding plasmid."
+        },
+        "step2": {
+          "description": "Cell Treatment and Lysis",
+          "details": "Two days after tranfection, intact cells were treated in vivo using formaldehyde (0.05%), washed, and lysed."
+        },
+        "step3": {
+          "description": "Tandem Immunoprecipitation",
+          "details": "After clarification, the resulting supernatants were tandem-purified using either 1.) ANTI-FLAG M2 Affinity Gel beads followed by Anti-HA Affinity Matrix beads, or 2.) Anti-HA Affinity Matrix beads followed by ANTI-FLAG M2 Affinity Gel beads; immunoprecipitated conjugates were eluted using respective FLAG or HA peptide."
+        },
+        "step4": {
+          "description": "Protein Digestion",
+          "details": "The tandem-purified proteins were then digested via FASP using trypsin overnight"
+        },
+        "step5": {
+          "description": "Peptide Cleanup",
+          "details": "cleaned using Sep-Pak C18 cartridges prior to LC MS/MS analysis."
+        },
+        "step6": {
+          "description": "LC-MS/MS Analysis",
+          "details": "LC MS/MS analysis."
+        }
+      },
+      "keywords": [
+        "Huntingtin",
+        "Ubiquitin-binding domain",
+        "Lysosomal targeting",
+        "Mitochondrial proteins",
+        "RNA-binding proteins",
+        "Selective autophagy",
+        "Mitophagy"
+      ],
+      "instruments": [
+        "Orbitrap fusion lumos"
+      ]
+    },
+    "created": "2024-08-08 13:52:01.517924",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053979",
+    "response": [
+      {
+        "title": "AMPK activation induces RALDH+ tolerogenic dendritic cells by rewiring glucose and lipid metabolism",
+        "organisms": "Homo sapiens (human)",
+        "sampleCollection": "Proteins were extracted from 1x10^6 moDCs",
+        "focalPoints": [
+          "AMPK",
+          "RALDH activity",
+          "DC tolerogenicity"
+        ],
+        "processing": {
+          "step1": {
+            "description": "Cell lysis, digestion and TMT labeling"
+          },
+          "step2": {
+            "description": "Protein determination using Pierce BCA Gold protein assay (Thermo Fisher Scientific)."
+          },
+          "step3": {
+            "description": "Reduction, alkylation, and quenching using TCEP, iodoacetamide, and DTT."
+          },
+          "step4": {
+            "description": "Chloroform/methanol precipitation and re-solubilization."
+          },
+          "step5": {
+            "description": "Trypsin digestion."
+          },
+          "step6": {
+            "description": "Peptide labeling with TMTpro Label Reagents (Thermo Fisher Scientific)."
+          },
+          "step7": {
+            "description": "Sample pooling and lyophilization."
+          },
+          "step8": {
+            "description": "Fractionation using Agilent 1200 series HPLC system (Agilent Technologies)."
+          }
+        },
+        "keywords": [
+          "AMPK activation",
+          "RALDH activity",
+          "DC tolerogenicity",
+          "Glucose metabolism",
+          "Lipid metabolism",
+          "Mitochondrial fission",
+          "Fatty acid oxidation",
+          "Regulatory T cells"
+        ],
+        "instruments": [
+          "Orbitrap Fusion Lumos"
+        ],
+        "signalingPathways": [
+          "AMPK signaling"
+        ],
+        "cascades": [
+          "AMPK activation enhances RALDH activity, leading to increased differentiation of regulatory T cells"
+        ]
+      }
+    ],
+    "created": "2024-08-08 13:52:11.275254",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053104",
+    "response": [
+      {
+        "title": "Synthesis and Biological Evaluation of Vioprolide B and its Dehydrobutyrine-Glycine Analogue",
+        "organisms": "Homo sapiens (human)",
+        "sampleCollection": "Jurkat cells",
+        "chemicals/Drugs": [
+          "Vioprolide B",
+          "DMSO",
+          "iodoacetamide alkyne (IAA)",
+          "tris(2-carboxyethyl)phosphine (TCEP)",
+          "Tris(benzyltriazolylmethyl)amine (TBTA)",
+          "CuSO4",
+          "isoDTB-azide",
+          "DNAase I",
+          "dithiothreitol",
+          "iodoacetamide",
+          "trypsin",
+          "acetonitrile (MeCN)",
+          "trifluoroacetic acid (TFA)"
+        ],
+        "diseases": [
+          "Cancer"
+        ],
+        "focalPoints": [
+          "vioprolide B",
+          "cytotoxicity",
+          "cysteine residues",
+          "elongation factor eEF1A1",
+          "chromatin assembly factor CHAF1A"
+        ],
+        "processing": {
+          "step1": {
+            "description": "Cell Culture and Treatment",
+            "details": {
+              "cellLine": "Jurkat cells",
+              "cellCount": "6 × 10^6",
+              "medium": "RPMI",
+              "treatment": [
+                "Vioprolide B (10 µM)",
+                "Vioprolide Dhb-Gly analogue (10 µM)",
+                "DMSO (1%)"
+              ],
+              "incubation": {
+                "temperature": "37 °C",
+                "co2": "5%",
+                "duration": "1 h"
+              }
+            }
+          },
+          "step2": {
+            "description": "Cell Lysis",
+            "details": {
+              "method": "Sonication (5 cycles, 10 s, 50% intensity)",
+              "instrument": "Sonopuls HD 2070 ultrasonic rod (Bandelin electronic GmbH)",
+              "lysisBuffer": {
+                "components": [
+                  "1% NP-40",
+                  "1% sodium deoxycholate",
+                  "0.1% SDS"
+                ],
+                "buffer": "PBS"
+              }
+            }
+          },
+          "step3": {
+            "description": "Protein Quantification",
+            "details": {
+              "method": "ROTI Quant universal Kit (Carl Roth)"
+            }
+          },
+          "step4": {
+            "description": "Alkylation and Click Chemistry",
+            "details": {
+              "alkylationReagent": "iodoacetamide alkyne (IAA)",
+              "alkylationConditions": "room temperature, 1 h",
+              "clickReaction": "Copper-catalyzed azide-alkyne cycloaddition (CuAAC)",
+              "clickReagents": [
+                "TCEP",
+                "TBTA",
+                "CuSO4",
+                "light or heavy isoDTB-azide",
+                "SDS"
+              ],
+              "incubation": {
+                "temperature": "room temperature",
+                "duration": "1 h",
+                "conditions": "in the dark"
+              }
+            }
+          },
+          "step5": {
+            "description": "DNA Digestion and Bead Enrichment",
+            "details": {
+              "enzyme": "DNAase I",
+              "incubation": {
+                "temperature": "room temperature",
+                "shaking": "1,000 rpm",
+                "duration": "5 min"
+              },
+              "beads": [
+                "SpeedBead magnetic carboxylate (Cytiva)"
+              ],
+              "wash": "80% ethanol in water (3 × 400 µL)"
+            }
+          },
+          "step6": {
+            "description": "Reduction, Alkylation, and Digestion",
+            "details": {
+              "reduction": {
+                "reagent": "dithiothreitol",
+                "incubation": {
+                  "temperature": "65 °C",
+                  "duration": "15 min"
+                }
+              },
+              "alkylation": {
+                "reagent": "iodoacetamide",
+                "incubation": {
+                  "temperature": "37 °C",
+                  "shaking": "1,000 rpm",
+                  "duration": "30 min"
+                }
+              },
+              "digestion": {
+                "enzyme": "trypsin",
+                "incubation": {
+                  "temperature": "37 °C",
+                  "shaking": "200 rpm",
+                  "duration": "overnight"
+                }
+              }
+            }
+          },
+          "step7": {
+            "description": "Peptide Elution and Streptavidin Enrichment",
+            "details": {
+              "elution": {
+                "solvent": "2% DMSO in water",
+                "incubation": {
+                  "temperature": "37 °C",
+                  "shaking": "1,000 rpm",
+                  "duration": "30 min (twice)"
+                }
+              },
+              "beads": "pre-washed streptavidin agarose beads (Thermo Scientific)",
+              "incubation": {
+                "temperature": "room temperature",
+                "duration": "1 h",
+                "conditions": "continuous rotation"
+              },
+              "wash": [
+                "PBS (2 × 600 µL)",
+                "water (3 × 600 µL)",
+                "50% acetonitrile (MeCN) in water (3 × 600 µL)"
+              ]
+            }
+          },
+          "step8": {
+            "description": "Peptide Elution and Desalting",
+            "details": {
+              "elution": {
+                "solvent": "0.1% TFA in 50% MeCN in water"
+              },
+              "desalting": {
+                "method": "centrifugal filters (Merck)",
+                "conditions": "17,000 × g, 2 min"
+              }
+            }
+          },
+          "step9": {
+            "description": "LC-MS/MS Analysis",
+            "details": {
+              "instrument": "Orbitrap eclipse"
+            }
+          }
+        },
+        "keywords": [
+          "Proteomics",
+          "Natural product",
+          "Target id"
+        ],
+        "instruments": [
+          "Orbitrap eclipse"
+        ],
+        "cutoffPoints": [
+          "FDR < 1%"
+        ]
+      }
+    ],
+    "created": "2024-08-08 13:52:42.339676",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053939",
+    "response": {
+      "title": "Pyroptosis therapy targeting TNBC",
+      "organisms": "Mus musculus (mouse)",
+      "sampleCollection": "4T1 cells",
+      "diseases": [
+        "Breast cancer",
+        "TNBC"
+      ],
+      "focalPoints": [
+        "Pyroptosis",
+        "Biomimetic nanococrystals",
+        "Drug delivery",
+        "Ribosomal stress"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Protein Extraction",
+          "details": {
+            "method": "Not specified"
+          }
+        },
+        "step2": {
+          "description": "SDS-PAGE",
+          "details": {
+            "method": "Standard SDS-PAGE protocol"
+          }
+        },
+        "step3": {
+          "description": "Protein Digestion",
+          "details": {
+            "enzyme": "trypsin",
+            "conditions": "overnight at 37℃"
+          }
+        },
+        "step4": {
+          "description": "TMT Labeling",
+          "details": {
+            "reagents": "TMT labeling reagent"
+          }
+        },
+        "step5": {
+          "description": "Sample Preparation",
+          "details": {
+            "mobilePhase": "100 µL of mobile phase A (water containing 10 mM ammonium formate)",
+            "conditions": "Centrifuged at 14000×g for 20 min"
+          }
+        },
+        "step6": {
+          "description": "LC-MS/MS Analysis",
+          "details": {
+            "instrument": "Orbitrap Fusion Lumos mass spectrometer",
+            "ionizationMode": "NSI source in positive mode",
+            "sprayVoltage": "2000 V",
+            "capillaryTemperature": "320 ℃",
+            "scanRange": "m/z 407–1500"
+          }
+        }
+      },
+      "keywords": [
+        "4T1 cells",
+        "MG@PM",
+        "TMT-proteomics",
+        "Pyroptosis genes"
+      ],
+      "instruments": [
+        "Orbitrap Fusion Lumos"
+      ],
+      "cutoffPoints": [
+        "Precursor ion mass tolerance: ± 15 ppm",
+        "Fragment ion mass tolerance: ± 0.02 Da"
+      ]
+    },
+    "created": "2024-08-08 13:52:54.185619",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053915",
+    "response": {
+      "title": "EC039 related phosphoproteomics to determine phosphorylation sites affected during T4 phage infection",
+      "organisms": "Escherichia coli",
+      "organismsParts": [
+        "Cell culture"
+      ],
+      "sampleCollection": "Total proteins were obtained from T4 infected cells with KKP overproduction via pTac-KKP",
+      "focalPoints": [
+        "T4 phage infection",
+        "KKP overproduction",
+        "Phosphorylation sites"
+      ],
+      "processing": {
+        "step1": {
+          "description": "In-gel Tryptic Digestion",
+          "details": {
+            "method": "Gel pieces were destained, reduced, alkylated, and digested with trypsin",
+            "reagents": [
+              "50 mM NH4HCO3 in 50% acetonitrile",
+              "100% acetonitrile",
+              "10 mM dithiothreitol",
+              "55 mM iodoacetamide",
+              "Trypsin"
+            ],
+            "conditions": [
+              "Destained until clear",
+              "Dehydrated for 5 min",
+              "Incubated at 56 °C for 60 min",
+              "Incubated at room temperature in the dark for 45 min",
+              "Digested at 37 °C overnight"
+            ]
+          }
+        },
+        "step2": {
+          "description": "Peptide Extraction",
+          "details": {
+            "solvents": [
+              "50% acetonitrile/5% formic acid",
+              "100% acetonitrile"
+            ]
+          }
+        },
+        "step3": {
+          "description": "Peptide Drying and Resuspension",
+          "details": {
+            "solvent": "2% acetonitrile/0.1% formic acid"
+          }
+        },
+        "step4": {
+          "description": "LC-MS/MS Analysis",
+          "details": {
+            "system": "EASY-nLC 1000 UPLC system coupled to a Q ExactiveTM Plus mass spectrometer",
+            "column": "Home-made reversed-phase analytical column (15 cm length, 75 μm i.d.)",
+            "gradient": "6% to 23% solvent B (0.1% formic acid in 98% acetonitrile) over 16 min, 23% to 35% in 8 min, climbing to 80% in 3 min, holding at 80% for 3 min",
+            "flowRate": "400 nL/min",
+            "MS conditions": {
+              "ionization": "NSI source",
+              "scanRange": "350 to 1800 m/z for full scan",
+              "resolution": "70,000 for full scan, 17,500 for MS/MS",
+              "NCE": "28",
+              "AGC": "5E4",
+              "dynamicExclusion": "15.0 s"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "T4 phage",
+        "KKP",
+        "Phosphoproteomics"
+      ],
+      "instruments": [
+        "Q Exactive Plus",
+        "Ltq"
+      ],
+      "cutoffPoints": [
+        "Peptide ion score > 20"
+      ],
+      "databases": "MG1655"
+    },
+    "created": "2024-08-08 13:53:10.565548",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053909",
+    "response": {
+      "title": "E. coli expressed SECRET AGENT O-GlcNAc modifies threonine 829 of GIGANTEA",
+      "organisms": [
+        "Arabidopsis thaliana (mouse-ear cress)",
+        "Escherichia coli"
+      ],
+      "focalPoints": [
+        "Glycosyltransferases",
+        "SPINDLY (SPY)",
+        "SECRET AGENT (SEC)",
+        "O-linked fucose",
+        "O-linked N-acetylglucosamine (O-GlcNAc)",
+        "GIGANTEA (GI)",
+        "Threonine 829 (T829)"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Protein Digestion",
+          "details": {
+            "enzymes": [
+              "Trypsin (40:1)",
+              "Lys-C (100:1)"
+            ],
+            "conditions": "Overnight at 37 °C"
+          }
+        },
+        "step2": {
+          "description": "Peptide Desalting",
+          "details": {
+            "method": "Sep-Pak C18 cartridge (Waters)",
+            "instrument": "Speed-Vac"
+          }
+        },
+        "step3": {
+          "description": "O-GlcNAc Capping",
+          "details": {
+            "method": "Transferase converts the O-GlcNAc modification to the disaccharide N-acetyl-D-lactosamine (LacNAc)"
+          }
+        },
+        "step4": {
+          "description": "LacNAc Peptide Enrichment",
+          "details": {
+            "method": "RCA I affinity chromatography"
+          }
+        },
+        "step5": {
+          "description": "O-linked LacNAc Removal",
+          "details": {
+            "method": "β-elimination",
+            "reagents": [
+              "1.5% Triethylamine",
+              "0.15% NaOH"
+            ],
+            "conditions": "Incubated at 52 °C for 1.5 hr"
+          }
+        },
+        "step6": {
+          "description": "Final Desalting and Drying",
+          "details": {
+            "method": "Sep-Pak C18",
+            "instrument": "Speed-Vac"
+          }
+        },
+        "step7": {
+          "description": "Mass Spectrometry Analysis",
+          "details": {
+            "method": "Reversed-phase nano HPLC online with electrospray ionization mass spectrometry",
+            "instrument": "LTQ-OrbitrapXL equipped with ETD and CID sources (Thermo Scientific)"
+          }
+        }
+      },
+      "keywords": [
+        "O-GlcNAc modification",
+        "GIGANTEA",
+        "SECRET AGENT",
+        "Post-translational modification",
+        "Mass spectrometry"
+      ],
+      "instruments": [
+        "LTQ Orbitrap"
+      ],
+      "modifications": [
+        "O-GlcNAc",
+        "O-fucose"
+      ]
+    },
+    "created": "2024-08-08 13:53:25.063556",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053906",
+    "response": {
+      "title": "Increased viral tolerance mediates by antiviral RNA interference in bat cells",
+      "organisms": [
+        "Sindbis Virus",
+        "Pteropus Alecto (Black Flying Fox)"
+      ],
+      "tissues": [
+        "Cell Culture",
+        "Fibroblast"
+      ],
+      "sampleCollection": "PaKi cells",
+      "focalPoints": [
+        "Dicer",
+        "RNAi",
+        "vsiRNAs",
+        "Viral Tolerance",
+        "Antiviral Response"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Cell Lysis",
+          "details": {
+            "conditions": "Lysed at 4°C for 30 min",
+            "lysisBuffer": {
+              "components": [
+                "50mM Tris-HCl",
+                "1mM EDTA",
+                "150mM NaCl",
+                "5mM MgCl2",
+                "10% glycerol",
+                "1% Triton X-100"
+              ],
+              "ph": "7.4"
+            }
+          }
+        },
+        "step2": {
+          "description": "Centrifugation",
+          "details": {
+            "conditions": "20,000g for 10 min"
+          }
+        },
+        "step3": {
+          "description": "Pre-Incubation with Beads",
+          "details": {
+            "conditions": "Incubated with 20µL Protein A/G beads at 4°C for 1 hour"
+          }
+        },
+        "step4": {
+          "description": "Immunoprecipitation",
+          "details": {
+            "antibodies": [
+              "20µg IgG",
+              "J2 antibodies"
+            ],
+            "conditions": "Incubated with  50µL Protein A/G beads at 4°C overnight"
+          }
+        },
+        "step5": {
+          "description": "Bead Washing",
+          "details": {
+            "conditions": "Washed 5 times"
+          }
+        },
+        "step6": {
+          "description": "Protein Elution",
+          "details": {
+            "conditions": "Incubated for 10 min at 95°C with 2xSDS loading buffer"
+          }
+        },
+        "step7": {
+          "description": "Mass Spectrometry Analysis",
+          "details": {
+            "instrument": "Q Exactive (Thermo-Fisher) coupled to an Easy-nLC 1000 (Thermo Fisher)"
+          }
+        }
+      },
+      "keywords": [
+        "Pteropus alecto",
+        "dsRNA-IP",
+        "J2-IP",
+        "SINV"
+      ],
+      "instruments": [
+        "Q Exactive HF"
+      ],
+      "cutoffPoints": [
+        "Adjusted p-value < 0.05",
+        "Minimum Log2 fold change of 1"
+      ],
+      "signalingPathways": [
+        "RNA interference (RNAi) pathway",
+        "Interferon response"
+      ],
+      "cascades": [
+        "Dicer processes viral dsRNA into vsiRNAs, leading to the degradation of viral RNA"
+      ]
+    },
+    "created": "2024-08-08 13:53:40.475869",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053893",
+    "response": {
+      "title": "Distinct mechanistic, conformational and substrate selectivity profiles emerging in the evolution of high catalytic activity enzymes via parallel trajectories",
+      "organisms": "Homo sapiens (human)",
+      "sampleCollection": ">200 μM HsKYNase_93D9",
+      "focalPoints": [
+        "HsKYNase",
+        "Conformational Dynamics",
+        "Substrate Selectivity",
+        "Enzyme Evolution"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Enzyme Incubation",
+          "details": {
+            "enzyme": "HsKYNase_93D9",
+            "concentration": ">200 μM",
+            "reagents": "5 mM PLP",
+            "temperature": "37˚C",
+            "duration": "3 hours"
+          }
+        },
+        "step2": {
+          "description": "Labeling",
+          "details": {
+            "buffer": "D2O-PBS (pD 7.4)",
+            "substrates": [
+              "3.0 mM Kynurenine (KYN)",
+              "3.0 mM 3’-hydroxykynurenine (OH-KYN)"
+            ],
+            "enzymeConcentration": "1.6 μM",
+            "duration": "1, 10, and 100 minutes"
+          }
+        },
+        "step3": {
+          "description": "Quenching",
+          "details": {
+            "reagents": [
+              "2 M GuHCl",
+              "0.8% (v/v) FA"
+            ],
+            "temperature": "1°C",
+            "pH": "2.6"
+          }
+        },
+        "step4": {
+          "description": "HDX-MS Analysis",
+          "details": {
+            "instrument": "Waters HDX Manager connected to a Synapt G2-Si Q-TOF",
+            "buffers": {
+              "A": "0.1% (v/v) formic acid",
+              "B": "0.1% (v/v) formic acid in 100% acetonitrile"
+            },
+            "column": "Enzymate Pepsin Column (Waters, 300 Å, 5 μm, 2.1 x 30 mm)",
+            "temperature": "15 °C",
+            "flowRate": "100 μL/min",
+            "duration": "3 minutes"
+          }
+        },
+        "step5": {
+          "description": "Desalting",
+          "details": {
+            "method": "Reverse-phase trap",
+            "columns": [
+              "Waters Protein BEH C4 VanGuard Pre-column (300 Å, 1.7 μm, 2.1 x 5 mm)",
+              "Waters BEH C18 Column (130Å, 1.7 μm, 1 x 100 mm)"
+            ]
+          }
+        },
+        "step6": {
+          "description": "Peptide Separation",
+          "details": {
+            "gradient": "Isocratic gradient from 3-40% buffer B",
+            "flowRate": "40 μL/min",
+            "duration": "7 minutes",
+            "temperature": "1 °C"
+          }
+        }
+      },
+      "keywords": [
+        "Enzyme Kinetics",
+        "Mass Spectrometry",
+        "Hydrogen-Deuterium Exchange",
+        "Conformational Dynamics",
+        "Kynureninase",
+        "Enzyme Engineering"
+      ],
+      "instruments": [
+        "Synapt G2-Si Q-TOF"
+      ],
+      "cutoffPoints": [
+        "Welch’s t-test (p < 0.01)"
+      ]
+    },
+    "created": "2024-08-08 13:53:58.048011",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053082",
+    "response": {
+      "title": "Metabolic Disruption Impairs Ribosomal Protein Levels, Resulting in Enhanced Aminoglycoside Tolerance",
+      "organisms": "Escherichia coli",
+      "sampleCollection": "Cell pellets from wild-type and mutant strains at mid-exponential phase (t=3.5 h)",
+      "focalPoints": [
+        "Aminoglycoside Tolerance",
+        "Energy Metabolism",
+        "TCA Cycle",
+        "Electron Transport Chain",
+        "Ribosomal Proteins"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Protein Extraction and Digestion",
+          "details": {
+            "method": "Sample Preparation by Easy Extraction and Digestion (SPEED) procedure"
+          }
+        },
+        "step2": {
+          "description": "Cell Lysis",
+          "details": {
+            "reagents": "20 μg trifluoroacetic acid (TFA)",
+            "conditions": "Incubated at room temperature for 5 min"
+          }
+        },
+        "step3": {
+          "description": "Buffer Addition",
+          "details": {
+            "reagents": "200 μl of 2M trisbase"
+          }
+        },
+        "step4": {
+          "description": "Reduction and Alkylation",
+          "details": {
+            "reagents": [
+              "Tris(2-carboxyethyl) phosphine (10 mM)",
+              "2-Chloroacetamide (40 mM)"
+            ],
+            "conditions": "Heated at 95 ºC for 5 min"
+          }
+        },
+        "step5": {
+          "description": "Protein Digestion",
+          "details": {
+            "enzymes": "Trypsin (1/40, w/w)",
+            "conditions": "Incubation at 37 ºC overnight"
+          }
+        },
+        "step6": {
+          "description": "Peptide Cleanup",
+          "details": {
+            "method": "C18 Ziptip"
+          }
+        },
+        "step7": {
+          "description": "Peptide Drying",
+          "details": {
+            "instrument": "CentriVap (Labconco, Kansas City, MO)"
+          }
+        },
+        "step8": {
+          "description": "Peptide Resuspension",
+          "details": {
+            "solvent": "2% acetonitrile (ACN) with 0.1% formic acid (FA)"
+          }
+        },
+        "step9": {
+          "description": "LC-MS Analysis",
+          "details": {
+            "instrument": "NanoElute LC system connected to a timsTOF Pro (Bruker Daltonics, Germany)",
+            "source": "CaptiveSpray source",
+            "column": "In-house packed column (75 μm x 20 cm, 1.9 μm ReproSil-Pur C18 particle from Dr. Maisch GmbH, Germany)",
+            "columnTemperature": "40 °C",
+            "mobilePhases": {
+              "bufferA": "0.1% FA in water",
+              "bufferB": "0.1% FA in ACN"
+            },
+            "gradient": "0-17.8 minutes, from 2% B to 30% B, followed by 18.3 minutes to 95% B, and 20.7 minutes to 95% B",
+            "method": "Parallel accumulation-serial fragmentation (PASEF) mode with 4 PASEF scans per cycle",
+            "electrosprayVoltage": "1.4 kV",
+            "ionTransferTubeTemperature": "180 °C",
+            "massRange": "150–1700 m/z",
+            "targetIntensity": "2.0 × 105",
+            "threshold": "2500",
+            "cycleTime": "0.53 s",
+            "dynamicExclusion": "0.4 minutes with a ± 0.015 amu tolerance"
+          }
+        }
+      },
+      "keywords": [
+        "Aminoglycoside antibiotics",
+        "Escherichia coli K12",
+        "Proteomics",
+        "Mass spectrometry",
+        "Metabolic pathways",
+        "TCA cycle",
+        "Electron transport chain",
+        "Ribosome biogenesis",
+        "Drug tolerance"
+      ],
+      "instruments": [
+        "timsTOF Pro"
+      ],
+      "cutoffPoints": [
+        "FDR < 1% at the peptide spectrum match, peptide, and protein levels"
+      ],
+      "cascades": [
+        "Metabolic disruption leads to upregulation of TCA cycle proteins and downregulation of ribosomal proteins, resulting in aminoglycoside tolerance"
+      ]
+    },
+    "created": "2024-08-08 13:54:19.8085",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053811",
+    "response": {
+      "title": "Cyclin B3 is a dominant fast-acting cyclin that drives rapid early embryonic mitoses",
+      "organisms": "Caenorhabditis elegans",
+      "organismParts": [
+        "Embryo",
+        "Whole body"
+      ],
+      "focalPoints": [
+        "Cyclin B3",
+        "Mitosis",
+        "Embryonic development"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Sample Preparation",
+          "details": {
+            "sampleVolume": "5 micro liters",
+            "buffer": "TNE (50 mM Tris pH 8.0, 100 mM NaCl, 1 mM EDTA)",
+            "reagents": [
+              "RapiGest SF reagent (Waters Corp.)",
+              "TCEP (Tris (2-carboxyethyl) phosphine)",
+              "iodoacetamide"
+            ],
+            "conditions": [
+              "Boiled for 5 min",
+              "Incubated at 37°C for 30 min",
+              "Carboxymethylated for 30 min at 37°C"
+            ]
+          }
+        },
+        "step2": {
+          "description": "Protein Digestion",
+          "details": {
+            "enzyme": "Trypsin",
+            "ratio": "1:50 (trypsin:protein)",
+            "conditions": "Overnight at 37°C"
+          }
+        },
+        "step3": {
+          "description": "RapiGest Removal",
+          "details": {
+            "reagent": "250 mM HCl",
+            "conditions": "Treated at 37°C for 1 h",
+            "method": "Centrifugation at 14000 rpm for 30 min at 4°C"
+          }
+        },
+        "step4": {
+          "description": "Peptide Extraction and Desalting",
+          "details": {
+            "method": "C18 desalting columns (Thermo Scientific, PI-87782)"
+          }
+        },
+        "step5": {
+          "description": "Peptide Quantification",
+          "details": {
+            "method": "BCA assay"
+          }
+        },
+        "step6": {
+          "description": "LC-MS/MS Analysis",
+          "details": {
+            "instrument": "Orbitrap Fusion Lumos hybrid mass spectrometer (Thermo)",
+            "column": "25 cm, 75-micron ID glass capillary packed with 1.7-µm C18 (130) BEHTM beads (Waters corporation)",
+            "gradient": "Linear gradient (5–80%) of ACN (Acetonitrile) at a flow rate of 375 μl/min for 2 hours",
+            "buffers": [
+              "Buffer A (98% H2O, 2% ACN, 0.1% formic acid)",
+              "Buffer B (100% ACN, 0.1% formic acid)"
+            ],
+            "msParams": {
+              "ms1": {
+                "massRange": "400-1500 m/z",
+                "resolution": "120000",
+                "sprayVoltage": "2200 V",
+                "ionTransferTubeTemp": "275 C",
+                "agcTarget": "400000",
+                "maxInjectionTime": "50 ms"
+              },
+              "ms2": {
+                "collisionEnergy": "30% (HCD)",
+                "scanRate": "Turbo",
+                "firstMass": "100 m/z",
+                "agcTarget": "5000",
+                "maxInjectionTime": "35 ms"
+              }
+            }
+          }
+        }
+      },
+      "keywords": [
+        "Apc/c",
+        "Embryonic development",
+        "Mitosis",
+        "Cdk1",
+        "Cell division",
+        "Cyclin B3",
+        "Cyclin B2",
+        "Meiosis",
+        "Cyclin B1",
+        "Cdc20"
+      ],
+      "instruments": [
+        "Orbitrap Fusion Lumos"
+      ],
+      "software": [
+        "Peaks Studio"
+      ],
+      "proteinsFound": [
+        "Cyclin B3",
+        "Cyclin B1",
+        "Cyclin B2",
+        "Cdk1",
+        "Cdc20"
+      ]
+    },
+    "created": "2024-08-08 13:54:40.656046",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053753",
+    "response": {
+      "title": "Absolute quantification analysis of ubiquitin chains attached to Nrf1 purified from NGLY1-KO cells overexpressing Nrf1-FLAG with HA-FBS2.",
+      "organisms": "Homo sapiens (human)",
+      "sampleCollection": "NGLY1-KO HeLa cells",
+      "focalPoints": [
+        "Ubiquitin",
+        "Nrf1",
+        "Fbs2"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Cell Culture and Lysis",
+          "details": {
+            "cellLine": "NGLY1-KO HeLa cells",
+            "conditions": "Cultured in 15 cm dishes for 5 days",
+            "lysisBuffer": "TBS-N buffer with protease inhibitor cocktail",
+            "centrifugation": "20,000 g for 20 min at 4°C"
+          }
+        },
+        "step2": {
+          "description": "Ubiquitinated Protein Enrichment",
+          "details": {
+            "method": "Agarose-TUBE2 (LifeSensors)",
+            "incubation": "3 h at 4°C on a rotator",
+            "washBuffer": "TBS-N",
+            "elutionBuffer": "TBS-1.5% SDS, boiling for 10 min"
+          }
+        },
+        "step3": {
+          "description": "Immunoprecipitation",
+          "details": {
+            "antibody": "Anti-FLAG antibody-conjugated agarose",
+            "incubation": "2 h at 4°C",
+            "washBuffer": "TBS-N",
+            "elution": "SDS-PAGE sample buffer, heating"
+          }
+        },
+        "step4": {
+          "description": "SDS-PAGE and In-Gel Digestion",
+          "details": {
+            "stain": "CBB",
+            "gelTreatment": [
+              "Washed with 50 mM TEAB/30% ACN for 1 h",
+              "Washed with 50 mM TEAB/50% ACN for 1 h",
+              "Dehydrated in 100% ACN for 5 min"
+            ],
+            "enzyme": "Trypsin Gold (Promega)",
+            "digestionConditions": "20 ng/µL in 50 mM TEAB/5% ACN, 37°C for 15 h",
+            "extraction": [
+              "50% ACN/0.1% TFA",
+              "70% ACN/0.1% TFA"
+            ]
+          }
+        },
+        "step5": {
+          "description": "Peptide Preparation for LC-MS/MS",
+          "details": {
+            "concentration": "Vacuum centrifugation",
+            "spiking": "Ubiquitin AQUA peptides",
+            "oxidation": "0.05% H2O2/0.1% TFA for 12 h at 4°C"
+          }
+        },
+        "step6": {
+          "description": "LC-MS/MS Analysis",
+          "details": {
+            "instrument": "Easy nLC 1000 coupled to Q Exactive (Thermo Fisher Scientific)",
+            "column": "C18 analytical column (Reprosil-Pur 3 μm, 75 μm id x 12 cm packed tip column, Nikkyo Technos Co. Ltd.)",
+            "gradient": "90-min gradient (solvent A, 0.1% FA; solvent B, 100% ACN/0.1% FA)",
+            "msMethod": "Targeted PRM",
+            "fragmentation": "HCD with NCE of 28",
+            "detector": "Orbitrap"
+          }
+        }
+      },
+      "keywords": [
+        "Ubiquitination",
+        "Nrf1",
+        "Fbs2",
+        "Ubiquitin AQUA/PRM"
+      ],
+      "instruments": [
+        "Q Exactive"
+      ],
+      "cutoffPoints": [
+        "Integrated area under the curve (AUC)"
+      ],
+      "cascades": [
+        "Ubiquitin chain attachment to Nrf1"
+      ]
+    },
+    "created": "2024-08-08 13:55:15.448705",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053718",
+    "response": [
+      {
+        "title": "LFQ Analysis of Differential Protein Regulation in Response to Tween-20 Exposure in TwnR mutant and Wild Type Myxococcus xanthus strains",
+        "organisms": "Myxococcus xanthus",
+        "strains": [
+          "DK6204 (Wild type)",
+          "2422mut (TwnR mutant)"
+        ],
+        "sampleCollection": "Myxococcus xanthus strains",
+        "focalPoints": [
+          "Tween-20 exposure",
+          "Detergent resistance",
+          "Protein regulation"
+        ],
+        "processing": {
+          "step1": {
+            "description": "Sample Preparation",
+            "details": {
+              "growthConditions": [
+                "Presence or absence of 0.006% Tween-20",
+                "Incubation for 2 or 6 hours"
+              ],
+              "treatment": "Flash frozen with liquid nitrogen"
+            }
+          },
+          "step2": {
+            "description": "Protein Extraction and Digestion",
+            "details": {
+              "method": "Standard bottom-up proteomic methods",
+              "enzyme": "Trypsin"
+            }
+          },
+          "step3": {
+            "description": "Peptide Separation",
+            "details": {
+              "method": "Reverse phase chromatography",
+              "column": "Thermo Acclaim PepMap C18 (150 x 0.3 mm)",
+              "gradient": "5-35% ACN over 60 minutes",
+              "flowRate": "5 uL/min"
+            }
+          },
+          "step4": {
+            "description": "Mass Spectrometry Analysis",
+            "details": {
+              "instrument": "Q-Exactive HF-X",
+              "method": "Data-dependent acquisition (Top-12)",
+              "mzRange": "200-2000 m/z",
+              "resolution": {
+                "MS1": "60,000",
+                "MS2": "15,000"
+              }
+            }
+          }
+        },
+        "keywords": [
+          "Myxococcus xanthus",
+          "Tween-20",
+          "Detergent resistance",
+          "Proteomics",
+          "Label-free quantitation (LFQ)"
+        ],
+        "instruments": [
+          "Q Exactive hf-x"
+        ],
+        "cutoffPoints": [
+          "FDR < 1% (proteins and peptides)",
+          "Minimum peptide length: 7 amino acids",
+          "Maximum peptide mass: 4,600 Da"
+        ]
+      }
+    ],
+    "created": "2024-08-08 13:55:27.906091",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053716",
+    "response": [
+      {
+        "title": "Comparison of Myxococcus xanthus Proteomes between Wild Type and Mutant Strains",
+        "organisms": "Myxococcus xanthus",
+        "focalPoints": [
+          "Proteomics",
+          "Mutant Strains",
+          "Protein Abundance"
+        ],
+        "growthConditions": "Normal",
+        "sampleCollection": "Flash frozen with liquid nitrogen",
+        "processing": {
+          "step1": {
+            "description": "Protein Extraction and Digestion",
+            "details": {
+              "method": "Standard bottom-up proteomic methods"
+            }
+          },
+          "step2": {
+            "description": "Peptide Separation",
+            "details": {
+              "column": "Thermo Acclaim PepMap C18 (150 x 0.3 mm)",
+              "gradient": "5-35% ACN over 60 minutes",
+              "flowRate": "5 uL/min"
+            }
+          },
+          "step3": {
+            "description": "Mass Spectrometry Analysis",
+            "details": {
+              "instrument": "Q-Exactive HF-X",
+              "msMethod": "Data-dependent acquisition (Top-12)",
+              "mzRange": "200-2000 m/z",
+              "resolution": {
+                "ms1": "60,000",
+                "ms2": "15,000"
+              }
+            }
+          }
+        },
+        "keywords": [
+          "Myxococcus xanthus",
+          "Lfq",
+          "Label free quantitation",
+          "Detergent resistance"
+        ],
+        "instruments": [
+          "Q Exactive HF-X"
+        ],
+        "cutoffPoints": [
+          "Protein FDR < 1%",
+          "Peptide FDR < 1%"
+        ]
+      }
+    ],
+    "created": "2024-08-08 13:55:37.179189",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD027181",
+    "response": [
+      {
+        "title": "Acinetobacter baumannii Ci79 WT and TrxA mutant outer membrane vesicle proteins",
+        "organisms": "Acinetobacter baumannii",
+        "genes": [
+          "TrxA"
+        ],
+        "mutations": [
+          "ΔtrxA"
+        ],
+        "sampleCollection": "Outer membrane vesicles (OMVs)",
+        "focalPoints": [
+          "OMVs",
+          "TrxA"
+        ],
+        "processing": {
+          "step1": {
+            "description": "Protein Digestion",
+            "details": {
+              "method": "Trypsin digestion"
+            }
+          },
+          "step2": {
+            "description": "LC-MS/MS Analysis",
+            "details": {
+              "method": "Capillary LC/MS/MS"
+            }
+          },
+          "step3": {
+            "description": "Protein Identification",
+            "details": {
+              "method": "Mapping mass spectra to Ci79 genome"
+            }
+          },
+          "step4": {
+            "description": "Data Analysis",
+            "details": {
+              "software": "MaxQuant (version 1.6.3.3)"
+            }
+          }
+        },
+        "keywords": [
+          "OMVs",
+          "Acinetobacter",
+          "Thioredoxin"
+        ],
+        "instruments": [
+          "LTQ Orbitrap Elite"
+        ]
+      }
+    ],
+    "created": "2024-08-08 13:55:44.814839",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053714",
+    "response": [
+      {
+        "title": "LFQ Analysis of Differential Protein Regulation in Response to Tween-20 Exposure in TwnR mutant Myxococcus xanthus strains",
+        "organisms": "Myxococcus xanthus",
+        "mutations": [
+          "TwnR mutant"
+        ],
+        "sampleCollection": "Samples were flash frozen with liquid nitrogen and extracted and tryptically digested using standard bottom-up proteomic methods.",
+        "focalPoints": [
+          "Tween-20 exposure",
+          "Detergent resistance",
+          "Time-series analysis"
+        ],
+        "processing": {
+          "step1": {
+            "description": "Sample Preparation",
+            "details": {
+              "method": "Flash frozen with liquid nitrogen, extracted, and tryptically digested using standard bottom-up proteomic methods."
+            }
+          },
+          "step2": {
+            "description": "Peptide Separation",
+            "details": {
+              "column": "150 x 0.3 mm C18 reverse phase Thermo Acclaim PepMap column (PN 164537)",
+              "gradient": "5-35% ACN over a 60 minute gradient",
+              "flowRate": "5 uL/min"
+            }
+          },
+          "step3": {
+            "description": "Mass Spectrometry Analysis",
+            "details": {
+              "instrument": "Q-Exactive HF-X",
+              "method": "Data-dependent analysis, Top-12 method",
+              "mzRange": "200-2000 m/z",
+              "ms1Resolution": "60,000",
+              "ms2Resolution": "15,000"
+            }
+          }
+        },
+        "keywords": [
+          "Myxococcus xanthus",
+          "TwnR mutant",
+          "Tween-20",
+          "Detergent resistance",
+          "Label-free quantitation (LFQ)",
+          "Time-series analysis"
+        ],
+        "instruments": [
+          "Q Exactive hf-x"
+        ],
+        "cutoffPoints": [
+          "FDR < 1%",
+          "Minimum peptide length: 7",
+          "Maximum peptide mass: 4,600 Da"
+        ]
+      }
+    ],
+    "created": "2024-08-08 13:55:55.592804",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053707",
+    "response": {
+      "title": "Absolute quantification analysis of ubiquitin chains conjugated to GP8 using an in vitro ubiquitination reaction",
+      "organisms": "Homo sapiens (human)",
+      "sampleCollection": "In vitro ubiquitination reactions",
+      "focalPoints": [
+        "Ubiquitination",
+        "GP8",
+        "ARIH1-UBE2L3",
+        "SCFFBS2",
+        "Nrf1"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Sample Incubation",
+          "details": {
+            "reagents": "30 μL of TALON metal affinity resin",
+            "conditions": "Incubated for 1 hour at 4°C",
+            "buffer": "TBS-N"
+          }
+        },
+        "step2": {
+          "description": "Supernatant Collection",
+          "details": {
+            "method": "Ultrafree-MC-GV (Millipore)"
+          }
+        },
+        "step3": {
+          "description": "SDS-PAGE and Staining",
+          "details": {
+            "gelType": "SDS-PAGE",
+            "runLength": "Short-run (1 cm)",
+            "stain": "CBB (Bio Craft, Cat# CBB-1000)"
+          }
+        },
+        "step4": {
+          "description": "Gel Washing",
+          "details": {
+            "washSolutions": [
+              "50 mM TEAB/30% acetonitrile (ACN) for 1 hour",
+              "50 mM TEAB/50% ACN for 1 hour"
+            ]
+          }
+        },
+        "step5": {
+          "description": "Gel Dehydration",
+          "details": {
+            "solution": "100% ACN",
+            "duration": "5 minutes"
+          }
+        },
+        "step6": {
+          "description": "Protein Digestion",
+          "details": {
+            "enzyme": "20 ng/µL Trypsin Gold (Promega)",
+            "conditions": "Digested at 37°C for 15 hours",
+            "buffer": "50 mM TEAB/5% ACN"
+          }
+        },
+        "step7": {
+          "description": "Peptide Extraction",
+          "details": {
+            "extractionSolutions": [
+              "50% ACN/0.1% TFA",
+              "70% ACN/0.1% TFA"
+            ]
+          }
+        },
+        "step8": {
+          "description": "Peptide Concentration",
+          "details": {
+            "method": "Vacuum centrifugation"
+          }
+        },
+        "step9": {
+          "description": "Peptide Spiking and Oxidation",
+          "details": {
+            "spike": "Ubiquitin AQUA peptides",
+            "oxidation": "0.05% H2O2/0.1% TFA for 12 hours at 4°C"
+          }
+        },
+        "step10": {
+          "description": "LC-MS/MS Analysis",
+          "details": {
+            "instrument": "Easy nLC 1000 (Thermo Fisher Scientific) coupled to a Q Exactive (Thermo Fisher Scientific)",
+            "column": "C18 analytical column (Reprosil-Pur 3 μm, 75 μm id x 12 cm packed tip column, Nikkyo Technos Co. Ltd.)",
+            "gradient": "90-minute gradient (solvent A: 0.1% FA; solvent B: 100% ACN/0.1% FA)",
+            "fragmentation": "HCD with a normalized collision energy of 28",
+            "detection": "Orbitrap"
+          }
+        }
+      },
+      "keywords": [
+        "Ubiquitin",
+        "Nrf1",
+        "Fbs2"
+      ],
+      "instruments": [
+        "Q Exactive HF"
+      ],
+      "cutoffPoints": [
+        "Integrated area under the curve (AUC)"
+      ],
+      "cascades": [
+        "Examining the role of ARIH1-UBE2L3 in the atypical ubiquitination of Nrf1 by SCFFBS2"
+      ]
+    },
+    "created": "2024-08-08 13:56:15.35046",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053677",
+    "response": {
+      "title": "Proteomic analysis of patient-derived xenograft samples from children with B-cell acute lymphoblastic leukemia harboring TCF3::PBX1 and TCF3::HLF translocations",
+      "organisms": [
+        "Homo sapiens (human)"
+      ],
+      "diseases": [
+        "B-cell acute lymphoblastic leukemia"
+      ],
+      "sampleCollection": "ALL cells recovered from spleens of NSG mice",
+      "focalPoints": [
+        "TCF3::PBX1",
+        "TCF3::HLF",
+        "Patient-derived xenograft"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Cell Lysis",
+          "details": {
+            "lysisBuffer": {
+              "components": [
+                "8 M urea",
+                "50 mM ammonium bicarbonate (ABC)"
+              ]
+            },
+            "conditions": [
+              "Sonication",
+              "Centrifugation at 20000 xg for 10 min"
+            ]
+          }
+        },
+        "step2": {
+          "description": "Protein Quantification",
+          "details": {
+            "method": "BCA assay (Sigma-Aldrich)"
+          }
+        },
+        "step3": {
+          "description": "Protein Reduction and Alkylation",
+          "details": {
+            "reagents": [
+              "5 mM DTT",
+              "10 mM iodoacetamide"
+            ],
+            "conditions": [
+              "Reduction: 55 °C for 30 min",
+              "Alkylation: 30 min in the dark"
+            ]
+          }
+        },
+        "step4": {
+          "description": "Protein Digestion",
+          "details": {
+            "enzyme": "Trypsin-LysC (Promega)",
+            "ratio": "1:50 enzyme:protein",
+            "conditions": "Overnight digestion at 37 °C"
+          }
+        },
+        "step5": {
+          "description": "Acidification and Centrifugation",
+          "details": {
+            "reagent": "TFA (1% v/v)",
+            "conditions": [
+              "Incubation for 15 min at 4 °C",
+              "Centrifugation at 2000 xg for 10 min"
+            ]
+          }
+        },
+        "step6": {
+          "description": "Peptide Desalting",
+          "details": {
+            "column": "C18 Desalting Columns (Waters, Sep-Pak Vac RC; 50 mg sorbent WAT054955)",
+            "equilibration": "0.1% TFA",
+            "washes": [
+              "3 times with 0.1% TFA",
+              "0.1% TFA + 5% acetonitrile"
+            ],
+            "elution": "600 µl of 0.1% TFA + 40% acetonitrile"
+          }
+        }
+      },
+      "keywords": [
+        "B-cell acute lymphoblastic leukemia",
+        "Proteomics",
+        "Patient-derived xenografts",
+        "TCF3 fusion proteins"
+      ],
+      "instruments": [
+        "Orbitrap Exploris 480"
+      ]
+    },
+    "created": "2024-08-08 13:56:31.052959",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053636",
+    "response": {
+      "title": "Nucleotide independant as well as ATP-hydrolysis driven steps of Rea1 Linker remodelling drive the removal of assembly factors from pre-ribosomal particles: PhoX cross-linking of Rea1 in presence of ATPgS, AMP-PNP or Apo state.",
+      "organisms": [
+        "Saccharomyces cerevisiae (baker's yeast)"
+      ],
+      "sampleCollection": "Rea1ΔAAA2H2α in 50mM Hepes, 150mM NaCl, 2mM MgCl2",
+      "focalPoints": [
+        "Rea1",
+        "Ribosome Maturation",
+        "AAA+ Protein Family",
+        "MIDAS Domain",
+        "PhoX Cross-Linking"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Sample Preparation",
+          "details": {
+            "buffer": "50mM Hepes, 150mM NaCl, 2mM MgCl2",
+            "proteinConcentration": "1.25 mg/ml"
+          }
+        },
+        "step2": {
+          "description": "Nucleotide Incubation",
+          "details": {
+            "nucleotides": [
+              "5mM ATPγS",
+              "5mM AMP-PNP",
+              "Apo (no nucleotide)"
+            ]
+          }
+        },
+        "step3": {
+          "description": "Crosslinking",
+          "details": {
+            "crosslinker": "PhoX (Disuccinimidyl Phenyl Phosphonic Acid)",
+            "concentration": "2 mg/ml (5.16 mM)",
+            "molarExcess": "200x",
+            "temperature": "20°C",
+            "duration": "45 min"
+          }
+        },
+        "step4": {
+          "description": "Quenching",
+          "details": {
+            "reagent": "Tris-HCl",
+            "finalConcentration": "10 mM",
+            "duration": "20 min"
+          }
+        },
+        "step5": {
+          "description": "Reduction",
+          "details": {
+            "reagent": "DTT",
+            "finalConcentration": "5 mM",
+            "temperature": "37°C",
+            "duration": "30 min"
+          }
+        },
+        "step6": {
+          "description": "Alkylation",
+          "details": {
+            "reagent": "Iodoacetamide",
+            "finalConcentration": "15 mM",
+            "duration": "1 hour",
+            "conditions": "Dark"
+          }
+        },
+        "step7": {
+          "description": "Digestion",
+          "details": {
+            "enzyme": "Trypsin/Lys-C mix",
+            "ratio": "50:1 (substrate:enzyme, w/w)",
+            "temperature": "37°C",
+            "duration": "Overnight"
+          }
+        },
+        "step8": {
+          "description": "Digestion Quenching",
+          "details": {
+            "reagent": "TFA",
+            "finalConcentration": "1%"
+          }
+        },
+        "step9": {
+          "description": "Peptide Cleanup",
+          "details": {
+            "method": "AssayMAP Bravo platform (Agilent Technologies)",
+            "cartridge": "C18 cartridges (Agilent)"
+          }
+        },
+        "step10": {
+          "description": "Crosslinked Peptide Enrichment",
+          "details": {
+            "method": "Fe(III)-NTA cartridges (Agilent)"
+          }
+        },
+        "step11": {
+          "description": "LC-MS/MS Analysis",
+          "details": {
+            "system": "nanoAcquity Ultra-Performance-LC (Waters) coupled to a Q-Exactive Plus Orbitrap mass spectrometer (Thermo Fisher Scientific)",
+            "column": "nanoACQUITY UPLC BEH130 column (C18, 75 μm × 250 mm with 1.7 μm particle size, Waters)",
+            "gradient": "105 min gradient of 0.1% formic acid in water (A) and 0.1% formic acid in acetonitrile (B)",
+            "flowRate": "400 nl/min",
+            "msConditions": {
+              "fullScan": "300–1,800 m/z, resolution 140,000, max. injection time 50 ms, AGC target 3.106",
+              "ms2": "Top 10 most intense peptides, isolation window 2 m/z, HCD fragmentation (27%, 30%, 33% NCE), resolution 35,000, max. injection time 100 ms, AGC target 1.105, dynamic exclusion 60 s"
+            }
+          }
+        },
+        "step12": {
+          "description": "Data Processing",
+          "details": {
+            "software": "Thermo Proteome Discoverer 2.5.0.400 (Thermo Scientific)",
+            "nodes": [
+              "XlinkX node",
+              "Sequest HT node"
+            ],
+            "fdr": "1%",
+            "visualization": [
+              "xiVIEW webserver (www.xiview.org)",
+              "PyMol Molecular Graphics System (version 2.5.4, Schrödinger, LLC)"
+            ]
+          }
+        }
+      },
+      "keywords": [
+        "Rea1",
+        "Ribosome biogenesis",
+        "AAA+ ATPase",
+        "Crosslinking Mass Spectrometry",
+        "Structural Biology",
+        "Linker Remodelling",
+        "Assembly Factor Removal",
+        "Pre-ribosomal Particles"
+      ],
+      "instruments": [
+        "Q Exactive Plus"
+      ],
+      "cutoffPoints": [
+        "Cross-link score > 40",
+        "Delta score > 4",
+        "FDR < 1%"
+      ],
+      "cascades": [
+        "ATP hydrolysis is required to engage the Rea1 linker with the AAA+ ring and the MIDAS domain, facilitating assembly factor removal."
+      ]
+    },
+    "created": "2024-08-08 13:56:59.121795",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053578",
+    "response": {
+      "title": "Merlin S13 phosphorylation controls meningioma Wnt signaling and magnetic resonance imaging features",
+      "organisms": "Homo sapiens (human)",
+      "sampleCollection": "M10G cells stably expressing pLV APEX2 constructs encoding wildtype or variant Merlin constructs",
+      "pathways": [
+        "Wnt signaling"
+      ],
+      "focalPoints": [
+        "Merlin",
+        "Phosphorylation",
+        "Meningioma"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Cell Culture and Induction",
+          "details": {
+            "cellLine": "M10G cells",
+            "treatment": "0.1mg/ml doxycycline to induce Merlin expression 24 hours before APEX labelling"
+          }
+        },
+        "step2": {
+          "description": "APEX Labeling",
+          "details": {
+            "reagents": [
+              "0.5mM biotin-phenol",
+              "1mM H2O2"
+            ],
+            "conditions": [
+              "biotin-phenol added for 30 minutes at 37°C",
+              "H2O2 added for 30 seconds on ice"
+            ]
+          }
+        },
+        "step3": {
+          "description": "Quenching and Precipitation",
+          "details": {
+            "reagents": "10mM Sodium Ascorbate, 1mM Azide, 5mM Trolox",
+            "method": "biotin/streptavidin precipitation"
+          }
+        },
+        "step4": {
+          "description": "Phosphorylation Enrichment",
+          "details": {
+            "reagents": [
+              "8 M urea",
+              "0.1 M ammonium bicarbonate (ABC)",
+              "150 mM NaCl",
+              "1x mini-cOmplete protease inhibitors (Roche)",
+              "1x phosSTOP phosphatase inhibitor (Roche)",
+              "4 mM TCEP"
+            ],
+            "method": "Ni-NTA Superflow beads (Qiagen)"
+          }
+        },
+        "step5": {
+          "description": "Protein Reduction, Alkylation, and Digestion",
+          "details": {
+            "reagents": [
+              "10mM iodoacetamide",
+              "10mM DTT",
+              "Lys-C"
+            ],
+            "conditions": [
+              "Alkylation: 30 min at RT in the dark",
+              "Reduction: 30 min at RT in the dark",
+              "Digestion: overnight at 37°C with agitation"
+            ]
+          }
+        },
+        "step6": {
+          "description": "Peptide Desalting and Enrichment",
+          "details": {
+            "methods": [
+              "50mg C18 SepPak cartridge",
+              "C18 pipette tips"
+            ]
+          }
+        },
+        "step7": {
+          "description": "Mass Spectrometry Analysis",
+          "details": {
+            "instruments": [
+              "Orbitrap Fusion Lumos",
+              "Orbitrap Q-Exactive Plus"
+            ],
+            "methods": [
+              "Data-dependent acquisition (DDA)",
+              "Label-free quantification (LFQ)"
+            ]
+          }
+        }
+      },
+      "keywords": [
+        "Meningiomas",
+        "Tumor suppressor NF2/Merlin",
+        "Single-cell RNA sequencing",
+        "Proximity-labeling proteomic mass spectrometry",
+        "Magnetic resonance imaging (MRI)",
+        "β-catenin",
+        "Apparent diffusion coefficient (ADC)"
+      ],
+      "instruments": [
+        "Orbitrap Fusion Lumos",
+        "Orbitrap Q-Exactive Plus"
+      ],
+      "cutoffPoints": [],
+      "signalingPathways": [
+        "Wnt signaling"
+      ],
+      "cascades": [
+        "Merlin dephosphorylation on serine 13 (S13) attenuates inhibitory interactions with β-catenin and activates the Wnt pathway"
+      ]
+    },
+    "created": "2024-08-08 13:57:17.852065",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD027178",
+    "response": {
+      "title": "Response of Endozoicomonas to coral host cues and thermal stress",
+      "organisms": [
+        "Endozoicomonas",
+        "Acropora humilis"
+      ],
+      "focalPoints": [
+        "Host-microbe interactions",
+        "Symbiosis",
+        "Coral holobiont",
+        "Thermal stress",
+        "Metabolic exchange",
+        "Host immunity"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Protein Extraction",
+          "details": {
+            "method": "Filter-aided sample preparation",
+            "reagents": [
+              "5% sodium deoxycholate",
+              "1% β-mercaptoethanol"
+            ],
+            "conditions": [
+              "Ultrasonication: 20 × 2 s pulses",
+              "Denaturation: 85 °C for 30 min"
+            ]
+          }
+        },
+        "step2": {
+          "description": "Lipid and Detergent Removal",
+          "details": {
+            "method": "Washing with ethyl acetate",
+            "conditions": "Two washes with two volumes of ethyl acetate"
+          }
+        },
+        "step3": {
+          "description": "Protein Concentration and Buffer Exchange",
+          "details": {
+            "method": "Centrifugation using Amicon Ultra 30 kDa filter",
+            "speed": "14,000 × g",
+            "buffer": "50 mM Tris buffer, pH 8.1"
+          }
+        },
+        "step4": {
+          "description": "Protein Quantification",
+          "details": {
+            "instrument": "Qubit fluorometer"
+          }
+        },
+        "step5": {
+          "description": "Protein Reduction, Alkylation, and Digestion",
+          "details": {
+            "reagents": [
+              "10 mM β-mercaptoethanol",
+              "20 mM acrylamide",
+              "2 µg trypsin"
+            ],
+            "conditions": [
+              "Reduction: 10 min at 37 °C",
+              "Alkylation: 20 min at room temperature",
+              "Digestion: 18 h"
+            ]
+          }
+        },
+        "step6": {
+          "description": "Peptide Separation and Deoxycholate Precipitation",
+          "details": {
+            "method": "Filter centrifugation",
+            "reagents": "1% formic acid",
+            "conditions": "Centrifugation: 16,000 g × 1 min"
+          }
+        },
+        "step7": {
+          "description": "Peptide Desalting and Storage",
+          "details": {
+            "method": "C18 pipette tips",
+            "storage": "Dried by vacuum centrifugation, stored at 4 °C"
+          }
+        },
+        "step8": {
+          "description": "Peptide Quantification",
+          "details": {
+            "instrument": "Qubit fluorometer"
+          }
+        },
+        "step9": {
+          "description": "LC-MS/MS Analysis",
+          "details": {
+            "instrument": "Orbitrap Fusion Lumos Tribrid mass spectrometer",
+            "chromatography": {
+              "system": "Ultimate 3000 liquid chromatography system",
+              "column": "Acclaim PepMap C18, 100 Å, 3 µm",
+              "gradient": "75 min linear gradient (5% to 35% buffer B)",
+              "flowRate": "300 nL/min",
+              "mobilePhase": {
+                "bufferA": "0.1% formic acid",
+                "bufferB": "80% acetonitrile, 0.1% formic acid"
+              }
+            },
+            "massSpectrometry": {
+              "ionization": "Electrospray ionization (1.8 kV)",
+              "precursorScan": {
+                "resolution": "120,000",
+                "agcTarget": "7.0e5",
+                "maxInjectionTime": "50 ms"
+              },
+              "fragmentation": {
+                "method": "High-energy collision dissociation (HCD)",
+                "maxInjectionTime": "300 ms",
+                "agcTarget": "5.0e3",
+                "dynamicExclusion": "60 s"
+              }
+            }
+          }
+        }
+      },
+      "keywords": [
+        "Endozoicomonas",
+        "Coral",
+        "Host-microbe interactions",
+        "Proteomics",
+        "Transcriptomics",
+        "Symbiosis",
+        "Thermal stress",
+        "Metabolism"
+      ],
+      "instruments": [
+        "Orbitrap Fusion Lumos"
+      ],
+      "cutoffPoints": [
+        "Peptide and protein FDR < 1%",
+        "Minimum of two peptides for valid protein match"
+      ]
+    },
+    "created": "2024-08-08 13:57:40.202007",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053567",
+    "response": {
+      "title": "Proteomics Profile in Encapsulated Follicular Patterned Thyroid Neoplasms",
+      "organisms": "Homo sapiens (human)",
+      "diseases": [
+        "Thyroid cancer"
+      ],
+      "organismParts": [
+        "Thyroid gland",
+        "Neoplastic cell"
+      ],
+      "sampleCollection": "FFPE specimens",
+      "focalPoints": [
+        "Non-invasive follicular thyroid neoplasm with papillary-like nuclear features",
+        "Well-differentiated tumor of uncertain malignant potential",
+        "Proteomics",
+        "Follicular-patterned thyroid tumors",
+        "Invasive encapsulated follicular variant papillary thyroid carcinoma",
+        "Mass spectrometry"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Protein Extraction",
+          "details": {
+            "method": "Total protein was extracted using 0.5% SDS",
+            "conditions": [
+              "Incubating at 50ºC for 60 min",
+              "Centrifuge at 10,000 rpm for 30 min"
+            ]
+          }
+        },
+        "step2": {
+          "description": "Protein Quantitation",
+          "details": {
+            "method": "BCA method"
+          }
+        },
+        "step3": {
+          "description": "Protein Reduction, Alkylation, and Digestion",
+          "details": {
+            "reagents": [
+              "5 mM dithiothreitol (DTT)",
+              "15 mM iodoacetamide (IAA)",
+              "Porcine trypsin (1:20 ratio)"
+            ],
+            "conditions": [
+              "Reduction: 60 ºC for 1 hour in 10 mM AMBIC",
+              "Alkylation: Room temperature for 45 minutes in the dark in 10 mM AMBIC",
+              "Digestion: 16 hours at 37 ºC"
+            ]
+          }
+        },
+        "step4": {
+          "description": "Sample Preparation for MS Analysis",
+          "details": {
+            "method": "Tryptic proteins were dried using a speed vacuum concentrator and resuspended in 0.1% formic acid"
+          }
+        },
+        "step5": {
+          "description": "MS Analysis",
+          "details": {
+            "method": "nano-liquid chromatography tandem mass spectrometry (nanoLC-MS/MS)"
+          }
+        }
+      },
+      "keywords": [
+        "Shotgun proteome analysis",
+        "Quantitative proteomics",
+        "Thyroid tumor",
+        "Tumorigenesis"
+      ],
+      "instruments": [
+        "LC-MS/MS",
+        "Autoflex"
+      ],
+      "cutoffPoints": [
+        "Protein FDR < 1%",
+        "Minimum peptide count: 2",
+        "Minimum unique peptide count: 1"
+      ]
+    },
+    "created": "2024-08-08 13:57:53.768044",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053518",
+    "response": [
+      {
+        "title": "Soluble CD72 (sCD72)I, is a T-cell activator probably via binding to CD6 in homeostasis and autoimmunity",
+        "organisms": "Homo sapiens (human)",
+        "diseases": [
+          "systemic lupus erythematosus",
+          "primary Sjogren's syndrome"
+        ],
+        "focalPoints": [
+          "CD72",
+          "sCD72",
+          "CD4+T cells",
+          "CD6",
+          "IL-17A",
+          "IFN-γ",
+          "SLP-76-AKT-mTOR pathway"
+        ],
+        "processing": {
+          "step1": {
+            "description": "Protein Separation",
+            "details": {
+              "method": "SDS-PAGE"
+            }
+          },
+          "step2": {
+            "description": "Protein Digestion",
+            "details": {
+              "method": "In-gel trypsin digestion"
+            }
+          },
+          "step3": {
+            "description": "Mass Spectrometry Analysis",
+            "details": {
+              "method": "LC-MS/MS"
+            }
+          },
+          "step4": {
+            "description": "Data Analysis",
+            "details": {
+              "software": "Proteome Discoverer",
+              "searchEngine": "Sequest"
+            }
+          }
+        },
+        "keywords": [
+          "CD72",
+          "Autoimmune diseases"
+        ],
+        "instruments": [
+          "Q Exactive HF"
+        ],
+        "signalingPathways": [
+          "SLP-76-AKT-mTOR pathway"
+        ]
+      }
+    ],
+    "created": "2024-08-08 13:58:02.322194",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053491",
+    "response": {
+      "title": "Cortical region confers neuron-type-specific vulnerability to human APP expression",
+      "organisms": "Mus musculus (mouse)",
+      "organismParts": [
+        "Brain",
+        "Cortical interneuron"
+      ],
+      "diseases": [
+        "Alzheimer's Disease"
+      ],
+      "focalPoints": [
+        "APP",
+        "Parvalbumin Interneurons",
+        "Hyperexcitability",
+        "Lateral Entorhinal Cortex"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Protein Enrichment",
+          "details": {
+            "method": "Streptavidin-enriched pulldown"
+          }
+        },
+        "step2": {
+          "description": "Protein Digestion",
+          "details": {
+            "method": "On-bead digestion",
+            "enzymes": [
+              "Trypsin",
+              "Lys-C"
+            ],
+            "conditions": "Overnight digestion at room temperature"
+          }
+        },
+        "step3": {
+          "description": "Peptide Preparation",
+          "details": {
+            "acidification": "1% formic acid and 0.1% trifluoroacetic acid",
+            "desalting": "HLB columns",
+            "drying": "SpeedVac Vacuum Concentrator"
+          }
+        },
+        "step4": {
+          "description": "Mass Spectrometry Analysis",
+          "details": {
+            "instrument": "Q-Exactive Plus (Thermo)",
+            "mode": "Data-dependent acquisition"
+          }
+        }
+      },
+      "keywords": [
+        "Alzheimer's Disease",
+        "APP",
+        "Parvalbumin Interneurons",
+        "Hyperexcitability",
+        "Lateral Entorhinal Cortex",
+        "Proteomics",
+        "Mass Spectrometry"
+      ],
+      "instruments": [
+        "Q Exactive Plus"
+      ],
+      "cutoffPoints": [
+        "FDR < 1%"
+      ]
+    },
+    "created": "2024-08-08 13:58:12.279091",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053450",
+    "response": {
+      "title": "A carrier-based quantitative proteomics method applied to biomarker discovery in pericardial fluid",
+      "organisms": "Homo sapiens (human)",
+      "diseases": [
+        "Heart failure",
+        "Type 2 diabetes mellitus"
+      ],
+      "sampleCollection": "Pericardial fluid",
+      "organismParts": [
+        "Heart",
+        "Pericardial fluid",
+        "Myocardium",
+        "Pericardium"
+      ],
+      "focalPoints": [
+        "Biomarker discovery",
+        "Carrier proteome",
+        "Single-cell proteomics"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Sample Collection and Preparation",
+          "details": {
+            "method": "Pericardial fluid drawn following median sternotomy and centrifuged at 3220 g for 10 min at 4°C"
+          }
+        },
+        "step2": {
+          "description": "Protein Extraction",
+          "details": {
+            "pericardialFluid": "Protein concentration measured using bicinchoninic acid assay",
+            "myocardialTissue": "Formalin-fixed, paraffin-embedded tissue deparaffinized in xylene, proteins extracted in sodium dodecyl sulfate buffer"
+          }
+        },
+        "step3": {
+          "description": "Protein Reduction, Alkylation, and Digestion",
+          "details": {
+            "pericardialFluid": "20 µg of protein reduced, alkylated, and digested overnight with trypsin",
+            "myocardialTissue": "Proteins reduced and alkylated, followed by two rounds of acetone precipitation, re-dissolution in urea, digestion with Lys-C for 5 hours, and then trypsin digestion overnight"
+          }
+        },
+        "step4": {
+          "description": "Peptide Labeling",
+          "details": {
+            "reagents": "11-plex tandem mass tags (TMT)",
+            "labelingScheme": "Pericardial fluid labeled with TMT tags 127N-131N, carrier labeled with tag 131C, pooled pericardial fluid labeled with tag 126"
+          }
+        },
+        "step5": {
+          "description": "Peptide Fractionation",
+          "details": {
+            "method": "Offline high-pH fractionation",
+            "fractions": "7"
+          }
+        },
+        "step6": {
+          "description": "LC-MS/MS Analysis",
+          "details": {
+            "instrument": "Orbitrap Exploris 480 (Thermo Fisher Scientific)",
+            "column": "Custom-made fused capillary column (25 cm length, 360 µm OD, 75 µm ID, packed with ReporSil Pur C13 1.9 µm resin)",
+            "gradient": "Linear gradient ranging from 90% to 73% solution A (0.1% formic acid) and 10% to 27% B (80% acetonitrile in 0.1% formic acid) over 45 min",
+            "flowRate": "250 nL/min",
+            "acquisitionMode": "Data-dependent acquisition",
+            "ms1": {
+              "resolution": "60,000 at m/z 200",
+              "massRange": "350 to 1,400 m/z"
+            },
+            "ms2": {
+              "resolution": "45,000 at m/z 200",
+              "isolationWindow": "0.7 m/z",
+              "activationType": "HCD",
+              "collisionEnergy": "35%"
+            }
+          }
+        },
+        "step7": {
+          "description": "Data Processing",
+          "details": {
+            "software": "Proteome Discoverer (v. 2.4.0.305)",
+            "searchEngine": "Sequest HT",
+            "database": "UniProt (downloaded June 17th, 2020)",
+            "fdr": "1%",
+            "modifications": {
+              "fixed": [
+                "Carbamidomethylation at cysteine residues",
+                "TMT 6-plex N-terminal",
+                "TMT 6-plex on lysine residues"
+              ],
+              "variable": [
+                "Methionine oxidation",
+                "N-terminal carbamylation",
+                "Deamidation of asparagine and glutamine residues"
+              ]
+            },
+            "quantification": "Reporter ion signal-to-noise ratios (SNR)"
+          }
+        },
+        "step8": {
+          "description": "Data Normalization",
+          "details": {
+            "method": "Protein abundance ratios divided by the mean protein expression for each sample, followed by log2-transformation"
+          }
+        }
+      },
+      "keywords": [
+        "Pericardial fluid",
+        "Mass spectrometry",
+        "Proteomics",
+        "Biomarkers"
+      ],
+      "instruments": [
+        "Orbitrap Exploris 480"
+      ],
+      "cutoffPoints": [
+        "FDR < 1%",
+        "Average sample SNR > 10"
+      ]
+    },
+    "created": "2024-08-08 13:58:36.429216",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053438",
+    "response": [
+      {
+        "title": "Exploring the Protein Interactome of Pro-IL-1α Using Biotin Proximity Labelling",
+        "organisms": "Homo sapiens (human)",
+        "cellLines": [
+          "HeLa"
+        ],
+        "focalPoints": [
+          "Pro-IL-1α",
+          "Biotin proximity labelling",
+          "Protein interactome",
+          "Nuclear function",
+          "Histone acetyltransferases"
+        ],
+        "processing": {
+          "step1": {
+            "description": "Affinity Purification",
+            "details": {
+              "instrument": "Bravo AssayMap platform",
+              "method": "AssayMap streptavidin cartridges"
+            }
+          },
+          "step2": {
+            "description": "Cartridge Priming",
+            "details": {
+              "reagent": "50 mM ammonium bicarbonate"
+            }
+          },
+          "step3": {
+            "description": "Protein Loading"
+          },
+          "step4": {
+            "description": "Contamination Removal",
+            "details": {
+              "reagent": "8M urea, 50 mM ammonium bicarbonate"
+            }
+          },
+          "step5": {
+            "description": "Cartridge Washing and On-Cartridge Digestion",
+            "details": {
+              "reagent": "Rapid digestion buffer",
+              "enzyme": "Trypsin/Lys-C Rapid digestion enzyme",
+              "conditions": "70°C for 1h"
+            }
+          },
+          "step6": {
+            "description": "Peptide Desalting",
+            "details": {
+              "method": "AssayMap C18 cartridges"
+            }
+          },
+          "step7": {
+            "description": "Drying",
+            "details": {
+              "instrument": "SpeedVac concentrator"
+            }
+          }
+        },
+        "keywords": [
+          "Pro-IL-1a",
+          "Nuclear localisation sequence",
+          "Cytokine",
+          "Nuclear role",
+          "Histone acetyl transferases"
+        ],
+        "instruments": [
+          "Orbitrap Fusion Lumos"
+        ],
+        "cutoffPoints": [
+          "FDR < 1%"
+        ]
+      }
+    ],
+    "created": "2024-08-08 13:58:47.080888",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053434",
+    "response": {
+      "title": "Elucidating molecular mechanisms underlying brain metastasis-promoting function of Cdk5",
+      "organisms": [
+        "Mus musculus (mouse)"
+      ],
+      "diseases": [
+        "Brain cancer",
+        "Breast cancer"
+      ],
+      "focalPoints": [
+        "Cdk5",
+        "Phosphorylation",
+        "Astrocytes",
+        "Conditioned media",
+        "Brain metastasis"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Phosphopeptide Enrichment",
+          "details": {
+            "method": "High-Select™ TiO2 Phosphopeptide Enrichment Kit"
+          }
+        },
+        "step2": {
+          "description": "LC-MS/MS Analysis (Phosphopeptides)",
+          "details": {
+            "instrument": "Orbitrap FusionTM TribridTM mass spectrometer (Thermo ScientificTM)",
+            "lcSystem": "Dionex UltiMate 3000 Binary RSLCnano System",
+            "mobilePhase": "2% acetonitrile, 0.1% formic acid"
+          }
+        },
+        "step3": {
+          "description": "Protein Precipitation (Conditioned Media)",
+          "details": {
+            "method": "Acetone precipitation at -20°C for 3 hours"
+          }
+        },
+        "step4": {
+          "description": "Protein Denaturation, Reduction, and Alkylation",
+          "details": {
+            "reagents": [
+              "6M urea",
+              "20 mM DTT",
+              "40 mM iodacetamide"
+            ],
+            "buffers": [
+              "150 mM Tris HCl, pH 8.0"
+            ],
+            "conditions": [
+              "Denaturation and Reduction: 37°C for 40 min",
+              "Alkylation: In the dark for 30 min"
+            ]
+          }
+        },
+        "step5": {
+          "description": "Protein Digestion",
+          "details": {
+            "enzyme": "Trypsin",
+            "ratio": "1:30 enzyme to substrate",
+            "conditions": "Overnight digestion at 37°C"
+          }
+        },
+        "step6": {
+          "description": "Digestion Termination and Desalting",
+          "details": {
+            "termination": "2% formic acid",
+            "desalting": "Waters Oasis HLB 1 ml reverse phase cartridges"
+          }
+        },
+        "step7": {
+          "description": "LC-MS/MS Analysis (Conditioned Media)",
+          "details": {
+            "instrument": "Orbitrap FusionTM TribridTM mass spectrometer (Thermo ScientificTM)",
+            "lcSystem": "Dionex UltiMate 3000 Binary RSLCnano System",
+            "injectionVolume": "1 µg of tryptic digest",
+            "mobilePhase": "2% acetonitrile/0.1% formic acid in water"
+          }
+        }
+      },
+      "keywords": [
+        "Cdk5",
+        "Brain metastasis",
+        "Breast cancer",
+        "Astrocytes",
+        "Conditioned media",
+        "Phosphoproteomics",
+        "SILAC",
+        "Label-free quantification"
+      ],
+      "instruments": [
+        "Orbitrap Fusion Tribrid"
+      ],
+      "cutoffPoints": [
+        "FDR < 1% (strict)",
+        "FDR < 5% (relaxed)"
+      ],
+      "cascades": [
+        "Cdk5's role in promoting brain metastasis"
+      ]
+    },
+    "created": "2024-08-08 13:59:03.744396",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053415",
+    "response": {
+      "title": "Altered mitochondria-associated ER membranes (MAM) function shifts mitochondrial metabolism in amyotrophic lateral sclerosis (ALS)",
+      "organisms": "Mus musculus (mouse)",
+      "tissues": [
+        "Spinal cord",
+        "Brain"
+      ],
+      "cellTypes": [
+        "Fibroblast"
+      ],
+      "diseases": [
+        "Amyotrophic Lateral sclerosis"
+      ],
+      "focalPoints": [
+        "MAM",
+        "Mitochondria",
+        "Glucose Metabolism",
+        "Fatty Acid Metabolism",
+        "Complex I"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Cell Fractionation",
+          "details": "SOD-BioID overexpressing cells were fractionated into different subcellular compartments"
+        },
+        "step2": {
+          "description": "Pulldown Assay",
+          "details": "Pulldown using streptavidin beads"
+        },
+        "step3": {
+          "description": "Protein Purification"
+        },
+        "step4": {
+          "description": "Mass Spectrometry Analysis",
+          "details": {
+            "instrument": "Orbitrap Fusion"
+          }
+        },
+        "step5": {
+          "description": "Database Searching",
+          "details": {
+            "software": "MaxQuant",
+            "database": "UniProt Mouse",
+            "enzyme": "Trypsin",
+            "fixedModifications": [
+              "Carbamidomethylation of cysteine"
+            ],
+            "variableModifications": [
+              "Deamidated of asparagine and glutamine",
+              "Oxidation of methionine",
+              "Acetylation of the N-terminus"
+            ]
+          }
+        },
+        "step6": {
+          "description": "Data Validation",
+          "details": {
+            "software": "Scaffold",
+            "fdr": {
+              "peptide": "1.0%",
+              "protein": "1.0%"
+            },
+            "proteinProbability": "Protein Prophet algorithm"
+          }
+        }
+      },
+      "keywords": [
+        "Mitochondria-associated ER membranes (MAM)",
+        "BioID",
+        "SOD1",
+        "ALS",
+        "Cholesterol",
+        "Mitochondrial metabolism",
+        "Glucose metabolism",
+        "Fatty acid metabolism"
+      ],
+      "instruments": [
+        "Orbitrap Fusion"
+      ],
+      "cutoffPoints": [
+        "Peptide FDR < 1.0%",
+        "Protein FDR < 1.0%",
+        "Minimum 2 identified peptides per protein"
+      ],
+      "cascades": [
+        "Impaired mitochondria-ER crosstalk leads to a shift from glucose to fatty acid metabolism, altering mitochondrial electron flow and Complex I activity"
+      ]
+    },
+    "created": "2024-08-08 13:59:16.920884",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053406",
+    "response": {
+      "title": "Proteomic analysis of sap reveals root-shoot communication dynamics in potato and barley following flg22 treatment",
+      "organisms": [
+        "Solanum tuberosum (potato)",
+        "Hordeum vulgare (barley)"
+      ],
+      "organismParts": [
+        "Root",
+        "Shoot",
+        "Xylem"
+      ],
+      "chemicals": [
+        "flg22"
+      ],
+      "sampleCollection": "Sap",
+      "focalPoints": [
+        "Root-shoot communication",
+        "Sap proteome",
+        "flg22 treatment",
+        "Exudates",
+        "Extracellular proteins",
+        "Xylem sap"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Sample Preparation",
+          "details": {
+            "method": "Flash-frozen and lyophilized",
+            "washing": [
+              "3:1 (v/v) methyl tert-butyl ether/methanol mixture",
+              "80% (v/v) acetone in water"
+            ],
+            "solubilization": "Urea"
+          }
+        },
+        "step2": {
+          "description": "Protein Digestion",
+          "details": {
+            "method": "Not specified"
+          }
+        },
+        "step3": {
+          "description": "Peptide Desalting",
+          "details": {
+            "method": "Strata C18-E",
+            "concentration": "15 µl"
+          }
+        },
+        "step4": {
+          "description": "LC-MS/MS Analysis",
+          "details": {
+            "method": "Nanoflow reverse-phase liquid chromatography-mass spectrometry",
+            "column": "25 cm C18 Biozen 2.6 μm Peptide XB-C18",
+            "instrument": "Orbitrap Fusion Lumos Tribrid Mass Spectrometer with FAIMS Pro Interface",
+            "lc": "Dionex Ultimate 3000 RSLC nano-UPLC system",
+            "FAIMS": "Compensation voltages of −40, −50, and −75 V"
+          }
+        }
+      },
+      "keywords": [
+        "Plant Proteomics",
+        "flg22 Signaling",
+        "Root Exudates",
+        "Systemic Acquired Resistance"
+      ],
+      "instruments": [
+        "Orbitrap Fusion Lumos"
+      ]
+    },
+    "created": "2024-08-08 13:59:28.53944",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053395",
+    "response": {
+      "title": "Repurposing of Glatiramer Acetate to Treat Cardiac Ischemia in Animal Models",
+      "organisms": "Mus musculus (mouse)",
+      "organismParts": [
+        "Heart"
+      ],
+      "diseases": [
+        "Myocardial infarction",
+        "Heart failure"
+      ],
+      "drugs/Therapeutics": [
+        "Glatiramer acetate"
+      ],
+      "focalPoints": [
+        "Cardiac function",
+        "Scar area",
+        "Immunomodulatory effects",
+        "Cardiomyocyte protection",
+        "Angiogenesis"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Lysate Preparation",
+          "details": {
+            "conditions": "Incubated at 96 °C for 5 min, followed by six cycles of 30 s of sonication"
+          }
+        },
+        "step2": {
+          "description": "Protein Quantification",
+          "details": {
+            "method": "BCA assay"
+          }
+        },
+        "step3": {
+          "description": "Protein Reduction and Alkylation",
+          "details": {
+            "reagents": [
+              "5 mM dithiothreitol",
+              "10 mM iodoacetamide"
+            ],
+            "conditions": "Incubation in the dark"
+          }
+        },
+        "step4": {
+          "description": "Sample Acidification and Dilution",
+          "details": {
+            "reagents": [
+              "Phosphoric acid",
+              "90:10% methanol/50 mM ammonium bicarbonate"
+            ],
+            "finalConcentration": "1.2% phosphoric acid"
+          }
+        },
+        "step5": {
+          "description": "Protein Digestion",
+          "details": {
+            "method": "S-Trap microcolumns (Protifi)",
+            "enzyme": "Trypsin (1:50 trypsin/protein)",
+            "conditions": [
+              "Digestion for 1.5 h at 47 °C",
+              "Incubation overnight at 37 °C"
+            ],
+            "eluents": [
+              "50 mM ammonium bicarbonate",
+              "0.2% formic acid",
+              "0.2% formic acid in 50% acetonitrile"
+            ]
+          }
+        },
+        "step6": {
+          "description": "Sample Drying",
+          "details": {
+            "method": "Vacuum centrifugation"
+          }
+        },
+        "step7": {
+          "description": "Data Analysis",
+          "details": {
+            "software": [
+              "MaxQuant v1.6.6.0",
+              "Andromeda search engine"
+            ],
+            "database": "Mouse proteome database from UniprotKB",
+            "quantificationMethod": "LFQ"
+          }
+        }
+      },
+      "keywords": [
+        "Heart",
+        "Proteomics",
+        "Myocardial injury"
+      ],
+      "instruments": [
+        "Orbitrap exploris 480"
+      ],
+      "cutoffPoints": [
+        "Log transformed data with at least 2 valid values in at least one group"
+      ]
+    },
+    "created": "2024-08-08 13:59:44.024737",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053037",
+    "response": {
+      "title": "Dysferlin facilitates tubular membrane proliferation promoting hypertrophic remodeling of the heart under pressure overload",
+      "organisms": "Mus musculus (mouse)",
+      "sex": "Male",
+      "sampleCollection": "Left ventricular myocytes of five mice one and four weeks post-sham vs. post-TAC surgery",
+      "focalPoints": [
+        "Dysferlin",
+        "cardiac hypertrophy",
+        "transverse-axial tubule (TAT) network",
+        "Juncophilin-2"
+      ],
+      "processing": {
+        "step1": {
+          "description": "Cell Lysis",
+          "details": {
+            "method": "Lysed using RIPA buffer",
+            "conditions": "Centrifuged for 10 min at 1,000 g"
+          }
+        },
+        "step2": {
+          "description": "Protein Quantification",
+          "details": {
+            "method": "Pierce BCA protein assay (Thermo Fisher Scientific)"
+          }
+        },
+        "step3": {
+          "description": "SDS-PAGE and In-Gel Digestion",
+          "details": {
+            "sampleAmount": "50 µg of protein",
+            "gelType": "Short SDS-PAGE",
+            "digestionMethod": "In-gel trypsin digestion"
+          }
+        },
+        "step4": {
+          "description": "NanoLC-MS/MS Analysis",
+          "details": {
+            "instrument": "Eksigent nanoLC425 system hyphenated to a TripleTOF 5600+ mass spectrometer (Sciex)",
+            "column": "RP-C18 column (0.075 mm ID x 250 mm, HSS T3, 1.8 µm, Waters)",
+            "gradient": "90 min linear gradient of 5-35 % acetonitrile/0.1% formic acid (v:v) at 300 nl min",
+            "acquisitionMethod": "DDA and DIA"
+          }
+        }
+      },
+      "keywords": [
+        "Dysferlin",
+        "Pressure overload",
+        "Cardiac remodeling"
+      ],
+      "instruments": [
+        "TripleTOF 5600+"
+      ],
+      "diseases": [
+        "Cardiovascular system disease"
+      ],
+      "tissues": [
+        "Heart"
+      ],
+      "cutoffPoints": [
+        "FDR < 1%"
+      ],
+      "cascades": [
+        "Dysferlin interacts with Juncophilin-2, a protein that interacts with L-type Ca2+ channels and Ryanodine Receptor Ca2+ release channels in junctional complexes."
+      ]
+    },
+    "created": "2024-08-08 13:59:56.713772",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053363",
+    "response": [
+      {
+        "title": "Afucosylated broadly neutralizing antibodies enhance clearance of HIV-1 infected cells through NK cell mediated killing",
+        "organisms": [
+          "Homo sapiens (human)",
+          "Human immunodeficiency virus"
+        ],
+        "diseases": [
+          "Human immunodeficiency virus infectious disease"
+        ],
+        "sampleCollection": "Monoclonal antibodies (mAbs)",
+        "focalPoints": [
+          "Antibody glycosylation",
+          "Monoclonal antibodies",
+          "Fc N-glycosylation"
+        ],
+        "processing": {
+          "step1": {
+            "description": "Denaturation",
+            "details": "Acid denatured in 100 mM formic acid"
+          },
+          "step2": {
+            "description": "Digestion",
+            "details": "Reconstituted in 50 mM ammonium bicarbonate for proteolytic cleavage with trypsin"
+          },
+          "step3": {
+            "description": "Analysis",
+            "details": "RP-nanoLC-ESI-qTOF"
+          }
+        },
+        "keywords": [
+          "HIV",
+          "mAbs",
+          "Antibody",
+          "Glycoengineering",
+          "Fc fucosylation",
+          "N-glycosylation"
+        ],
+        "instruments": [
+          "RP-nanoLC-ESI-qTOF"
+        ]
+      }
+    ],
+    "created": "2024-08-08 14:00:03.681331",
+    "source": "PRIDE"
+  },
+  {
+    "studyId": "PXD053362",
+    "response": {
+      "title": "Proteomic profiling of kidney biopsies in nephrotic syndrome",
+      "organisms": "Homo sapiens (human)",
+      "diseases": [
+        "Minimal change disease (MCD)",
+        "Focal segmental glomerulosclerosis (FSGS)",
+        "Nephrotic syndrome"
+      ],
+      "organismParts": [
+        "Kidney",
+        "Glomeruli",
+        "Bowman's capsules",
+        "Tubulointerstitium"
+      ],
+      "demographics": {
+        "age": [
+          "0-6 years",
+          "6-18 years",
+          ">18 years"
+        ],
+        "quantity": "56"
+      },
+      "processing": {
+        "step1": {
+          "description": "Tissue Preparation",
+          "details": {
+            "thickness": "10 µm sections",
+            "method": "Formalin-fixed paraffin embedded kidney biopsy specimen mounted on MMI membrane slides"
+          }
+        },
+        "step2": {
+          "description": "Laser Microdissection",
+          "details": {
+            "instrument": "MMI CellCut Laser Microdissection microscope",
+            "regions": [
+              "Glomeruli (excluding Bowman's capsules) - 300,000 µm2",
+              "Tubulointerstitium (TI) - 300,000 µm2"
+            ]
+          }
+        },
+        "step3": {
+          "description": "Tissue Lysis and Protein Extraction",
+          "details": {
+            "lysisBuffer": "SDS lysis buffer",
+            "method": "Ultrasonication (Covaris LE220-plus focused ultrasonicator)",
+            "conditions": "Duration 400 seconds, peak power 400, duty factor 40%, cycles/burst 50, average power 160"
+          }
+        },
+        "step4": {
+          "description": "Protein Reduction, Alkylation, and Digestion",
+          "details": {
+            "reagents": [
+              "Dithiothreitol (DTT)",
+              "Iodoacetamide (IAA)",
+              "Phosphoric acid"
+            ],
+            "digestion": {
+              "enzyme": "Trypsin",
+              "conditions": "Overnight at 37°C"
+            },
+            "method": "s-trap column"
+          }
+        },
+        "step5": {
+          "description": "Peptide Purification and Elution",
+          "details": {
+            "method": "Oligo R3 beads",
+            "wash": "Aqueous formic acid",
+            "elution": "Aqueous formic acid and acetonitrile"
+          }
+        },
+        "step6": {
+          "description": "Sample Preparation for LC-MS/MS",
+          "details": {
+            "method": "Lyophilization by vacuum centrifugation"
+          }
+        },
+        "step7": {
+          "description": "LC-MS/MS Analysis",
+          "details": {
+            "system": "UltiMate 3000 Rapid Separation LC system (Thermo Fisher) coupled to an Orbitrap Exploris 480 mass spectrometer (Thermo Fisher)",
+            "column": "75 µm X 250 mm, 1.7 µm CSH C18 analytical column (Waters)",
+            "mobilePhase": {
+              "A": "0.1% formic acid in water",
+              "B": "0.1% formic acid in acetonitrile"
+            },
+            "injectionVolume": "4 µl",
+            "flowRate": "300 nl/min",
+            "gradient": "Multistage gradient over 85 minutes"
+          }
+        },
+        "step8": {
+          "description": "MS Data Acquisition",
+          "details": {
+            "mode": "Positive",
+            "scanRange": "300 to 1750 Th",
+            "AGC Target": "300%",
+            "maxFillTime": "25 ms",
+            "resolution": "120,000 (MS1), 15,000 (MS2)",
+            "collisionEnergy": "30% (NCE)"
+          }
+        }
+      },
+      "keywords": [
+        "Laser-microdissection",
+        "NURTuRE cohort",
+        "Global proteomics"
+      ],
+      "instruments": [
+        "Orbitrap Exploris 480"
+      ],
+      "cutoffPoints": [
+        "FDR < 5% (Proteins)"
+      ]
+    },
+    "created": "2024-08-08 14:00:24.541571",
+    "source": "PRIDE"
+  }
+]
