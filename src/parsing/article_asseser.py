@@ -42,7 +42,7 @@ def prompt_ai_with_article(url=None, file_path=None):
 
     logger.info(f"Prompting AI with article from url {url}")
     
-    main_prompt_obj = Prompt(file_path="src/prompting/context_prompt", variables={"content": content})
+    main_prompt_obj = Prompt(file_path="src/prompting/context_prompt.txt", variables={"content": content})
 
     # Get AI response using LLM_Model
     response = LLM_Model.prompt(main_prompt_obj)
