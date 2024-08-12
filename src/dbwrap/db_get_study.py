@@ -6,7 +6,7 @@ def get_study(id):
     type = classify_study_id(id)
     
     table_name = f"{type}_Studies"
-    sql = f'SELECT * FROM public."{table_name}" WHERE "StudyId" = %s'
+    sql = f'SELECT * FROM public."{table_name}" WHERE "studyId" = %s'
     
     conn = PostgresSingleton().get_connection()
     cur = conn.cursor()
@@ -39,7 +39,7 @@ def get_studies_to_be_analysed(study_type="PRIDE", limit=None):
         raise ValueError("Invalid study type")
     
     table_name = f"{study_type}_Studies"
-    sql = f'SELECT * FROM public."{table_name}" WHERE "StudyId" NOT IN (SELECT "studyId" FROM public."processed_Studies")'
+    sql = f'SELECT "studyId" FROM public."{table_name}" WHERE "studyId" NOT IN (SELECT "studyId" FROM public."processed_Studies")'
     
     if limit is not None:
         sql += f' LIMIT {limit}'
