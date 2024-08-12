@@ -1,15 +1,17 @@
-from dbwrap.conn_single import PostgresSingleton
+from dbwrap.conn_pool import DatabasePool
 from dbwrap.db_idvalid import classify_study_id
 
-def add_result(study_id, response):
-    # StudyID: string, response: json, created: date, source: string
+async def add_result(study_id, response):
     source = classify_study_id(study_id)
 
-    sql = f'INSERT INTO public."processed_Studies" ("studyId", "response", "source") VALUES (%s, %s, %s)'
-    conn = PostgresSingleton().get_connection()
-    cur = conn.cursor()
-    cur.execute(sql, (study_id, response, source))
-    conn.commit()
-    cur.close()
-
-    
+    async with DatabasePool.acquire() as conn:
+        async with conn.transaction():
+            try:
+                sql = 'INSERT INTO public."processed_Studies" ("studyId", "response", "source") VALUES ($1, $2, $3)'
+                await conn.execute(sql, study_id, response, source)
+                
+            except Exception as e:
+                # Handle the error appropriately
+                print(f"Error inserting data for study ID {study_id}: {e}")
+                print(f"Data: {study_id}, {response}, {source}")
+                pass # auto roll back

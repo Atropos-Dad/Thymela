@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <h1>Search Results for "{{ query }}"</h1>
+    {% for result in results %}
+        <div class="result">
+            <h2>
+                <a href="https://www.ebi.ac.uk/pride/archive/projects/{{ result.id }}" target="_blank">
+                    {{ result.metadata.title }}
+                </a>
+            </h2>
+            <p>ID: {{ result.id }}</p>
+            <p class="score">Score: {{ result.score }}</p>
+            <p>{{ result.metadata.text[:200] }}...</p>
+        </div>
+    {% endfor %}
+    <a href="/">New Search</a>
+</body>
+</html>
