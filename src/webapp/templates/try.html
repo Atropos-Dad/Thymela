@@ -23,9 +23,9 @@
             max-width: 800px;
             text-align: center;
             padding: 2rem;
-            background-color: rgba(255, 255, 255, 0.8); /* Optional: Adds a slight background to the container */
-            border-radius: 15px; /* Optional: Adds rounded corners to the container */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Optional: Adds a shadow to the container */
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         h1 {
@@ -44,6 +44,11 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
+        .search-box form {
+            display: flex;
+            width: 100%;
+        }
+
         .search-box input[type="text"] {
             flex-grow: 1;
             height: 50px;
@@ -51,31 +56,36 @@
             border: none;
             outline: none;
             padding: 0 1.5rem;
-            border-top-left-radius: 25px;
-            border-bottom-left-radius: 25px;
+            border-radius: 25px;
         }
 
-        .search-box button {
+        .search-box input[type="submit"] {
             height: 50px;
             font-size: 1.2rem;
             background-color: #0052cc;
             color: white;
             border: none;
-            border-top-right-radius: 25px;
-            border-bottom-right-radius: 25px;
+            border-radius: 25px;
             padding: 0 2rem;
-            transition: background-color 0.3s;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            margin-left: -50px; /* Overlap with the text input */
         }
 
-        
+        .search-box input[type="submit"]:hover {
+            background-color: #003d99;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body>
     <div class="search-container">
         <h1>Article Search</h1>
         <div class="search-box">
-            <input type="text" placeholder="Enter your search query">
-            <button class="btn">Search</button>
+            <form method="POST">
+                <input type="text" name="query" placeholder="Enter your search query">
+                <input type="submit" value="Search">
+            </form>
         </div>
     </div>
 

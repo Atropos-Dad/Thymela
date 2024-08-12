@@ -73,8 +73,8 @@ def index():
     if request.method == 'POST':
         query = request.form['query']
         results = search_articles(query)
-        return render_template('results.html', results=results, query=query)
-    return render_template('index.html')
+        return render_template('results2.html', results=results, query=query)
+    return render_template('try.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
