@@ -3,6 +3,11 @@ import json
 from pinecone import Pinecone
 from langchain_openai import OpenAIEmbeddings
 from pinecone_text.sparse import BM25Encoder
+from dotenv import load_dotenv
+import os
+
+# Load environment variables
+load_dotenv()
 
 # Load the BM25 model
 bm25 = joblib.load('bm25_model.joblib')
@@ -11,11 +16,17 @@ bm25 = joblib.load('bm25_model.joblib')
 with open('embedding_config.json', 'r') as f:
     embedding_config = json.load(f)
 
+# Update the API key from the environment variable
+embedding_config['api_key'] = os.getenv('OPENAI_API_KEY')
+
 embedding_client = OpenAIEmbeddings(**embedding_config)
 
 # Load the Pinecone configuration
 with open('pinecone_config.json', 'r') as f:
     pinecone_config = json.load(f)
+
+# Update the API key from the environment variable
+pinecone_config['api_key'] = os.getenv('PINECONE_API_KEY')
 
 pc = Pinecone(api_key=pinecone_config['api_key'])
 pinecone_index = pc.Index(pinecone_config['index_name'])
@@ -64,11 +75,11 @@ def search_articles(query: str, top_k: int = 5, alpha: float = 0.5):
         print(f"ID: {match['id']}")
         print(f"Score: {match['score']}")
         print(f"Title: {match['metadata']['title']}")
-        print(f"Text: {match['metadata']['text'][:200]}...")
+        print(f"Text: {match['metadata']['text'][:200]}...")  # Print first 200 characters
         print("---")
 
 # Example usage
 if __name__ == "__main__":
-    search_query = "Find a mouse in a study that has used LC-MS/MS analysis to investigate protein modifications or interactions."
+    search_query = "Find a Huntingtin protein interaction with ubiquitin and its role in protein degradation"
     print(f"Search Query: {search_query}")
     search_articles(search_query)
