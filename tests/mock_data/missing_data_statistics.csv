@@ -1,0 +1,730 @@
+Category,Missing Occurrences
+Subject ID,160418
+t1d_case,21285
+t1d_case_ind_1,21285
+t1d_endptage_1,21285
+t1d_case_ind_2,17583
+t1d_control,17583
+t1d_endptage_2,17583
+ia_case,17059
+ia_endptage_1,17059
+ia_case_ind_1,17059
+ia_control,8125
+ia_endptage_2,8125
+ia_case_ind_2,8125
+Sex,2356
+morphology,2054
+strain,1024
+OS_Censor (1 means the time is a censoring time and 0 means a failure time in OS),1005
+Time,841
+MS_COMMENTS,733
+REMDESIVIR on,650
+Cancer,627
+DEXAMETHOSONE on,624
+30 day mortality,609
+Advtradyn,596
+Hradvtradyn,578
+Death due to COVID-19?,573
+60 day mortality,567
+90 day mortality,553
+Fecal Calprotectin,546
+Chronic kidney disease,546
+Specify race,515
+Clinical group,502
+Acute renal failure,500
+RAW_FILE_NAME,488
+Treatment,477
+species,474
+SCCAI,433
+High/Low arterial pH,430
+preculture_time,430
+Age,429
+Number of liquid or very soft stools in the past 24 hours:,418
+How long smoked?,412
+Tradyn,412
+TREATMENT_SUMMARY,402
+Blood in the stool,398
+General well being over the past 24 hours,398
+Bowel frequency during the night,398
+Bowel frequency during the day,398
+Urgency of defecation,398
+Was SCCAI completed?,396
+Acute respiratory failure,388
+Diabetes,380
+StrenuousExercise(per week),368
+Moderate Exercise(per week),368
+Mild Exercise(per week),368
+Stress Level (past week),368
+HBI,361
+Duplicate Pair,345
+Ballooning,344
+IBS,344
+Race,326
+Kleiner.Fibrosis,320
+Height [cm],315
+Weight [kg],315
+COLLECTION_SUMMARY,313
+subculture_time,312
+Parasitemia,309
+baseline_montreal_location,307
+Drinks/day,306
+Smoke_Cig_Current,303
+comment,300
+Abdominal mass,290
+Abdominal pain,290
+General wellbeing,290
+SAMPLEPREP_SUMMARY,283
+Was HBI completed?,283
+Group,279
+Stage,268
+HX_Dm,266
+Strain,260
+HDLMEN<40,260
+Hispanic,259
+Gender,253
+Log2 Parasitemia,251
+Ever Smoked?,249
+Marital Status,249
+Education,249
+Income Category,249
+Alcohol Consumption,249
+Diagnosis,242
+HDLWOMEN<50,242
+HX_Chol,239
+phylum,236
+taxonomy,236
+genus,236
+family,236
+order,236
+class,236
+Smoker,235
+Time (mins),234
+HX_HTN,233
+PHONE,230
+MECFS,228
+Factor,225
+MENWAIST,224
+dmrx2,221
+TG>,221
+glucose>,218
+MH,215
+Comments,214
+observation,212
+RACE_Black,209
+CB_VISIT1,204
+Tissue,204
+Lung Cancer Stage,199
+RACE_WHT_OTH,197
+RACE_WHT_BLK_OTH,197
+Causative gene,196
+Replicate,192
+PEX_TOT0101,188
+Notes.Global,185
+statinrx2,182
+Tabagismo_corr,182
+WOMENWAIST,179
+BASELINE_ASTHMA_DX,178
+Ripening stage,174
+CURRENT_SMOKER_V1,172
+Inosine,168
+Colnelenic acid,168
+Pregnenolone,168
+2-Hydroxystearic acid,168
+"4-cholesten-7α,12α,24-triol-3-one",168
+DG(38:8),168
+PE(29:1),168
+PC(28:2),168
+PA(36:8),168
+htnrx2,164
+CRC Diagnosis,160
+other,159
+Genotype,152
+SBP>,149
+INSTRUMENT_NAME,143
+Preeclampsia,142
+RACE,141
+Diet_notes,139
+Age at diagnosis,139
+Smoking Status,138
+ALT,136
+BRONCH_DIAGNOSED01,136
+COLUMN_NAME,135
+OtherName,132
+Sample replicate,130
+Parasite.Density,129
+Timepoint,126
+L-carnitine Dose (g),126
+Condition,125
+SPG_inSample,123
+dilution_factorAcq,123
+QC,123
+rbc(cells/uL),123
+AST,122
+Combined Total Glycolytic Activity (COM TGAI) from PET-CT,121
+Inflammation,120
+Experiment number,119
+kingdom,118
+CHROMATOGRAPHY_TYPE,118
+,117
+METS,116
+CBC_BASOPHIL_CNT01,116
+KEGG ID,116
+YOB,115
+Severe_Exacerbations,115
+GA_cort,108
+Prenatal Smoking,106
+Chronic_Bronchitis,105
+TimePoint,104
+IL2,103
+treatment_duration_(h),103
+SmokingStatus,99
+concentration,99
+RACE_WHITE,98
+USER_SEX,98
+ADDRESS,98
+SampleType,96
+TBIL,96
+ALKP,93
+hilicpositive,92
+Developmental Timepoint,91
+BDR,91
+Volume(uL),90
+Exacerbation Frequency,90
+Asthma,89
+Row,88
+Column,88
+IL28,85
+Total_Exacerbations,84
+SD seed length(cm),84
+Diet,84
+Prog/Relapse by 9/7/11,83
+Host Plant,82
+Average seed length(cm),78
+No of samples for seed length,78
+HER-2 neu,77
+Country,76
+Other,75
+c18negative,74
+Year of Sample Collection,73
+Maternal Treatment (injection),73
+Collection Time,72
+Interval days,71
+CHEAR Sample name,71
+Subject on ventilation at any point after d0,69
+Week Number,69
+METABOLITE_ID,68
+CAS Number,68
+m/z,68
+retention time,68
+Ionization mode,68
+PubChem ID,68
+mass spectrum,68
+LMP ID,68
+HMP ID,68
+PR,67
+BMI [kg/m²],66
+ATS_PackYears,65
+time,65
+F_ID,64
+CA242,61
+Date.d0Sampling,60
+Weight(mg),60
+Plate,60
+BMI,60
+timepoint,59
+Metal Exposure,59
+exposure,59
+Air conditions,58
+Obesity,57
+treatment,56
+week,56
+IsCtrl,56
+BadSampOD,56
+Normalized final OD600,56
+PlateNum,56
+Strain name,56
+SMOKING_PACK_YEARS_V1,55
+ER,54
+TNFA,53
+AcetateConcentration_mM,53
+Immunizing agent,52
+Provenance,52
+Time(weeks),52
+AcetateGroup,50
+Doxorubicin dosage(μM),50
+VERY Quick prog/ slow prog,50
+Pool,50
+IL1B,49
+Collection Time (minute),48
+Treatment Dosage,48
+OD600,48
+Days post symptom onset,48
+Site,46
+Time_point,46
+PCS,46
+Time Point,44
+TCPOBOP (mg/kg),43
+RAW_FILE_NAME(Raw file name for Ox-PI),42
+Gold Stage,42
+Collection Timepoint,42
+IL13,41
+acute groups,40
+race,40
+RAW_FILE_NAME(Raw file name for Ox-PC),40
+IL22,40
+hgb(g/dL),39
+wbc(cells/uL),39
+Cage,39
+CA125,39
+bmi,38
+IL18,38
+EPO,38
+MGIT (days),38
+Colonized,38
+Week,38
+SUBJECT_TYPE,38
+EOTAXIN,37
+Host,37
+CA153,37
+HTA,37
+Sub-group,37
+GoldStage,37
+CardiacDisease,37
+IP10,37
+Strain2,37
+Full name,37
+Genus,37
+stage,37
+RAW_FILE_NAME(Raw file name for oxPI),36
+GeneXpert MTB/RIF Ct values,36
+Species,35
+spleen_load,35
+Positive days,35
+liver_load,35
+COLUMN_TEMPERATURE,35
+TGFB,34
+Prediction Model (Coculture vs Axenic),34
+IL1A,34
+Additional Adjustments,34
+Date.Birth,34
+CEA,33
+MCP1,33
+protein ug/vial,33
+IL3,33
+RANTES,33
+ERI,33
+well,32
+sample_title,32
+MS_Sample,32
+Time from symptom onset to ICU (days),32
+AcetateConc,32
+MIP1A,32
+Sample source,32
+IL9,31
+cd4_nadir,31
+CA199,31
+protein_weight,30
+Amount,30
+time_point,30
+ID #,30
+IL17A,30
+AJCC_stage,30
+IL6,30
+brand_name,30
+Day,30
+MIP2,30
+Concentration,30
+ALB,30
+INS_WAIS_HIP2,29
+LG_HDL,29
+USER_RACE1,29
+LG_TOTCHOLESTEROL,29
+DiastolicBP,29
+LG_CHOL_HDLC_RATIO,29
+steroid_status,29
+SystolicBP,29
+LG_TRIGLYCERIDES,29
+LG_GLUCOSE,29
+"1) In the past 2 weeks, have you received any of the following medications",29
+VEGF,29
+LG_LDL,29
+USER_AGE,29
+INS_WAIS_HIP1,29
+USER_GENDER,29
+IFNA,29
+INS_WAIS_WAIST2,29
+AGE WHOLE,29
+INS_WAIS_WAIST1,29
+VISIT_ID,29
+LG_INSULIN 2,29
+GMCSF,28
+Incubation,28
+IL23,28
+Milk powder,28
+Lymphocyte %,28
+OD,28
+Lymphocyte absolute,28
+PreCultureMorphology,28
+IL31,28
+MCSF,28
+CaseStatus,28
+SEX,28
+AGE_DICH,28
+BMI_DICH,28
+height (in.),28
+MCP3,28
+weight (lbs.),28
+EXTRACTION BUFFER,28
+Pregnancy status,28
+c18positive,28
+Technical Replicate,28
+LIX,27
+IL15.IL15R,27
+INTERNAL STANDARDS,27
+IL4,27
+IFNG,26
+Collection time,26
+Patient group,26
+VET SCORE (Adipose),26
+Chemo_response_numeric,26
+GSCF.CSF3,26
+IL12P70,26
+LEPTIN,26
+IL5,26
+MIP1B,26
+PROJECT_SUMMARY,25
+LIF,25
+IL10,25
+Benzene_Exposure_Category,25
+IL27,25
+GROA,25
+gender,24
+Acclimatization temperature,24
+Immunization #,24
+Sample Collection,24
+Adjuvant,24
+MCV,24
+FLOW_GRADIENT,24
+Sample_description,24
+DFMO treatment (mM),24
+Bacillary index,24
+SMOKING_PACK_YEARS01,24
+Heat exposure,24
+Exposure time,23
+Nanomaterial,23
+COD.EXT,23
+HHEAR-ECHO ID,23
+Sample,22
+ArgGroup,22
+Kleiner.Steatosis,22
+SOLVENT_B,22
+LCMSPos Data Name,22
+sex,21
+RBC.Delta,21
+6) Have you ever had bowel surgery?,21
+GLUCOSE,21
+"5) In the past 2 weeks, have you been hospitalized?",21
+Spike,21
+Reactor,21
+"3) In the past 2 weeks, have you used an oral contrast",20
+Tissue type,20
+"2) In the past 2 weeks, have you undergone a colonoscopy or other procedure",20
+Weight (g),20
+Time point (day),20
+Diet at Week 2,20
+HSV-1,20
+sample  quantity),20
+MTX (mg/week),20
+TCDD treatment(ug/kg),20
+TIME_TO_TB,20
+Date.Arrived,20
+host_age,20
+Gsk Exposure Time (h),20
+NECROPSY NOTES:,19
+"4) In the past 2 weeks, have you had diarrhea?",19
+Age at Blood Draw,19
+Disease State,19
+Tumor Present,18
+SOLVENT_A,18
+Grade,18
+LPS (ng/mL),18
+Liver Lobe,18
+Cell Line Injected,18
+timepoint (min),18
+Days to two consecutive &gt;1000 Copies,18
+LCMSNeg Data Name,18
+Weight.Percent.Loss,17
+Weight.Delta,17
+Organ,17
+hour,16
+Concentration (ug/ml),16
+Time (days),16
+RAW_FILE_NAME(Raw file name for PE),16
+RAW_FILE_NAME(Raw file name for PI),16
+RAW_FILE_NAME(Raw file name for PC),16
+Exposure Level,15
+Fasting prior to blood draw (hours),15
+CD4_HLADR_single_positive_cells,15
+CD8_HLADR_single_positive_cells,15
+visit,15
+age,15
+Body mass index,15
+Treatment (Maternal Injection),15
+Timepoint of Collection,15
+Sample Source,14
+Duration,14
+FLOW_RATE,14
+Sample #,13
+Histology Adipose,13
+Rat ID,13
+Weight,13
+ID,13
+Sample name,13
+ODMAmetabotye,13
+Education Level,13
+D-tagatose (%),12
+Histology Swim Bladder,12
+group,12
+CI_group,12
+buffer C_Ell,12
+GA_surg,12
+Timepoint (weeks),12
+Serologic finding (+ or - for PGL-I),12
+phenotype,12
+Bafilomycin,12
+Date.Infection,12
+Variant,12
+Cells,12
+Age at start of study (years),11
+Age at start of study,11
+Height,11
+Phenotypic grouping and treaments,11
+Eggs,11
+"Vegetables (salad, tomatoes, onions, greens, carrots, peppers, green beans, etc)",10
+TIME_DAYS,10
+DM Type,10
+A1C,10
+Fasting,10
+Lymphocyte_count,10
+CD4_HLADR_CD38_percent,10
+Tumour,10
+Node,10
+CD4_count,10
+CD4_percent,10
+Grown in presence of NaCl (mM),10
+Metastasis,10
+NAS,10
+CD4_CD38_single_positive_cells,10
+CBC_EOSINOPHIL_CNT01,10
+Recurrence or Progression?,10
+Triglycerides,10
+Leptin,10
+Lymphocyte_percent,10
+LDL,10
+Insulin,10
+CD8_CD38_single_positive_cells,10
+HDL,10
+Glucose,10
+Adiponectin,10
+Lipodystrophy,10
+Suspension,10
+CD8_count,10
+DESCRIPTION,10
+Reproductive Status,10
+Capture Location,10
+CD8_percent,10
+CD8_HLADR_CD38_percent,10
+hours,10
+height(cm),10
+smk_hx,9
+age_cat,9
+BMI z-score,9
+Pack Years,9
+methylation_rank,9
+drc_rank,9
+bmi_cat,9
+Age (year),9
+Vaginal Bleeding,9
+Time (h),9
+Light Intensity (µmole photons m-2 s-1 ),9
+Blood.Glucose.Delta,9
+approx_weight,9
+radiation dose,8
+FG-4592(10 mg/kg),8
+IFNgamma ng/mL),8
+Time (day),8
+FG-4592(mg/kg),8
+"Time, hrs",8
+1x PBS,8
+viral_load_value,8
+Duration (weeks),8
+NAFLD.Category,8
+"Yogurt or other foods containing active bacterial cultures (kefir, sauerkraut)",8
+"Dairy (milk, cream, ice cream, cheese, cream cheese)",8
+"Shellfish (shrimp, lobster, scallops, etc.)",7
+"Fish (fish nuggets, breaded fish, fish cakes, salmon, tuna, etc.)",7
+"Sweets (pies, jam, chocolate, cake, cookies, etc.)",7
+Temperature.Delta,7
+smoking_status,7
+"Fruits (no juice) (Apples, raisins, bananas, oranges, strawberries, blueberries",7
+Probiotic,7
+"Whole grains (wheat, oats, brown rice, rye, quinoa, wheat bread, wheat pasta)",7
+Time_Cox_RRT,7
+Time_composite_deathRRT,7
+Weeks Difference,7
+Age in days,7
+Ethnicity,7
+Time_competitive_RRTvsDeath,7
+Hours,7
+"Soft drinks, tea or coffee with sugar (corn syrup, maple syrup, cane sugar, etc)",7
+STUDY_SUMMARY,7
+Sorting,6
+IAMnum,6
+Left Hippocampus,6
+Sample ID,6
+Main factor (1 to 5),6
+Number of cells,6
+Days to &gt;1000 Copies,6
+genotype,6
+O2,6
+ETHNICITY,6
+Monocytes (%),6
+MEHP concentration,6
+"Starch (white rice, bread, pizza, potatoes, yams, cereals, pancakes, etc.)",6
+"Beans (tofu, soy, soy burgers, lentils, Mexican beans, lima beans etc)",6
+"Diet soft drinks, tea or coffee with sugar (Stevia, Equal, Splenda etc)",6
+LPS (ug/mL),6
+"Processed meat (other red or white meat such as lunch meat, ham, salami, bologna",6
+"White meat (chicken, turkey, etc.)",6
+Additive 2,5
+Right Hippocampus,5
+INSTRUMENT_TYPE,5
+Culture Time,5
+Cell,5
+Additive 1,5
+Environment,5
+"Red meat (beef, hamburger, pork, lamb)",5
+NO status,5
+Blood.Glucose.Initial,5
+lung_disease,5
+Biological replicate,4
+Ratio Lymphocytes/Neutrophils (%),4
+White Blood Cell Count,4
+TOTAL PROTEIN (g/100mL),4
+PCV,4
+PCV Color,4
+Hemoglobin,4
+Hb,4
+"Alcohol (beer, brandy, spirits, hard liquor, wine, aperitif, etc.)",4
+Hour,4
+"Fruit juice (orange, apple, cranberry, prune etc.)",4
+Sample Identifier Instrument Run Name (NEG),4
+Cell line,4
+Tea or coffee no sugar and no sugar replacement,4
+Tumor_staging_before_chemo,4
+Water,4
+Sample description,4
+Extraction Time (hours),4
+Draw Number,4
+Pig_Model,3
+Waist Cm,3
+SampleID,3
+Tissue Weight (mg),3
+Date.Transpond,3
+Pool #,3
+Days post-STZ,3
+FeEDDHA (µM),3
+PUBLICATIONS,3
+Time after hypoxia (days),3
+tamoxifen(µM）,3
+Biological repeat,3
+Genotype Shorthand,3
+Genotype of fly lines,3
+collection time (zietgeber time (H:MM:SS),2
+Years_Education,2
+LONG TERM RED MEAT INTAKE,2
+RAW_FILE_NAME(Raw file name for Ox-PE),2
+Symptom,2
+Smoking,2
+Cell Type,2
+Metastatic,2
+CHROMATOGRAPHY_SUMMARY,2
+BATCH,2
+SubTypes,2
+Nuclear Grade,2
+Tumor Width,2
+LIPIDOMICS_BATCH,2
+LENGTH (CM),2
+TG (CM),2
+DIET,2
+Time_death,2
+HASnum,2
+Growth phase,2
+Growth media,2
+Instrument Run Name (NEG),2
+technical replicate,2
+HIV_status,2
+Antiviral_Treatment,2
+Annuli,2
+WEIGHT (KG),2
+Histology Liver,2
+Sample type,2
+L-serine (mg/kg/day),2
+time point (weeks),2
+Plasma.Volume.Net,2
+RBC.Initial.millions.per.uL,2
+Blood.Glucose,2
+RBC.millions.per.uL,2
+Temperature,2
+MIG,2
+FOB (µL),1
+Sample Type,1
+Note,1
+daysafterdelivery.x,1
+Instrument Run Name (POS),1
+NMR pH,1
+DOL,1
+Date Captured,1
+Subject Identifier Instrument Run Name (NEG),1
+CKD_EPI,1
+HEIGHT_OR_HEIGHT_RANGE,1
+SOLVENT_C,1
+SPECIES_GROUP,1
+delta_weight,1
+biological replicate,1
+modality,1
+time point,1
+SKOV3ip1 passage,1
+Patient,1
+ANIMAL_ACCLIMATION_DURATION,1
+ION_MODE,1
+PLANT_HUMIDITY,1
+Construct,1
+Analytical order,1
+DAYS,1
+TAXONOMY_ID,1
+Days to &gt;50 Copies,1
+COLLISION_ENERGY,1
+"Child_ Fecal beta2 defensin, 12 months",1
+LABORATORY,1
+Child_ Fecal_calprotectin_12_months,1
+Mouse DEXA fat %,1
+Donor DEXA fat %,1
+EXPERIMENT,1
+AMY1 group,1
+TYPE,1
+PROCESSING_PARAMETERS_FILE,1
+GROUP,1
+DLCO,1
+Taxane,1
+Tamoxyfen,1
+WLZ,1
+blood draw_age,1
+Intestinal Segment,1
+Volume,1
+Line,1
+Collection Type,1
+Age Group,1
+ethnicity,1
+NUM_MALES,1
+EMAIL,1

@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import json
 import threading
@@ -58,22 +59,27 @@ def parallel_analyze(df):
 
 results = parallel_analyze(df)
 
+save_directory = 'tests/mock_data'
+
 #i put 50 idk if thats valid
-threshold = len(df) * 0.5
+#threshold = len(df) * 0.5
 
 
 missing_df = pd.DataFrame(list(results['missing'].items()), columns=['Category', 'Missing Occurrences'])
 
-# Apply threshold filter and sort by 'Missing Occurrences' in descending order
-missing_df = missing_df[missing_df['Missing Occurrences'] > threshold].sort_values(by='Missing Occurrences', ascending=False).reset_index(drop=True)
+# Sort by 'Missing Occurrences' in descending order
+missing_df = missing_df.sort_values(by='Missing Occurrences', ascending=False).reset_index(drop=True)
 
 print("Missing Data Statistics (Occurrences > 50% of total rows):")
 print(missing_df)
 
 
+
+
 new_categories_df = pd.DataFrame(list(results['new_categories'].items()), columns=['Potential New Category', 'Occurrences'])
-new_categories_df = new_categories_df[new_categories_df['Occurrences'] > threshold].sort_values(by='Occurrences', ascending=False).reset_index(drop=True)
-new_categories_df.to_csv('potential_new_categories.csv', index=False)
+
+# Sort by 'Occurrences' in descending order
+new_categories_df = new_categories_df.sort_values(by='Occurrences', ascending=False).reset_index(drop=True)
 
 first_10 = new_categories_df.head(10)
 
@@ -81,4 +87,16 @@ print("\nPotential 10 New Categories Statistics (Occurrences > 50% of total rows
 print(first_10)
 
 print("\n other potential categories in the csv bc there is a lot of data mentioned >50%")
+
+#combined_df = pd.concat([missing_df, new_categories_df], ignore_index=True)
+
+# Save the combined DataFrame to a CSV file
+#combined_df.to_csv('combined_statistics.csv', index=False)
+
+
+missing_df.to_csv(os.path.join(save_directory, 'missing_data_statistics.csv'), index=False)
+new_categories_df.to_csv(os.path.join(save_directory, 'potential_new_categories.csv'), index=False)
+#combined_df = pd.concat([missing_df.assign(Type='Missing Data'), new_categories_df.assign(Type='Potential New Category')], ignore_index=True)
+
+
 
