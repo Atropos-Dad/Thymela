@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Analysis Monitor</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .status-box { border: 1px solid #ddd; padding: 10px; margin-bottom: 20px; }
+        #taskChart { max-width: 100%; height: 300px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Article Analysis Monitor</h1>
+        <button onclick="startAnalysis()">Start Analysis</button>
+        <div class="status-box">
+            <h2>Overall Status</h2>
+            <p>Total Success: <span id="totalSuccess">0</span></p>
+            <p>Total Failure: <span id="totalFailure">0</span></p>
+            <p>Elapsed Time: <span id="elapsedTime">Not started</span></p>
+            <p>Articles per Second: <span id="articlesPerSecond">0</span></p>
+            <p>Progress: <span id="progress">0</span>%</p>
+        </div>
+        <div class="status-box">
+            <h2>Task Performance</h2>
+            <canvas id="taskChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        let chart;
+        let analysisStarted = false;
+
+        function startAnalysis() {
+            fetch('/start_analysis')
+                .then(response => response.text())
+                .then(data => {
+                    alert(data);
+                    analysisStarted = true;
+                });
+        }
+
+        function updateStatus() {
+            fetch('/status')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('totalSuccess').textContent = data.total_success;
+                    document.getElementById('totalFailure').textContent = data.total_failure;
+                    if (analysisStarted || data.elapsed_time > 0) {
+                        document.getElementById('elapsedTime').textContent = data.elapsed_time.toFixed(2) + ' seconds';
+                        document.getElementById('articlesPerSecond').textContent = data.articles_per_second.toFixed(2);
+                        analysisStarted = true;
+                    }
+                    document.getElementById('progress').textContent = (data.progress * 100).toFixed(2);
+
+                    updateChart(data.task_stats);
+                });
+        }
+
+        function updateChart(taskStats) {
+            const labels = taskStats.map((_, index) => `Task ${index}`);
+            const successData = taskStats.map(stats => stats.success);
+            const failureData = taskStats.map(stats => stats.failure);
+
+            if (!chart) {
+                const ctx = document.getElementById('taskChart').getContext('2d');
+                chart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'Success',
+                                data: successData,
+                                backgroundColor: 'rgba(75, 192, 192, 0.6)'
+                            },
+                            {
+                                label: 'Failure',
+                                data: failureData,
+                                backgroundColor: 'rgba(255, 99, 132, 0.6)'
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                stacked: true
+                            },
+                            x: {
+                                stacked: true
+                            }
+                        }
+                    }
+                });
+            } else {
+                chart.data.labels = labels;
+                chart.data.datasets[0].data = successData;
+                chart.data.datasets[1].data = failureData;
+                chart.update();
+            }
+        }
+
+        // Update status every 5 seconds
+        setInterval(updateStatus, 5000);
+        // Initial update
+        updateStatus();
+    </script>
+</body>
+</html>
