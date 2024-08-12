@@ -3,9 +3,9 @@ import requests
 from typing import List, Dict, Any
 
 # Vectara API configuration
-CUSTOMER_ID = "1724835199"
-CORPUS_ID = "3"
-API_KEY = "zut_w44ii_8CV2bdSc2IxtdvpnpL7q4NaGVlx9-Lgw"
+CUSTOMER_ID = ""
+CORPUS_ID = ""
+API_KEY = ""
 
 # API endpoints
 INDEX_URL = "https://api.vectara.io/v1/index"
