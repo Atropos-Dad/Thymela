@@ -1,0 +1,140 @@
+Potential New Category,Occurrences
+Sample ID,294610
+RAW_FILE_NAME,170561
+Subject ID,134190
+Sex,54196
+Treatment,40504
+Batch,29198
+Visit,24544
+Group,23952
+cc,23120
+Age in Days,23120
+Sample Type,22616
+Age,18014
+sex,16953
+Gender,16609
+Genotype,15971
+Disease,15746
+ia_case_ind_2,14995
+ia_control,14995
+ia_endptage_2,14995
+Sample source,14566
+age,14366
+Factor,12626
+Timepoint,12425
+Race,10746
+BMI,9696
+Analysis Order,8464
+Diagnosis,7824
+Sample type,7443
+raw_file,7241
+HHEAR-ECHO ID,7174
+Time,7062
+treatment,6827
+ia_case_ind_1,6061
+ia_endptage_1,6061
+ia_case,6061
+INSTITUTE,5798
+LAST_NAME,5798
+FIRST_NAME,5798
+EMAIL,5797
+ADDRESS,5692
+PHONE,5560
+t1d_case_ind_2,5537
+t1d_endptage_2,5537
+t1d_control,5537
+Species,5390
+INSTRUMENT_NAME,5270
+batch,5186
+Date Analyzed,4846
+Tissue,4839
+Sample.Matrix,4655
+Time point,4634
+Type,4490
+RAW_FILE_NAME(Raw file name),4326
+gender,3882
+Diet,3874
+CHEAR_Project_ID,3809
+Condition,3566
+SAMPLE_TYPE,3558
+group,3511
+SampleType,3455
+DEPARTMENT,3448
+Organ,3264
+Ethnicity,3255
+GENDER,3233
+Replicate,3197
+Strain,3142
+type,3076
+AGE,2976
+STUDY_TITLE,2899
+PROJECT_TITLE,2899
+STUDY_SUMMARY,2891
+SUBJECT_SPECIES,2881
+PROJECT_SUMMARY,2870
+LABORATORY,2868
+ANALYSIS_TYPE,2863
+SUBJECT_TYPE,2861
+sample_type,2724
+MS_TYPE,2660
+ION_MODE,2659
+INSTRUMENT_TYPE,2655
+TAXONOMY_ID,2649
+CHROMATOGRAPHY_TYPE,2636
+COLUMN_NAME,2618
+SAMPLEPREP_SUMMARY,2614
+study,2564
+TREATMENT_SUMMARY,2493
+Annotation,2492
+COLLECTION_SUMMARY,2477
+Phenotype,2470
+smoking_status,2443
+visit,2436
+experiment,2382
+Date,2357
+chromatography,2282
+class,2275
+column,2198
+Age.At.Blood.Draw,2198
+rep,2163
+CHEAR_Project ID,2158
+FACTORS,2158
+Source,2139
+genotype,2135
+media,2110
+replicate,2093
+Subject,2085
+c18positive,2070
+order,2040
+c18negative,2024
+hilicpositive,2006
+Clinical group,1990
+Cohort,1979
+Raw files,1885
+taxonomy,1862
+phylum,1862
+family,1862
+genus,1862
+MS_COMMENTS,1841
+t1d_case,1835
+t1d_endptage_1,1835
+t1d_case_ind_1,1835
+subculture_time,1786
+adj_density_mesa,1773
+timepoint,1723
+Region,1721
+Trial,1695
+Smoking Status,1680
+"OS (Overall Survival, months)",1677
+Derived_Age_at_Consent,1677
+time,1675
+preculture_time,1668
+Weight,1645
+Celltype,1607
+Category,1585
+Plasma,1581
+Status,1572
+Site,1568
+race,1552
+Class,1454
+GROUP,1450
