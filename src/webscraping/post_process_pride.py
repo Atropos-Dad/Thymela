@@ -1,5 +1,6 @@
 import os
 import json
+
 def verify_type():
     # for each result in pride_results, verify that the type is dict, and then check if organisms key for each project is not a list
     for filename in os.listdir("src/webscraping/pride_results"):
