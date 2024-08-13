@@ -1,6 +1,5 @@
 import pandas as pd
 from tabulate import tabulate
-import textwrap
 import time
 from typing import List, Dict
 from langchain_openai import OpenAIEmbeddings
@@ -54,7 +53,8 @@ def get_embeddings(
     start_time = time.time()
 
     for index, row in df.head(num_rows).iterrows():
-        text = f"{row['title']} {row['projectDescription']} {row['sampleProcessingProtocol']} {row['dataProcessingProtocol']} {row['keywords']} {row['organisms']} {row['organismParts']} {row['diseases']} {row['projectTags']} {row['instruments']}"
+        text = f"{row['studyId']} {row['response']} {row['created']} {row['source']} {row['version']}"
+        text = ' '.join(str(item) for item in text.split())  # Convert all items to strings
 
         if not isinstance(text, str) or not text.strip():
             continue
@@ -66,19 +66,18 @@ def get_embeddings(
                 embeddings = embedding_client.embed_documents(batch_texts)
                 for i, text in enumerate(batch_texts):
                     result_list.append({
-                        'StudyId': batch_ids[i],
-                        'title': df.loc[df['StudyId'] == batch_ids[i], 'title'].values[0],
-                        'text': text,
+                        'studyId': batch_ids[i],
+                        'response': str(df.loc[df['studyId'] == batch_ids[i], 'response'].values[0]),
                         'embeddings': embeddings[i]
                     })
 
             batch_texts = [text]
-            batch_ids = [row['StudyId']]
+            batch_ids = [row['studyId']]
             current_tokens = tokens
             total_batches += 1
         else:
             batch_texts.append(text)
-            batch_ids.append(row['StudyId'])
+            batch_ids.append(row['studyId'])
             current_tokens += tokens
 
         total_tokens += tokens
@@ -87,9 +86,8 @@ def get_embeddings(
         embeddings = embedding_client.embed_documents(batch_texts)
         for i, text in enumerate(batch_texts):
             result_list.append({
-                'StudyId': batch_ids[i],
-                'title': df.loc[df['StudyId'] == batch_ids[i], 'title'].values[0],
-                'text': text,
+                'studyId': batch_ids[i],
+                'response': str(df.loc[df['studyId'] == batch_ids[i], 'response'].values[0]),
                 'embeddings': embeddings[i]
             })
         total_batches += 1
@@ -136,26 +134,27 @@ pinecone_index.describe_index_stats()
 bm25 = BM25Encoder()
 
 # Train BM25 on the combined text fields
-train_texts = df['title'] + ' ' + df['projectDescription'] + ' ' + df['sampleProcessingProtocol'] + ' ' + df['dataProcessingProtocol'] + ' ' + df['keywords'] + ' ' + df['organisms'] + ' ' + df['organismParts'] + ' ' + df['diseases'] + ' ' + df['projectTags'] + ' ' + df['instruments']
-bm25.fit(train_texts.astype(str).tolist())
+train_texts = df['studyId'].astype(str) + ' ' + df['response'].astype(str) + ' ' + df['created'].astype(str) + ' ' + df['source'].astype(str) + ' ' + df['version'].astype(str)
+bm25.fit(train_texts.tolist())
 
 def group_embeddings_and_generate_sparse_vectors(cases, sparse_vector_model):
     all_cases_embeddings_and_sparse_vectors = []
 
     for case in tqdm(cases, desc="Processing cases"):
-        StudyId = case['StudyId']
-        title = case['title']
-        text = case['text']
+        studyId = case['studyId']
+        response = case['response']
+        text = f"{studyId} {response} {df.loc[df['studyId'] == studyId, 'created'].values[0]} {df.loc[df['studyId'] == studyId, 'source'].values[0]} {df.loc[df['studyId'] == studyId, 'version'].values[0]}"
+        text = ' '.join(str(item) for item in text.split())  # Convert all items to strings
         embeddings = case['embeddings']
 
-        sparse_values = sparse_vector_model.encode_documents(text)
+        sparse_values = sparse_vector_model.encode_documents([text])
 
         new_case_dict = {
-            'id': StudyId,
-            'sparse_values': sparse_values,
+            'id': str(studyId),
+            'sparse_values': sparse_values[0],
             'values': embeddings,
             'metadata': {
-                'title': title,
+                'response': str(response),
                 'text': text
             }
         }
