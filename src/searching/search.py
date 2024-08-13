@@ -33,11 +33,17 @@ pinecone_index = pc.Index(pinecone_config['index_name'])
 
 def convert_string_query_to_vectors(query: str):
     dense_vector = embedding_client.embed_query(query)
-    sparse_vector = bm25.encode_queries(query)
-
+    sparse_vector = bm25.encode_queries([query])  # Wrap query in a list
+    
+    # Extract the first (and only) sparse vector
+    sparse_dict = sparse_vector[0]
+    
     return {
         "dense": dense_vector,
-        "sparse": sparse_vector
+        "sparse": {
+            "indices": sparse_dict["indices"],
+            "values": sparse_dict["values"]
+        }
     }
 
 def hybrid_scale(dense, sparse, alpha: float):
@@ -74,8 +80,7 @@ def search_articles(query: str, top_k: int = 5, alpha: float = 0.5):
     for match in results['matches']:
         print(f"ID: {match['id']}")
         print(f"Score: {match['score']}")
-        print(f"Title: {match['metadata']['title']}")
-        print(f"Text: {match['metadata']['text'][:200]}...")  # Print first 200 characters
+        print(f"Response: {match['metadata']['response'][:1000]}...")  # Print first 250 characters of the response
         print("---")
 
 # Example usage
