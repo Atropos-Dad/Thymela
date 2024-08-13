@@ -1,5 +1,5 @@
 import psycopg2
-from psycopg2.extras import Json
+import logging; logger = logging.getLogger(__name__)
 from dbwrap.conn_single import PostgresSingleton
 import json 
 
@@ -63,8 +63,8 @@ def add_to_MBW_studies(input_dict):
         if type(input_dict["metadataLink"]) != str:
             raise Exception(f"Expected metadataLink to be a string, but got {type(input_dict['metadataLink']).__name__} instead")
     except Exception as e:
-        print(f"Error with input: {input_dict['studyId']}")
-        print(e)
+        logging.error(f"Error with input: {input_dict['studyId']}")
+        logging.error(e)
         return
 
     # Convert the dictionary to Json
@@ -143,9 +143,9 @@ def add_to_MBW_studies_batch(inputs):
             if type(input_dict["metadataLink"]) != str:
                 raise Exception(f"Expected metadataLink to be a string, but got {type(input_dict['metadataLink']).__name__} instead")
         except Exception as e:
-            print(f"Error with input: {input_dict['studyId']}")
+            logging.error(f"Error with input: {input_dict['studyId']}")
             # input(f"{input_dict}")
-            print(e)
+            logging.error(e)
             input_dict["valid"] = False
 
     # Filter out invalid inputs
@@ -153,11 +153,11 @@ def add_to_MBW_studies_batch(inputs):
     # Convert the dictionaries to Json
     converted_inputs = [(input["studyId"], psycopg2.extras.Json(input["mwTab"]), input["studyTitle"], input["species"], input["institute"], input["analysis"], input["release"], input["samples"], input["metadataLink"]) for input in inputs]
 
-    print("Compiled valid studies... ready to insert")
-    print(f"Number of valid studies: {len(valid_inputs)}")
-    print(f"Original number of studies: {len(inputs)}")
-    print(f"Number of invalid studies: {len(inputs) - len(valid_inputs)}")
-    print(f"Success rate: {len(valid_inputs)/len(inputs):.2%}")
+    logging.info("Compiled valid studies... ready to insert")
+    logging.debug(f"Number of valid studies: {len(valid_inputs)}")
+    logging.debug(f"Original number of studies: {len(inputs)}")
+    logging.debug(f"Number of invalid studies: {len(inputs) - len(valid_inputs)}")
+    logging.debug(f"Success rate: {len(valid_inputs)/len(inputs):.2%}")
     input("press enter to continue")
 
     # Define the SQL query

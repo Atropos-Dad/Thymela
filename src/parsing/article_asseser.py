@@ -1,18 +1,10 @@
-import os
-import json
-import logging
-import re
+import logging; logger = logging.getLogger(__name__)
 from dotenv import load_dotenv
 from prompting.prompt_manager import Prompt
 from parsing.config import config
 from parsing.API_Wrapper import LLM_Wrapper, LLM_Model
-from parsing.content_getter import remove_newlines
-from parsing.content_getter import make_json_safe
 from dbwrap.db_get_study import get_n_studies
 
-# Set up logging configuration
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 # Load environment variables
 load_dotenv()
@@ -67,7 +59,7 @@ def assess_multiple_studies(amount_of_studies):
     studies = get_n_studies(amount_of_studies)
     for study in studies:
         output = assess_article(study) 
-        print(output)
+        logger.debug(output)
 
 
 

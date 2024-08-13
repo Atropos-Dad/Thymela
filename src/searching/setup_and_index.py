@@ -1,188 +1,206 @@
-import pandas as pd
-from tabulate import tabulate
+import json
+import os
 import time
 from typing import List, Dict
-from langchain_openai import OpenAIEmbeddings
+import logging; logger = logging.getLogger(__name__)
+import joblib
+import nltk
 import tiktoken
+from dotenv import load_dotenv
+from langchain_openai import OpenAIEmbeddings
 from pinecone import Pinecone, ServerlessSpec
 from pinecone_text.sparse import BM25Encoder
 from tqdm import tqdm
-import joblib
-import json
-from dotenv import load_dotenv
-import os
-import nltk
-nltk.download('punkt_tab')
+
+from dbwrap.db_get_result import get_all_results_original
 
 # Load environment variables
 load_dotenv()
 
-# Read the CSV file
-df = pd.read_csv("tests/mock_data/500_Pride_Studies.csv")
-
-row_count = df.shape[0]
-print(f"The DataFrame contains {row_count} rows.")
-
+# Constants
 EMBEDDINGS_DIMENSIONS = 512
+MAX_TOKENS = 8191
+ENCODING_NAME = "cl100k_base"
+PRICE_PER_TOKEN = 0.13 / 1000000
+INDEX_NAME = "hybridhearchexperiment"
 
-embedding_client = OpenAIEmbeddings(
-    api_key=os.getenv('OPENAI_API_KEY'),
-    model="text-embedding-3-large", 
-    dimensions=EMBEDDINGS_DIMENSIONS
-)
+def check_config_files():
+    """Check if necessary configuration files exist."""
+    required_files = ['bm25_model.joblib', 'embedding_config.json', 'pinecone_config.json']
+    missing_files = [file for file in required_files if not os.path.exists(file)]
+    
+    if missing_files:
+        logging.info(f"Missing configuration files: {', '.join(missing_files)}")
+        return False
+    return True
 
-def num_tokens_from_string(string: str, encoding_name: str) -> int:
+def setup_nltk():
+    """Download NLTK data if not already present."""
+    try:
+        nltk.data.find('tokenizers/punkt')
+    except LookupError:
+        nltk.download('punkt')
+
+def num_tokens_from_string(string: str, encoding_name: str = ENCODING_NAME) -> int:
+    """Calculate the number of tokens in a string."""
     encoding = tiktoken.get_encoding(encoding_name)
-    num_tokens = len(encoding.encode(string))
-    return num_tokens
+    return len(encoding.encode(string))
 
-def get_embeddings(
-    df: pd.DataFrame,
-    num_rows: int = 2,
-    max_tokens: int = 8191,
-    encoding_name: str = "cl100k_base",
-    price_per_token: float = 0.13 / 1000000
-) -> List[Dict]:
+def process_database_results(database_results: List[tuple]) -> List[Dict]:
+    """Convert database results from tuples to dictionaries."""
+    keys = ['studyId', 'response', 'source', 'title', 'projectDescription', 'sampleProcessingProtocol',
+            'dataProcessingProtocol', 'keywords', 'organisms', 'organismParts', 'diseases', 'projectTags', 'instruments']
+    return [dict(zip(keys, row)) for row in database_results]
+
+async def fetch_database_results(limit: int = None):
+    """Fetch results from the database asynchronously."""
+    return await get_all_results_original(limit)
+
+def get_embeddings(database_results: List[Dict], embedding_client: OpenAIEmbeddings) -> List[Dict]:
+    """Generate embeddings for the database results."""
     result_list = []
-    batch_texts = []
-    batch_ids = []
-    current_tokens = 0
-    total_tokens = 0
-    total_batches = 0
-
+    batch_texts, batch_ids, batch_responses = [], [], []
+    current_tokens, total_tokens, total_batches = 0, 0, 0
     start_time = time.time()
 
-    for index, row in df.head(num_rows).iterrows():
-        text = f"{row['studyId']} {row['response']} {row['created']} {row['source']} {row['version']}"
-        text = ' '.join(str(item) for item in text.split())  # Convert all items to strings
+    for row in database_results:
+        text = ' '.join(str(row[key]) for key in row)
+        tokens = num_tokens_from_string(text)
 
-        if not isinstance(text, str) or not text.strip():
-            continue
-
-        tokens = num_tokens_from_string(text, encoding_name)
-
-        if current_tokens + tokens > max_tokens:
+        if current_tokens + tokens > MAX_TOKENS:
             if batch_texts:
                 embeddings = embedding_client.embed_documents(batch_texts)
-                for i, text in enumerate(batch_texts):
-                    result_list.append({
-                        'studyId': batch_ids[i],
-                        'response': str(df.loc[df['studyId'] == batch_ids[i], 'response'].values[0]),
-                        'embeddings': embeddings[i]
-                    })
+                result_list.extend([
+                    {'studyId': id, 'response': response, 'embeddings': embedding}
+                    for id, response, embedding in zip(batch_ids, batch_responses, embeddings)
+                ])
+                batch_texts, batch_ids, batch_responses = [], [], []
+                current_tokens = 0
+                total_batches += 1
 
-            batch_texts = [text]
-            batch_ids = [row['studyId']]
-            current_tokens = tokens
-            total_batches += 1
-        else:
-            batch_texts.append(text)
-            batch_ids.append(row['studyId'])
-            current_tokens += tokens
-
+        batch_texts.append(text)
+        batch_ids.append(row['studyId'])
+        batch_responses.append(str(row['response']))
+        current_tokens += tokens
         total_tokens += tokens
 
     if batch_texts:
         embeddings = embedding_client.embed_documents(batch_texts)
-        for i, text in enumerate(batch_texts):
-            result_list.append({
-                'studyId': batch_ids[i],
-                'response': str(df.loc[df['studyId'] == batch_ids[i], 'response'].values[0]),
-                'embeddings': embeddings[i]
-            })
+        result_list.extend([
+            {'studyId': id, 'response': response, 'embeddings': embedding}
+            for id, response, embedding in zip(batch_ids, batch_responses, embeddings)
+        ])
         total_batches += 1
 
-    end_time = time.time()
-    duration = end_time - start_time
-
-    print(f"Completed in {duration:.2f} seconds.")
-    print(f"Total number of tokens: {total_tokens:,}")
-    print(f"Total number of batches: {total_batches:,}")
-    print(f"Money burned: ${total_tokens * price_per_token:.6f}")
+    logging.info(f"Embedding generation completed in {time.time() - start_time:.2f} seconds.")
+    logging.debug(f"Total tokens: {total_tokens:,}, Total batches: {total_batches:,}")
+    logging.debug(f"Estimated cost: ${total_tokens * PRICE_PER_TOKEN:.6f}")
 
     return result_list
 
-all_cases_with_embeddings = get_embeddings(df, num_rows=row_count)
+def setup_pinecone(api_key: str):
+    """Set up Pinecone index."""
+    pc = Pinecone(api_key=api_key)
+    
+    if INDEX_NAME in pc.list_indexes().names():
+        pc.delete_index(INDEX_NAME)
+        logging.debug(f"Deleted old index: {INDEX_NAME}")
 
-# Pinecone setup
-pc = Pinecone(api_key=os.getenv('PINECONE_API_KEY'))
-
-index_name = "hybridhearchexperiment"
-
-existing_indexes = pc.list_indexes().names()
-
-if index_name in existing_indexes:
-    pc.delete_index(index_name)
-    print("Deleted old index.")
-
-pc.create_index(
-    name=index_name,
-    dimension=EMBEDDINGS_DIMENSIONS,
-    metric="dotproduct",
-    spec=ServerlessSpec(
-        cloud='aws',
-        region='us-east-1'
+    pc.create_index(
+        name=INDEX_NAME,
+        dimension=EMBEDDINGS_DIMENSIONS,
+        metric="dotproduct",
+        spec=ServerlessSpec(cloud='aws', region='us-east-1')
     )
-)
 
-while not pc.describe_index(index_name).status['ready']:
-    time.sleep(1)
+    while not pc.describe_index(INDEX_NAME).status['ready']:
+        time.sleep(1)
 
-pinecone_index = pc.Index(index_name)
-pinecone_index.describe_index_stats()
+    return pc.Index(INDEX_NAME)
 
-bm25 = BM25Encoder()
+def train_bm25(database_results: List[Dict]):
+    """Train BM25 model on the database results."""
+    train_texts = [' '.join(str(row[key]) for key in row) for row in database_results]
+    bm25 = BM25Encoder()
+    bm25.fit(train_texts)
+    return bm25
 
-# Train BM25 on the combined text fields
-train_texts = df['studyId'].astype(str) + ' ' + df['response'].astype(str) + ' ' + df['created'].astype(str) + ' ' + df['source'].astype(str) + ' ' + df['version'].astype(str)
-bm25.fit(train_texts.tolist())
-
-def group_embeddings_and_generate_sparse_vectors(cases, sparse_vector_model):
-    all_cases_embeddings_and_sparse_vectors = []
-
-    for case in tqdm(cases, desc="Processing cases"):
-        studyId = case['studyId']
-        response = case['response']
-        text = f"{studyId} {response} {df.loc[df['studyId'] == studyId, 'created'].values[0]} {df.loc[df['studyId'] == studyId, 'source'].values[0]} {df.loc[df['studyId'] == studyId, 'version'].values[0]}"
-        text = ' '.join(str(item) for item in text.split())  # Convert all items to strings
-        embeddings = case['embeddings']
-
-        sparse_values = sparse_vector_model.encode_documents([text])
-
-        new_case_dict = {
-            'id': str(studyId),
-            'sparse_values': sparse_values[0],
-            'values': embeddings,
+def group_embeddings_and_generate_sparse_vectors(cases: List[Dict], sparse_vector_model: BM25Encoder, database_results: List[Dict]):
+    """Group embeddings and generate sparse vectors."""
+    return [
+        {
+            'id': str(case['studyId']),
+            'sparse_values': sparse_vector_model.encode_documents([' '.join(str(db_row[key]) for key in db_row)])[0],
+            'values': case['embeddings'],
             'metadata': {
-                'response': str(response),
-                'text': text
+                'response': str(case['response']),
+                'text': ' '.join(str(db_row[key]) for key in db_row)
             }
         }
+        for case, db_row in tqdm(zip(cases, database_results), desc="Processing cases", total=len(cases))
+    ]
 
-        all_cases_embeddings_and_sparse_vectors.append(new_case_dict)
+def save_configurations(bm25_model: BM25Encoder, openai_api_key: str, pinecone_api_key: str):
+    """Save configurations to files."""
+    joblib.dump(bm25_model, 'bm25_model.joblib')
+    
+    with open('embedding_config.json', 'w') as f:
+        json.dump({
+            'api_key': openai_api_key,
+            'model': "text-embedding-3-large",
+            'dimensions': EMBEDDINGS_DIMENSIONS
+        }, f)
 
-    return all_cases_embeddings_and_sparse_vectors
+    with open('pinecone_config.json', 'w') as f:
+        json.dump({
+            'api_key': pinecone_api_key,
+            'index_name': INDEX_NAME
+        }, f)
 
-all_cases_embeddings_and_sparse_vectors = group_embeddings_and_generate_sparse_vectors(all_cases_with_embeddings, bm25)
+async def init_and_index(run_init_default=False):
+    files_exist = check_config_files()
+    if not files_exist and run_init_default: # if files are not found, and asked to run
+        logging.info("Setting up index")
+        logging.info("Setup NLTK")
+        setup_nltk()
 
-pinecone_index.upsert(vectors=all_cases_embeddings_and_sparse_vectors, batch_size=100)
+        logging.info("Fetching and processing database results")
+        # Fetch and process database results
+        raw_results = await fetch_database_results(limit=None)  # Set limit to None for all results
+        database_results = process_database_results(raw_results)
+        logging.debug(f"Retrieved {len(database_results)} records from the database.")
 
-# Save the BM25 model
-joblib.dump(bm25, 'bm25_model.joblib')
+        logging.info("Generating embeddings")
+        # Generate embeddings
+        embedding_client = OpenAIEmbeddings(
+            api_key=os.getenv('OPENAI_API_KEY'),
+            model="text-embedding-3-large", 
+            dimensions=EMBEDDINGS_DIMENSIONS
+        )
+        all_cases_with_embeddings = get_embeddings(database_results, embedding_client)
 
-# Save the embedding model configuration
-with open('embedding_config.json', 'w') as f:
-    json.dump({
-        'api_key': os.getenv('OPENAI_API_KEY'),
-        'model': "text-embedding-3-large",
-        'dimensions': EMBEDDINGS_DIMENSIONS
-    }, f)
 
-# Save the Pinecone configuration
-with open('pinecone_config.json', 'w') as f:
-    json.dump({
-        'api_key': os.getenv('PINECONE_API_KEY'),
-        'index_name': index_name
-    }, f)
+        # Set up Pinecone
+        pinecone_index = setup_pinecone(os.getenv('PINECONE_API_KEY'))
 
-print("Setup and indexing complete. You can now use the search functionality.")
+        logging.info("Train the BM25 model")
+        # Train BM25 model
+        bm25_model = train_bm25(database_results)
+
+        logging.info("Generating vectors")
+        # Group embeddings and generate sparse vectors
+        all_cases_embeddings_and_sparse_vectors = group_embeddings_and_generate_sparse_vectors(
+            all_cases_with_embeddings, bm25_model, database_results
+        )
+
+        logging.info("Upserting to pinecone!")
+        # Upsert vectors to Pinecone
+        pinecone_index.upsert(vectors=all_cases_embeddings_and_sparse_vectors, batch_size=100)
+
+        # Save configurations
+        save_configurations(bm25_model, os.getenv('OPENAI_API_KEY'), os.getenv('PINECONE_API_KEY'))
+
+        logging.info("Setup and indexing complete. You can now use the search functionality.")
+
+    elif not files_exist and not run_init_default:
+        logging.error("No config files, and not running setup. Please run the setup process first.")
