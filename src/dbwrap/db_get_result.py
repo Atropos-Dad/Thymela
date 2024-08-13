@@ -40,16 +40,16 @@ async def get_all_results_original(limit=None):
             results = []
             for source in ["PRIDE", "MBW", "Metabolights"]:
                 try:
-                    sql = f"""SELECT *
-                            FROM "processed_Studies"
-                            FULL OUTER JOIN "{source}_Studies"
-                            ON "processed_Studies"."studyId" = "{source}_Studies"."studyId" """
+                    sql = f"""
+                    SELECT *
+                    FROM "processed_Studies"
+                    INNER JOIN "{source}_Studies"
+                    ON "processed_Studies"."studyId" = "{source}_Studies"."studyId"
+                    """
                     if limit:
                         sql += f' LIMIT {limit}'
-                    
                     source_results = await conn.fetch(sql)
                     results.extend(source_results)
                 except Exception as e:
                     logging.error(f"Error fetching results for source {source}: {e}")
             return results
-    
