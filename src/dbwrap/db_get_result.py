@@ -32,3 +32,24 @@ async def get_all_results(limit=None):
                 # Handle the error appropriately
                 print(f"Error retrieving data: {e}")
                 pass
+
+# get all results with original content
+async def get_all_results_original(limit=None):
+    async with DatabasePool.acquire() as conn:
+        async with conn.transaction():
+            results = []
+            for source in ["PRIDE", "MBW", "Metabolights"]:
+                try:
+                    sql = f"""SELECT *
+                            FROM "processed_Studies"
+                            FULL OUTER JOIN "{source}_Studies"
+                            ON "processed_Studies"."studyId" = "{source}_Studies"."studyId" """
+                    if limit:
+                        sql += f' LIMIT {limit}'
+                    
+                    source_results = await conn.fetch(sql)
+                    results.extend(source_results)
+                except Exception as e:
+                    print(f"Error fetching results for source {source}: {e}")
+            return results
+    
