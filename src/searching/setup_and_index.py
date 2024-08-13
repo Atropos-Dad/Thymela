@@ -12,12 +12,14 @@ import joblib
 import json
 from dotenv import load_dotenv
 import os
+import nltk
+nltk.download('punkt_tab')
 
 # Load environment variables
 load_dotenv()
 
 # Read the CSV file
-df = pd.read_csv(r"C:\Users\dylan\Downloads\_PRIDE_Studies__202408091541 (1).csv")
+df = pd.read_csv("tests/mock_data/500_Pride_Studies.csv")
 
 row_count = df.shape[0]
 print(f"The DataFrame contains {row_count} rows.")
