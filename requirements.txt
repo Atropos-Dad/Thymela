@@ -44,7 +44,7 @@ langsmith==0.1.99
 MarkupSafe==2.1.5
 mmh3==4.1.0
 multidict==6.0.5
-nltk==3.8.2
+nltk==3.8.1
 numpy==1.26.4
 openai==1.40.3
 orjson==3.10.7

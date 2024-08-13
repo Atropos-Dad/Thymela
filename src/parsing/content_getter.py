@@ -1,9 +1,8 @@
 import json
-import logging
+import logging; logger = logging.getLogger(__name__)
 from prompting.prompt_manager import Prompt
 from parsing.API_Wrapper import LLM_Model
 
-logger = logging.getLogger(__name__)
 
 def remove_newlines(text):
     """
@@ -78,7 +77,7 @@ def get_article_text_ai(content, url=None):
         
         # Get AI response using LLM_Model
         response = LLM_Model.prompt(prompt)
-        print(response)
+        logging.debug(response)
 
         response = remove_newlines(response)
         logger.debug(f"AI article output (content cleaning): {response[:500]}...")  # Log first 500 characters

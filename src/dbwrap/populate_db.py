@@ -3,6 +3,7 @@ from webscraping.post_process_mwb import mbw_get_all_studies
 from tqdm import tqdm
 from dbwrap.db_add_study import add_to_Pride_studies
 from dbwrap.db_add_study import add_to_MBW_studies
+import logging; logger = logging.getLogger(__name__)
 
 # {
 #     "accession": "PXD054577",
@@ -67,9 +68,9 @@ def populate_pride():
             add_to_Pride_studies(values)
         except Exception as e:
             # add to tqdm progress bar
-            print(f"Error adding {study['accession']} to db")
-            print(e)
-            input("Press enter to continue")
+            logging.error(f"Error adding {study['accession']} to db")
+            logging.error(e)
+            input("Populating Pride studies failed. Press enter to continue")
 
             
 def populate_mbw():
@@ -79,6 +80,6 @@ def populate_mbw():
             add_to_MBW_studies(study)
         except Exception as e:
             # add to tqdm progress bar
-            print(f"Error adding {study['studyId']} to db")
-            print(e)
-            input("Press enter to continue")
+            logging.error(f"Error adding {study['studyId']} to db")
+            logging.error(e)
+            input("Populating MBW studies failed. Press enter to continue")

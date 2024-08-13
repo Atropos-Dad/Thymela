@@ -1,6 +1,8 @@
 from dbwrap.conn_pool import DatabasePool
 from dbwrap.db_idvalid import classify_study_id
 
+import logging; logger = logging.getLogger(__name__)
+
 async def add_result(study_id, response):
     source = classify_study_id(study_id)
 
@@ -12,6 +14,6 @@ async def add_result(study_id, response):
                 
             except Exception as e:
                 # Handle the error appropriately
-                print(f"Error inserting data for study ID {study_id}: {e}")
-                print(f"Data: {study_id}, {response}, {source}")
+                logging.error(f"Error inserting data for study ID {study_id}: {e}")
+                logging.error(f"Data: {study_id}, {response}, {source}")
                 pass # auto roll back

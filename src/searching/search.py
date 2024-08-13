@@ -5,6 +5,7 @@ from langchain_openai import OpenAIEmbeddings
 from pinecone_text.sparse import BM25Encoder
 from dotenv import load_dotenv
 import os
+import logging; logger = logging.getLogger(__name__)
 
 # Load environment variables
 load_dotenv()
@@ -75,16 +76,19 @@ def search_articles(query: str, top_k: int = 5, alpha: float = 0.5):
         include_metadata=True
     )
     
-    # Print the results
-    print(f"Top {top_k} results for query: '{query}'")
+    print_results(results, query, top_k)
+
+
+def print_results(results, query, top_k):
+    logging.info(f"Top {top_k} results for query: '{query}'")
     for match in results['matches']:
-        print(f"ID: {match['id']}")
-        print(f"Score: {match['score']}")
-        print(f"Response: {match['metadata']['response'][:1000]}...")  # Print first 250 characters of the response
-        print("---")
+        logging.debug(f"ID: {match['id']}")
+        logging.debug(f"Score: {match['score']}")
+        logging.debug(f"Response: {match['metadata']['response'][:1000]}...")  # Print first 1000 characters of the response
+        logging.debug("---")
 
 # Example usage
 if __name__ == "__main__":
     search_query = "Find a Huntingtin protein interaction with ubiquitin and its role in protein degradation"
-    print(f"Search Query: {search_query}")
+    logging.info(f"Search Query: {search_query}")
     search_articles(search_query)

@@ -1,5 +1,5 @@
 from dbwrap.conn_pool import DatabasePool
-from dbwrap.db_idvalid import classify_study_id
+import logging; logger = logging.getLogger(__name__)
 
 async def get_result(study_id):
     async with DatabasePool.acquire() as conn:
@@ -11,7 +11,7 @@ async def get_result(study_id):
                 
             except Exception as e:
                 # Handle the error appropriately
-                print(f"Error retrieving data for study ID {study_id}: {e}")
+                logging.error(f"Error retrieving data for study ID {study_id}: {e}")
                 pass
 
 
@@ -30,7 +30,7 @@ async def get_all_results(limit=None):
                 
             except Exception as e:
                 # Handle the error appropriately
-                print(f"Error retrieving data: {e}")
+                logging.error(f"Error retrieving data: {e}")
                 pass
 
 # get all results with original content
@@ -50,6 +50,6 @@ async def get_all_results_original(limit=None):
                     source_results = await conn.fetch(sql)
                     results.extend(source_results)
                 except Exception as e:
-                    print(f"Error fetching results for source {source}: {e}")
+                    logging.error(f"Error fetching results for source {source}: {e}")
             return results
     

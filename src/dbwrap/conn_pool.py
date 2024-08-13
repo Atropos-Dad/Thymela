@@ -1,5 +1,5 @@
 import asyncpg
-import asyncio
+import logging; logger = logging.getLogger(__name__)
 from contextlib import asynccontextmanager
 
 class DatabasePool:
@@ -25,4 +25,4 @@ async def main():
     # Use the pool
     async with DatabasePool.acquire() as conn:
         result = await conn.fetch("""SELECT * FROM public."processed_Studies" """)    # The connection is automatically released back to the pool
-        print(len(result))
+        logging.debug(len(result))
