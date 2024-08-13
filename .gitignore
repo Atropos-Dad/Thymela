@@ -168,3 +168,6 @@ src/webscraping/mwb_html/
 
 src/webscraping/mwb_results/
 src/webscraping/mwb_csvs/
+bm25_model.joblib
+embedding_config.json
+pinecone_config.json
