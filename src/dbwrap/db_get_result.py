@@ -38,13 +38,14 @@ async def get_all_results_original(limit=None):
     async with DatabasePool.acquire() as conn:
         async with conn.transaction():
             results = []
-            for source in ["PRIDE", "MBW", "Metabolights"]:
+            # for source in ["PRIDE", "MBW", "Metabolights"]:
+            for source in ["PRIDE"]: # only PRIDE for now, we need to figure it out more later
                 try:
                     sql = f"""
-                    SELECT *
-                    FROM "processed_Studies"
-                    INNER JOIN "{source}_Studies"
-                    ON "processed_Studies"."studyId" = "{source}_Studies"."studyId"
+                        SELECT "processed_Studies"."studyId", response, source,title, "projectDescription", "sampleProcessingProtocol", "dataProcessingProtocol",keywords, organisms, "organismParts", diseases, "projectTags", instruments
+                        FROM "processed_Studies"
+                        INNER JOIN "PRIDE_Studies"
+                        ON "processed_Studies"."studyId" = "PRIDE_Studies"."studyId"
                     """
                     if limit:
                         sql += f' LIMIT {limit}'
