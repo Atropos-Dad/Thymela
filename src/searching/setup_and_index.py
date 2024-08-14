@@ -24,9 +24,28 @@ collection_name = "hybridhearchexperiment"
 
 def process_database_results(database_results: List[tuple]) -> List[Dict]:
     """Convert database results from tuples to dictionaries."""
-    keys = ['studyId', 'response', 'source', 'title', 'projectDescription', 'sampleProcessingProtocol',
-            'dataProcessingProtocol', 'keywords', 'organisms', 'organismParts', 'diseases', 'projectTags', 'instruments']
-    return [dict(zip(keys, row)) for row in database_results]
+    # pride keys
+    keys = ["studyId", "response", "source", "title", "projectDescription", "sampleProcessingProtocol", "dataProcessingProtocol","keywords", "organisms", "organismParts", "diseases", "projectTags", "instruments"]
+    
+    # create a dictionary for each row
+    processed_results = [dict(zip(keys, row)) for row in database_results]
+
+    # for all keys that are not studyId, source, title, response, combine into one string with a key
+    for result in processed_results:
+        metadata = {}
+        for key, value in result.items():
+            if key not in ["studyId", "source", "title", "response"]:
+                metadata[key] = value
+
+        for key in metadata.keys():
+            del result[key]
+
+
+        result["text"] = str(metadata)
+
+        
+
+    return processed_results
 
 async def fetch_database_results(limit: int = None):
     """Fetch results from the database asynchronously."""
@@ -52,15 +71,15 @@ def add_documents(database_results: List[Dict]):
     # convert dict to str
     database_results_str = [str(database_result) for database_result in database_results]
     
-    # we're assuming stuff is coming in processed, singular
     collection.add(documents=database_results_str, ids=[database_result['studyId'] for database_result in database_results])
 
 def check_for_db():
     # check if the collection is populated/exists
     try:
-        chroma_client.get_collection(name="hybridsearch")
+        chroma_client.get_collection(name=collection_name)
         return True
-    except:
+    except Exception as e:
+        print(e)
         return False
 
 
