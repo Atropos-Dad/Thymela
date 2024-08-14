@@ -172,3 +172,4 @@ bm25_model.joblib
 embedding_config.json
 pinecone_config.json
 embedding_checkpoint.json
+chromadb/
