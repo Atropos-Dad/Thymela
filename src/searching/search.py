@@ -1,7 +1,7 @@
 import logging; logger = logging.getLogger(__name__)
 import chromadb
 import datetime
-collection_name = "hybridhearchexperiment"
+collection_name = "hybridsearchexperiment"
 chroma_client = chromadb.PersistentClient(path="chromadb")
 collection = chroma_client.get_collection(name=collection_name)    
 

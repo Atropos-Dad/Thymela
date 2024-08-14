@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 logging.getLogger("openai").setLevel(logging.WARNING)
 logging.getLogger("httpx").setLevel(logging.WARNING)
 
-collection_name = "hybridhearchexperiment"
+collection_name = "hybridsearchexperiment"
 
 
 def process_database_results(database_results: List[tuple]) -> List[Dict]:
