@@ -99,12 +99,12 @@
                 {{ result.id }}
             </a>
         </h2>
-        <p>{{ result.metadata.title }}</p>
+        <p>{{ result.title }}</p>
         <p class="score">Score: {{ result.score }}</p>
-        <p>{{ result.metadata.text[:170] }}...</p>
+        <p>{{ result.text[:170] }}...</p>
         <span class="read-more" onclick="toggleInfo(this)">Read more</span>
         <div class="full-info">
-            <p>{{ result.metadata.text }}</p>
+            <p>{{ result.text }}</p>
             <!-- Add more fields here as needed -->
         </div>
     </div>
