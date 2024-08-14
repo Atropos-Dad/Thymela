@@ -13,7 +13,7 @@ async def create_app():
         if request.method == 'POST':
             query = request.form['query']
             results = search_for_articles(query)
-            return render_template('results2.html', results=results, query=query)
-        return render_template('try.html')
+            return render_template('results.html', results=results, query=query)
+        return render_template('search_bar.html')
 
     return app
