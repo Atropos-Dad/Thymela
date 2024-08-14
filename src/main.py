@@ -1,11 +1,8 @@
 import asyncio
 import sys
-from tqdm import tqdm
 import logging
 from searching.setup_and_index import init_and_index
-
-
-    
+from webapp.app import create_app
 
 fh = logging.FileHandler("debug.log", encoding="utf-8")
 sh = logging.StreamHandler()
@@ -13,7 +10,6 @@ fh.setLevel(logging.DEBUG)
 sh.setLevel(logging.INFO)
 
 handlers = [sh,fh]
-
 # if args.debug:
 #     handlers.append(fh)
 
@@ -26,11 +22,11 @@ logging.basicConfig(
     handlers=handlers,
 )
 
+async def main():
+    await init_and_index(run_init_default=True)
+    app = await create_app()
+    return app
 
-
-def main():
-    # 
-    asyncio.run(init_and_index(run_init_default=True))
-  
 if __name__ == "__main__":
-    main()
+    app = asyncio.run(main())
+    app.run(debug=True)
