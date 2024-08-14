@@ -1,3 +1,4 @@
+from urllib import response
 import joblib
 import json
 from pinecone import Pinecone
@@ -64,6 +65,14 @@ def search_for_articles(query: str, top_k: int = 5, alpha: float = 0.5):
         top_k=top_k,
         include_metadata=True
     )
+
+    for match in results['matches']:
+        response = (json.loads(match['metadata']["response"]))
+        if type(response) == list:
+            response = response[0]
+
+        match['title'] = response.get('title', 'No Title Available')
+
     print_results(results, query, top_k)
     return results['matches']
 
@@ -73,6 +82,7 @@ def print_results(results, query, top_k):
         logging.debug(f"ID: {match['id']}")
         logging.debug(f"Score: {match['score']}")
         logging.debug(f"Response: {match['metadata']['response'][:1000]}...")  # Print first 1000 characters of the response
+        #title = response.get('title', 'No Title Available')
         logging.debug("---")
 
 # Example usage
