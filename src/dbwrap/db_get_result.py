@@ -33,20 +33,24 @@ async def get_all_results(limit=None):
                 logging.error(f"Error retrieving data: {e}")
                 pass
 
+
+
+sql_dict = {
+    "PRIDE": """SELECT "processed_Studies"."studyId", response, source,title, "projectDescription", "sampleProcessingProtocol", "dataProcessingProtocol",keywords, organisms, "organismParts", diseases, "projectTags", instruments
+                        FROM "processed_Studies"
+                        INNER JOIN "PRIDE_Studies"
+                        ON "processed_Studies"."studyId" = "PRIDE_Studies"."studyId" """,
+    "MBW": 'SELECT * FROM public."MBW_Studies"',
+    "Metabolights": 'SELECT * FROM public."Metabolights_Studies"'
+}
 # get all results with original content
 async def get_all_results_original(limit=None):
     async with DatabasePool.acquire() as conn:
         async with conn.transaction():
             results = []
-            # for source in ["PRIDE", "MBW", "Metabolights"]:
-            for source in ["PRIDE"]: # only PRIDE for now, we need to figure it out more later
+            for source in ["PRIDE"]:
                 try:
-                    sql = f"""
-                        SELECT "processed_Studies"."studyId", response, source,title, "projectDescription", "sampleProcessingProtocol", "dataProcessingProtocol",keywords, organisms, "organismParts", diseases, "projectTags", instruments
-                        FROM "processed_Studies"
-                        INNER JOIN "PRIDE_Studies"
-                        ON "processed_Studies"."studyId" = "PRIDE_Studies"."studyId"
-                    """
+                    sql = sql_dict[source]
                     if limit:
                         sql += f' LIMIT {limit}'
                     source_results = await conn.fetch(sql)
