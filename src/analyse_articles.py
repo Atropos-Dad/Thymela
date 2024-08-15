@@ -13,7 +13,7 @@ from dbwrap.db_get_study import get_studies_to_be_analysed
 logger = logging.getLogger(__name__)
 
 # Concurrency settings
-MAX_CONCURRENT_TASKS = 128
+MAX_CONCURRENT_TASKS = 64
 QUEUE_SIZE = MAX_CONCURRENT_TASKS*3
 
 @dataclass
@@ -84,7 +84,7 @@ async def init_article_analysis():
     logger.info("Getting articles to analyse...")
     # Run get_studies_to_be_analysed in the thread pool
     loop = asyncio.get_running_loop()
-    studies = await loop.run_in_executor(thread_pool, get_studies_to_be_analysed, "MBW", 5)
+    studies = await loop.run_in_executor(thread_pool, get_studies_to_be_analysed, "PRIDE")
     shared_state.total_articles = len(studies)
 
     queue = asyncio.Queue(maxsize=QUEUE_SIZE)
