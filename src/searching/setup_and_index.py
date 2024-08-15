@@ -75,37 +75,46 @@ def save_checkpoint(processed_count: int, result_list: List[Dict]):
     """Save the current progress to a checkpoint file."""
     with open(CHECKPOINT_FILE, 'w') as f:
         json.dump({'processed_count': processed_count, 'result_list': result_list}, f)
-
-def get_embeddings(database_results: List[Dict], embedding_client: OpenAIEmbeddings) -> List[Dict]:
-    """Generate embeddings for the database results."""
-    checkpoint = load_checkpoint()
-    result_list = checkpoint['result_list']
-    processed_count = checkpoint['processed_count']
+def process_and_upload_batch(batch_texts: List[str], batch_ids: List[str], batch_responses: List[str], 
+                             embedding_client: OpenAIEmbeddings, bm25_model: BM25Encoder, pinecone_index):
+    embeddings = embedding_client.embed_documents(batch_texts)
     
+    vectors = [
+        {
+            'id': str(id),
+            'sparse_values': limit_sparse_vector_size(bm25_model.encode_documents([text])[0]),
+            'values': embedding,
+            'metadata': truncate_metadata({
+                'response': response,
+                'text': text
+            })
+        }
+        for id, text, response, embedding in zip(batch_ids, batch_texts, batch_responses, embeddings)
+    ]
+    
+    pinecone_index.upsert(vectors=vectors)
+    return len(vectors)
+def get_embeddings_and_upload(database_results: List[Dict], embedding_client: OpenAIEmbeddings, 
+                              bm25_model: BM25Encoder, pinecone_index):
     batch_texts, batch_ids, batch_responses = [], [], []
-    current_tokens, total_tokens, total_batches = 0, 0, 0
+    current_tokens, total_tokens, total_processed = 0, 0, 0
     start_time = time.time()
     token_count_last_minute = 0
     last_reset_time = time.time()
 
-    with tqdm(total=len(database_results), initial=processed_count, desc="Generating embeddings") as pbar:
-        for row in database_results[processed_count:]:
+    with tqdm(total=len(database_results), desc="Processing and uploading") as pbar:
+        for row in database_results:
             text = ' '.join(f'{key}: {row[key]}' for key in row)
             tokens = num_tokens_from_string(text)
 
             if current_tokens + tokens > MAX_TOKENS or token_count_last_minute + tokens > OPENAI_TOKEN_LIMIT:
                 if batch_texts:
-                    embeddings = embedding_client.embed_documents(batch_texts)
-                    result_list.extend([
-                        {'studyId': id, 'response': response, 'embeddings': embedding}
-                        for id, response, embedding in zip(batch_ids, batch_responses, embeddings)
-                    ])
+                    processed_count = process_and_upload_batch(batch_texts, batch_ids, batch_responses, 
+                                                               embedding_client, bm25_model, pinecone_index)
+                    total_processed += processed_count
+                    pbar.update(processed_count)
                     batch_texts, batch_ids, batch_responses = [], [], []
                     current_tokens = 0
-                    total_batches += 1
-                    processed_count += len(embeddings)
-                    pbar.update(len(embeddings))
-                    save_checkpoint(processed_count, result_list)
 
                 # Check if we need to wait for rate limit
                 current_time = time.time()
@@ -127,21 +136,15 @@ def get_embeddings(database_results: List[Dict], embedding_client: OpenAIEmbeddi
             token_count_last_minute += tokens
 
     if batch_texts:
-        embeddings = embedding_client.embed_documents(batch_texts)
-        result_list.extend([
-            {'studyId': id, 'response': response, 'embeddings': embedding}
-            for id, response, embedding in zip(batch_ids, batch_responses, embeddings)
-        ])
-        total_batches += 1
-        processed_count += len(embeddings)
-        pbar.update(len(embeddings))
-        save_checkpoint(processed_count, result_list)
+        processed_count = process_and_upload_batch(batch_texts, batch_ids, batch_responses, 
+                                                   embedding_client, bm25_model, pinecone_index)
+        total_processed += processed_count
+        pbar.update(processed_count)
 
-    logger.info(f"Embedding generation completed in {time.time() - start_time:.2f} seconds.")
-    logger.info(f"Total tokens: {total_tokens:,}, Total batches: {total_batches:,}")
+    logger.info(f"Processing and uploading completed in {time.time() - start_time:.2f} seconds.")
+    logger.info(f"Total tokens: {total_tokens:,}, Total processed: {total_processed:,}")
     logger.info(f"Estimated cost: ${total_tokens * PRICE_PER_TOKEN:.6f}")
 
-    return result_list
 
 def setup_pinecone(api_key: str):
     """Set up Pinecone index."""
@@ -226,49 +229,46 @@ def save_configurations(bm25_model: BM25Encoder, openai_api_key: str, pinecone_a
             'index_name': INDEX_NAME
         }, f)
 
+
+def count_articles_in_pinecone():
+    """Count the number of articles in the Pinecone index."""
+    pc = Pinecone(api_key=os.getenv('PINCONE_API_KEY'))
+    index = pc.Index(INDEX_NAME)
+    return index.describe_index_stats()
+
+
 async def init_and_index(run_init_default=False):
     files_exist = check_config_files()
+    print(count_articles_in_pinecone())
     if not files_exist and run_init_default:
         logger.info("Setting up index")
-        logger.info("Setup NLTK")
         setup_nltk()
 
         logger.info("Fetching and processing database results")
-        raw_results = await fetch_database_results(limit=10)
+        raw_results = await fetch_database_results(limit=5000)
         database_results = process_database_results(raw_results)
         logger.debug(f"Retrieved {len(database_results)} records from the database.")
 
-        logger.info("Generating embeddings")
+        logger.info("Setting up the Pinecone index")
+        pinecone_index = setup_pinecone(os.getenv('PINECONE_API_KEY'))
+
+        logger.info("Training the BM25 model")
+        bm25_model = train_bm25(database_results)
+
+        logger.info("Setting up the embedding client")
         embedding_client = OpenAIEmbeddings(
             api_key=os.getenv('OPENAI_API_KEY'),
             model="text-embedding-3-large", 
             dimensions=EMBEDDINGS_DIMENSIONS
         )
-        all_cases_with_embeddings = get_embeddings(database_results, embedding_client)
 
-
-        logging.info("Setting up the BM25 model")
-        # Set up Pinecone
-        pinecone_index = setup_pinecone(os.getenv('PINECONE_API_KEY'))
-
-        logging.info("Train the BM25 model")
-        # Train BM25 model
-        bm25_model = train_bm25(database_results)
-
-        logging.info("Generating vectors")
-        # Group embeddings and generate sparse vectors
-        all_cases_embeddings_and_sparse_vectors = group_embeddings_and_generate_sparse_vectors(
-            all_cases_with_embeddings, bm25_model, database_results
-        )
-
-        logging.info("Uploading!")
-        # Upsert vectors to Pinecone
-        pinecone_index.upsert(vectors=all_cases_embeddings_and_sparse_vectors, batch_size=100)
+        logger.info("Generating embeddings, processing, and uploading to Pinecone")
+        get_embeddings_and_upload(database_results, embedding_client, bm25_model, pinecone_index)
 
         # Save configurations
         save_configurations(bm25_model, os.getenv('OPENAI_API_KEY'), os.getenv('PINECONE_API_KEY'))
 
-        logging.debug("Setup and indexing complete. You can now use the search functionality.")
+        logger.info("Setup and indexing complete. You can now use the search functionality.")
 
     elif not files_exist and not run_init_default:
         logger.error("No config files, and not running setup. Please run the setup process first.")
