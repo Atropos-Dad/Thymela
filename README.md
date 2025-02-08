@@ -1,6 +1,8 @@
 # Thymela
 
-Thymela is a web application designed to analyze and search biomedical articles, with a particular focus on proteomics research data. The project provides a comprehensive suite of tools for scraping, analyzing, and searching research articles and their associated metadata. 
+![image](https://github.com/user-attachments/assets/28d321bf-e5d1-4045-bc67-fce1016a83a1)
+
+Thymela is a web application designed to analyze and search biomedical articles, with a particular focus on proteomics research data. The project provides a comprehensive suite of tools for scraping, analyzing, and searching research articles and their associated metadata. It was developed in collaboration with Meta-Flux @ DogpatchLabs! 
 
 **<ins>NOTE - This is a prototype developed over the course of a week and has not been fully tested. As a result, proper formatting and 'best practices' are yet to be implemented.</ins>**
 
